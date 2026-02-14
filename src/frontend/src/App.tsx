@@ -4,7 +4,8 @@ import HomePage from './pages/HomePage';
 import RanksPage from './pages/RanksPage';
 import DivisionsPage from './pages/DivisionsPage';
 import UniformArmorVariantsByRankPage from './pages/UniformArmorVariantsByRankPage';
-import BlankPage from './pages/BlankPage';
+import HistoryPage from './pages/HistoryPage';
+import PhotoPage from './pages/PhotoPage';
 
 const rootRoute = createRootRoute({
   component: SiteLayout,
@@ -37,7 +38,13 @@ const loreRoute = createRoute({
 const historyRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/history',
-  component: BlankPage,
+  component: HistoryPage,
+});
+
+const photoRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/photo',
+  component: PhotoPage,
 });
 
 const routeTree = rootRoute.addChildren([
@@ -46,6 +53,7 @@ const routeTree = rootRoute.addChildren([
   divisionsRoute,
   loreRoute,
   historyRoute,
+  photoRoute,
 ]);
 
 const router = createRouter({ routeTree });

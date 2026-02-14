@@ -22,7 +22,7 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Button asChild size="lg" className="shadow-copper">
-                <Link to="/lore">Explore Our Lore</Link>
+                <Link to="/lore">Explore Uniform & Armor Variants</Link>
               </Button>
               <Button asChild variant="outline" size="lg">
                 <Link to="/history">Our History</Link>
@@ -87,11 +87,11 @@ export default function HomePage() {
                 </div>
                 <CardTitle className="font-display">
                   <Link to="/lore" className="hover:text-primary transition-colors">
-                    Lore
+                    Uniform & Armor Variants
                   </Link>
                 </CardTitle>
                 <CardDescription>
-                  The stories and legends that define who we are
+                  Detailed specifications of our ceremonial and combat attire
                 </CardDescription>
               </CardHeader>
             </Card>
@@ -138,7 +138,15 @@ export default function HomePage() {
           </Card>
         </div>
       </section>
+
+      {/* Disclaimer */}
+      <section className="pb-16">
+        <div className="container mx-auto px-4">
+          <p className="text-[14px] text-muted-foreground text-center max-w-4xl mx-auto">
+            This is a 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios.
+          </p>
+        </div>
+      </section>
     </div>
   );
 }
-

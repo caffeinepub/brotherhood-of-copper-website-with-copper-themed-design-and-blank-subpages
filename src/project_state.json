@@ -1,14 +1,18 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 17,
-  "summary": "Expand the copper-themed 'Brotherhood of Copper' site by adding content to a new \"Uniform & Armor Variants by Rank\" page, including a \"II. Uniform & Armor Variants by Rank\" section for each rank and a \"III. Copper War–Era Rank Structure\" section with new/temporary ranks, while keeping the shared site layout consistent.",
+  "projectStateVersion": 29,
+  "summary": "Expand the copper-themed 'Brotherhood of Copper' site by adding content to a new \"Uniform & Armor Variants by Rank\" page (including \"II. Uniform & Armor Variants by Rank\" per rank and \"III. Copper War–Era Rank Structure\"), populating the History page with the provided \"The Dawn of Copper (2105)\" narrative sections, and adding a new Photo page, while keeping the shared site layout consistent.",
   "architectural_notes": [
     "Divisions page is no longer fully blank; it should render a Forge Division section (Armorers, Weaponsmiths) including a photo while keeping the shared site layout consistent.",
     "Divisions page should include an additional 'Archive Division' section with the text '(Scribes, Historians, Analysts)' alongside the existing Forge Division section, preserving the shared site layout/styling.",
     "Divisions page should include an additional 'Field Division' section with the text '(Scouts, Rangers, Tacticians)' alongside existing division sections, preserving the shared site layout/styling.",
     "Divisions page should include an additional 'Circuit Division' section with the text '(Engineers, Energy Techs, Comms)' alongside existing division sections, preserving the shared site layout/styling.",
     "Divisions page should include an additional 'Custodian Division' section with the text '(Pre-War Machine Interface Specialists)' alongside existing division sections, preserving the shared site layout/styling.",
-    "Add/extend the \"Uniform & Armor Variants by Rank\" page to render the user-provided sections \"II. Uniform & Armor Variants by Rank\" and \"III. Copper War–Era Rank Structure\" as structured headings with bullet lists, preserving the shared SiteLayout (navigation/footer) styling."
+    "Add/extend the \"Uniform & Armor Variants by Rank\" page to render the user-provided sections \"II. Uniform & Armor Variants by Rank\" and \"III. Copper War–Era Rank Structure\" as structured headings with bullet lists, preserving the shared SiteLayout (navigation/footer) styling.",
+    "Update site navigation and the /lore page labeling to be titled \"Uniform & Armor Variants\" instead of \"Lore\" while preserving the shared SiteLayout styling/behavior.",
+    "Update the History page to render the provided \"The Dawn of Copper (2105)\" content as structured headings (title/subtitle, sections I–VIII) with paragraph text, preserving the shared SiteLayout (navigation/footer) styling.",
+    "Photo page should include a new photo entry/section titled \"The first T-10 Copper Based Power Armor\" (no image specified yet), preserving the shared SiteLayout styling.",
+    "Photo page: update the \"The first T-10 Copper Based Power Armor\" entry to include accessories text for \"calibrated shocks\" and \"tesla bracers\", preserving shared SiteLayout styling."
   ],
   "known_issues": [],
   "isFixRequest": false,
@@ -164,6 +168,94 @@
         "REQ-19"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-rename-the-existing-top-navigation-link-label-for-the-lore-route-from-lore-to-uniform-armor-variants-while-keeping-the-route-path-as-lore-and-keeping-the-page-component-rendering-unchanged-it-should-continue-to-render-the-existing-uniformarmorvariantsbyrankpage",
+      "title": "Rename the existing top navigation link label for the \"/lore\" route from \"Lore\" to \"Uniform & Armor Variants\" while keeping the route path as \"/lore\" and keeping the page component rendering unchanged (it should continue to render the existing UniformArmorVariantsByRankPage).",
+      "reqIds": [
+        "REQ-20"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-home-page-user-facing-text-that-references-the-lore-page-so-it-uses-the-new-label-uniform-armor-variants-e-g-the-hero-button-text-and-the-feature-card-title-without-changing-the-destination-path-still-lore",
+      "title": "Update Home page user-facing text that references the \"/lore\" page so it uses the new label \"Uniform & Armor Variants\" (e.g., the hero button text and the feature card title), without changing the destination path (still \"/lore\").",
+      "reqIds": [
+        "REQ-21"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-dedicated-history-page-component-that-renders-the-provided-narrative-content-exactly-as-supplied-including-the-title-the-dawn-of-copper-2105-the-subtitle-year-zero-of-the-copper-age-and-sections-i-viii-with-their-headings-and-paragraph-formatting-preserved",
+      "title": "Create a dedicated History page component that renders the provided narrative content exactly as supplied, including the title \"The Dawn of Copper (2105)\", the subtitle \"Year Zero of the Copper Age\", and sections I–VIII with their headings and paragraph formatting preserved.",
+      "reqIds": [
+        "REQ-22"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-routing-so-the-history-route-renders-the-new-history-page-component-instead-of-the-shared-blankpage-component-while-preserving-the-existing-shared-sitelayout-behavior-top-navigation-and-footer",
+      "title": "Update frontend routing so the \"/history\" route renders the new History page component instead of the shared BlankPage component, while preserving the existing shared SiteLayout behavior (top navigation and footer).",
+      "reqIds": [
+        "REQ-23"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-style-the-history-page-to-match-the-existing-copper-themed-design-system-used-on-other-content-pages-e-g-hero-section-readable-max-width-consistent-typography-spacing-and-section-card-treatments-without-changing-the-look-or-behavior-of-the-shared-navigation-and-footer",
+      "title": "Style the History page to match the existing copper-themed design system used on other content pages (e.g., hero section, readable max width, consistent typography, spacing, and section/card treatments), without changing the look or behavior of the shared navigation and footer.",
+      "reqIds": [
+        "REQ-24"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-create-a-new-photo-page-component-at-frontend-src-pages-photopage-tsx-that-renders-within-the-existing-shared-sitelayout-and-uses-the-existing-copper-themed-design-language-hero-header-section-readable-max-width-and-card-section-styling-consistent-with-other-pages-include-english-user-facing-text-page-title-photo-and-a-short-description-indicating-photos-will-be-added-later-e-g-a-curated-look-at-brotherhood-artifacts-and-moments-photos-coming-soon",
+      "title": "Create a new Photo page component at \"frontend/src/pages/PhotoPage.tsx\" that renders within the existing shared SiteLayout and uses the existing copper-themed design language (hero/header section, readable max width, and card/section styling consistent with other pages). Include English user-facing text: page title \"Photo\" and a short description indicating photos will be added later (e.g., \"A curated look at Brotherhood artifacts and moments. Photos coming soon.\").",
+      "reqIds": [
+        "REQ-25"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-route-photo-to-the-tanstack-router-configuration-in-frontend-src-app-tsx-that-renders-the-new-photopage-component",
+      "title": "Add a new route \"/photo\" to the TanStack Router configuration in \"frontend/src/App.tsx\" that renders the new PhotoPage component.",
+      "reqIds": [
+        "REQ-26"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-site-navigation-in-frontend-src-components-sitenav-tsx-to-include-a-new-link-labeled-photo-that-navigates-to-photo-and-behaves-consistently-with-existing-desktop-mobile-nav-links-active-styling-and-mobile-menu-close-on-click",
+      "title": "Update the site navigation in \"frontend/src/components/SiteNav.tsx\" to include a new link labeled \"Photo\" that navigates to \"/photo\" and behaves consistently with existing desktop/mobile nav links (active styling and mobile menu close-on-click).",
+      "reqIds": [
+        "REQ-27"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-frontend-src-pages-photopage-tsx-to-include-a-new-photo-entry-titled-the-first-t-10-copper-based-power-armor-that-displays-the-uploaded-image-the-first-copper-plated-power-armor-t-10-png-with-an-appropriate-alt-attribute-using-the-existing-copper-themed-design-language-card-styling-borders-shadow-copper-spacing-consistent-with-other-content-pages",
+      "title": "Update \"frontend/src/pages/PhotoPage.tsx\" to include a new photo entry titled \"The first T-10 Copper Based Power Armor\" that displays the uploaded image \"the first copper plated power armor t-10.png\" with an appropriate alt attribute, using the existing copper-themed design language (Card styling, borders, shadow-copper, spacing) consistent with other content pages.",
+      "reqIds": [
+        "REQ-29"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-existing-t-10-entry-on-the-photo-page-frontend-src-pages-photopage-tsx-to-include-an-accessories-section-listing-the-accessories-calibrated-shocks-and-tesla-bracers-and-displaying-the-uploaded-accessory-images",
+      "title": "Update the existing T-10 entry on the Photo page (frontend/src/pages/PhotoPage.tsx) to include an Accessories section listing the accessories \"Calibrated Shocks\" and \"Tesla Bracers\" and displaying the uploaded accessory images.",
+      "reqIds": [
+        "REQ-31"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-disclaimer-at-the-very-bottom-of-the-home-page-frontend-src-pages-homepage-tsx-in-14px-font-size-with-the-following-exact-english-text-this-is-a-100-percent-fictional-organization-that-isnt-in-fallout-or-any-games-of-fallout-all-fallout-works-are-copyrighted-and-owned-by-bethesda-game-studios",
+      "title": "Add a disclaimer at the very bottom of the Home page (frontend/src/pages/HomePage.tsx) in 14px font size with the following exact English text: \"This is a 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios.\"",
+      "reqIds": [
+        "REQ-32"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -212,6 +304,58 @@
     {
       "id": "AR-8",
       "summary": "Add the provided content to the new \"Uniform & Armor Variants by Rank\" page, including \"II. Uniform & Armor Variants by Rank\" (High Conductor through Copper-Bearer) and \"III. Copper War–Era Rank Structure\" with new/temporary ranks (War Conductor, Paladin-Breaker, Artificer-Prime, Signal Rangers, Copper Conscripts).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Rename the \"Lore\" page (and its navigation label/route title) to \"Uniform & Armor Variants\".",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-10",
+      "summary": "Update the History page to include the provided \"The Dawn of Copper (2105)\" content, including the \"Year Zero of the Copper Age\" subtitle and sections I–VIII.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Add a new Photo page to the site (navigable from the existing shared layout/navigation).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Add an entry/section to the Photo page for \"The first T-10 Copper Based Power Armor\".",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Add the user-uploaded image file \"the first copper plated power armor t-10.png\" to the frontend as a static asset and ensure it can be referenced from React via a stable public URL path.",
+      "reqIds": [
+        "REQ-28"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Update the Photo page's \"The first T-10 Copper Based Power Armor\" entry to include the accessories: calibrated shocks and tesla bracers.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-15",
+      "summary": "Add the two newly uploaded images as frontend static assets so they can be referenced from React via stable public URL paths.",
+      "reqIds": [
+        "REQ-30"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Add a disclaimer to the bottom of the Home page in 14px font stating the organization is 100% fictional and not in Fallout, and that all Fallout works are copyrighted/owned by Bethesda Game Studios.",
       "reqIds": [],
       "status": "pending"
     }

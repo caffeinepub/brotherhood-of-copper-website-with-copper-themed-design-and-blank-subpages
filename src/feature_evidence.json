@@ -2,11 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-existing-uniform-armor-variants-by-rank-page-to-include-a-new-section-titled-ii-uniform-armor-variants-by-rank-and-render-the-provided-uniform-armor-bullet-lists-for-each-of-these-ranks-in-order-high-conductor-conductor-paladin-forgemaster-paladin-artificer-knight-ranger-knight-apprentice-copper-bearer",
-      "featureTitle": "Update the existing \"Uniform & Armor Variants by Rank\" page to include a new section titled \"II. Uniform & Armor Variants by Rank\" and render the provided uniform/armor bullet lists for each of these ranks in order: High Conductor, Conductor, Paladin-Forgemaster, Paladin, Artificer, Knight-Ranger, Knight, Apprentice, Copper-Bearer.",
+      "featureId": "feature-add-a-disclaimer-at-the-very-bottom-of-the-home-page-frontend-src-pages-homepage-tsx-in-14px-font-size-with-the-following-exact-english-text-this-is-a-100-percent-fictional-organization-that-isnt-in-fallout-or-any-games-of-fallout-all-fallout-works-are-copyrighted-and-owned-by-bethesda-game-studios",
+      "featureTitle": "Add a disclaimer at the very bottom of the Home page (frontend/src/pages/HomePage.tsx) in 14px font size with the following exact English text: \"This is a 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios.\"",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/pages/UniformArmorVariantsByRankPage.tsx"
+        "frontend/src/pages/HomePage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -16,25 +15,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-18"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-on-the-same-uniform-armor-variants-by-rank-page-add-a-new-section-titled-iii-copper-war-era-rank-structure-that-includes-the-provided-introductory-sentence-and-a-new-temporary-ranks-subsection-rendering-each-of-the-provided-war-era-ranks-with-their-bullet-lists-war-conductor-paladin-breaker-artificer-prime-signal-rangers-copper-conscripts",
-      "featureTitle": "On the same \"Uniform & Armor Variants by Rank\" page, add a new section titled \"III. Copper War–Era Rank Structure\" that includes the provided introductory sentence and a \"New / Temporary Ranks\" subsection rendering each of the provided war-era ranks with their bullet lists: War Conductor, Paladin-Breaker, Artificer-Prime, Signal Rangers, Copper Conscripts.",
-      "files": [
-        "frontend/src/pages/UniformArmorVariantsByRankPage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-19"
+        "REQ-32"
       ],
       "confidence": "high"
     }

@@ -12,8 +12,9 @@ export default function SiteNav() {
     { path: '/', label: 'Home' },
     { path: '/ranks', label: 'Ranks' },
     { path: '/divisions', label: 'Divisions' },
-    { path: '/lore', label: 'Lore' },
+    { path: '/lore', label: 'Uniform & Armor Variants' },
     { path: '/history', label: 'History' },
+    { path: '/photo', label: 'Photo' },
   ];
 
   const isActive = (path: string) => currentPath === path;
@@ -90,4 +91,3 @@ export default function SiteNav() {
     </header>
   );
 }
-

@@ -1,69 +1,37 @@
 {
   "kind": "build_request",
-  "title": "Add II–III content to Uniform & Armor Variants by Rank page",
+  "title": "Add fictional-copyright disclaimer to bottom of Home page",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-18",
-      "text": "Update the existing \"Uniform & Armor Variants by Rank\" page to include a new section titled \"II. Uniform & Armor Variants by Rank\" and render the provided uniform/armor bullet lists for each of these ranks in order: High Conductor, Conductor, Paladin-Forgemaster, Paladin, Artificer, Knight-Ranger, Knight, Apprentice, Copper-Bearer.",
+      "id": "REQ-32",
+      "text": "Add a disclaimer at the very bottom of the Home page (frontend/src/pages/HomePage.tsx) in 14px font size with the following exact English text: \"This is a 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios.\"",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "msg-1"
         ],
         "quotes": [
-          "add  to the new uniform & variants by rank page   II. Uniform & Armor Variants by Rank\nHigh Conductor\n    • Long copper-threaded mantle with circuitry embroidery.\n    • T-10A armor with ceremonial plating and engraved doctrine lines.\n    • Copper torque worn at the neck.\nConductor\n    • Reinforced T-10A variant with division-colored trim.\n    • Copper-etched vambraces indicating craft mastery.\n    • Optional half-cloak showing division insignia.\nPaladin-Forgemaster\n    • Heavy T-10A with oversized pauldrons and forge-scarred plating.\n    • Engraved copper filigree showing completed masterworks.\n    • Blacksmith’s hammer holstered at the hip (symbolic or functional).\nPaladin\n    • Standard T-10A with tactical engravings.\n    • Copper-reinforced greaves and gauntlets.\n    • Ranger-style cloak for field operations.\nArtificer\n    • Hybrid armor: light copper-reinforced plates over a tool-laden jumpsuit.\n    • Modular gauntlets with built-in micro-tools.\n    • Circuit Division colors if applicable.\nKnight-Ranger\n    • Lightweight copper-laminated armor optimized for mobility.\n    • Desert cloak with Field Division insignia.\n    • Copper-rimmed goggles for sandstorms.\nKnight\n    • Standardized copper-plated armor (T-1 or T-3 depending on era).\n    • Personalized engravings allowed after first successful salvage run.\nApprentice\n    • Simple leather and canvas uniform with copper studs.\n    • No full armor; only a copper-reinforced bracer.\nCopper-Bearer\n    • Minimal uniform.\n    • Required to carry a raw copper ingot at all times during training."
+          "add to the home page at the bottom. in size 14 font.. this is 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios."
         ]
       },
       "acceptanceCriteria": [
-        "The Uniform & Armor Variants by Rank page includes a visible heading \"II. Uniform & Armor Variants by Rank\".",
-        "The section renders all listed ranks in the specified order, each with the exact bullet items provided (including punctuation and terms like \"T-10A\", \"T-1\", \"T-3\").",
-        "All user-facing text on this page is in English.",
-        "Styling is consistent with the existing copper-themed design (e.g., similar typography, spacing, card/section treatments) and remains readable on mobile and desktop."
-      ]
-    },
-    {
-      "id": "REQ-19",
-      "text": "On the same \"Uniform & Armor Variants by Rank\" page, add a new section titled \"III. Copper War–Era Rank Structure\" that includes the provided introductory sentence and a \"New / Temporary Ranks\" subsection rendering each of the provided war-era ranks with their bullet lists: War Conductor, Paladin-Breaker, Artificer-Prime, Signal Rangers, Copper Conscripts.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-4"
-        ],
-        "quotes": [
-          "III. Copper War–Era Rank Structure\nDuring the Copper War, the Brotherhood becomes more militarized, more desperate, and more mythic.\nNew / Temporary Ranks\nWar Conductor\n    • Emergency authority over all divisions.\n    • Wears a copper-black mantle symbolizing the “storm before the signal.”\nPaladin-Breaker\n    • Shock-troop commanders specializing in anti-warlord operations.\n    • Armor: T-10B “Breaker” variant with reinforced chest plating.\nArtificer-Prime\n    • Oversees mass-production of wartime tech.\n    • Wears a copper mask to symbolize anonymity and unity.\nSignal Rangers\n    • Elite scouts who operate behind enemy lines.\n    • Armor: matte copper with minimal shine to avoid detection.\nCopper Conscripts\n    • Civilians trained rapidly to defend settlements.\n    • Wear simple copper-patched armor and carry basic weapon"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The page includes a visible heading \"III. Copper War–Era Rank Structure\".",
-        "The sentence \"During the Copper War, the Brotherhood becomes more militarized, more desperate, and more mythic.\" is rendered as body text under the III heading.",
-        "A visible \"New / Temporary Ranks\" subheading is rendered, followed by the five ranks in the specified order with their exact bullet items (including \"T-10B\" and quotation marks around “Breaker”).",
-        "The new section matches the site’s existing layout patterns (container width, spacing, card/section styling) without changing the shared SiteLayout navigation or footer behavior."
+        "Visiting the Home page shows the disclaimer as the last content on the page (below the existing Call to Action section).",
+        "The disclaimer text matches the user-provided wording exactly, including capitalization and punctuation.",
+        "The disclaimer is styled at 14px font size (e.g., Tailwind text-sm or an explicit 14px class) and remains readable in both light and dark themes."
       ]
     }
   ],
   "constraints": [
-    "Do not modify shared layout behavior (top navigation and footer) provided by SiteLayout.",
-    "Do not edit files under frontend/src/components/ui (compose existing UI components instead).",
-    "Keep all user-facing text in English for this change."
+    "Do not modify any files under frontend/src/components/ui (read-only).",
+    "Do not change shared SiteLayout navigation or footer behavior; add the disclaimer only within the Home page content."
   ],
   "nonGoals": [
-    "No backend/canister changes (backend/main.mo remains unchanged).",
-    "No new images or asset generation for this request.",
-    "No new authentication, data persistence, or React Query features."
+    "Do not add disclaimers to other pages.",
+    "Do not change routing, navigation links, or any existing Home page copy besides adding the new disclaimer block."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

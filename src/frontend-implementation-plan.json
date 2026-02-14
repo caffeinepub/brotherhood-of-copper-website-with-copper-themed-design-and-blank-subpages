@@ -1,44 +1,21 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add II–III content to Uniform & Armor Variants by Rank page",
+  "title": "Add fictional-copyright disclaimer to Home page bottom",
   "requirements": [
     {
-      "id": "REQ-18",
-      "summary": "Add section II (Uniform & Armor Variants by Rank) with rank-ordered bullet lists to the Uniform & Armor Variants by Rank page.",
+      "id": "REQ-32",
+      "summary": "Add the exact fictional-copyright disclaimer as the final block of content on the Home page, styled at 14px and readable in light/dark themes.",
       "acceptanceCriteria": [
-        "The Uniform & Armor Variants by Rank page includes a visible heading \"II. Uniform & Armor Variants by Rank\".",
-        "The section renders all listed ranks in the specified order, each with the exact bullet items provided (including punctuation and terms like \"T-10A\", \"T-1\", \"T-3\").",
-        "All user-facing text on this page is in English.",
-        "Styling is consistent with the existing copper-themed design (e.g., similar typography, spacing, card/section treatments) and remains readable on mobile and desktop."
+        "Visiting the Home page shows the disclaimer as the last content on the page (below the existing Call to Action section).",
+        "The disclaimer text matches the user-provided wording exactly, including capitalization and punctuation.",
+        "The disclaimer is styled at 14px font size (e.g., Tailwind text-sm or an explicit 14px class) and remains readable in both light and dark themes."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/UniformArmorVariantsByRankPage.tsx",
-          "operation": "create",
-          "description": "Create (or replace, if missing) the \"Uniform & Armor Variants by Rank\" page view and implement the new \"II. Uniform & Armor Variants by Rank\" section, rendering the ranks in the required order with the exact provided bullet text. Use shadcn/ui components (e.g., Card, Separator) to match existing copper-themed layout patterns; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Wire the UniformArmorVariantsByRankPage into the existing router so it is navigable via an existing route (preferably the current /lore placeholder route) without changing SiteLayout behavior."
-        }
-      ]
-    },
-    {
-      "id": "REQ-19",
-      "summary": "Add section III (Copper War–Era Rank Structure) with intro sentence and New / Temporary Ranks subsection and bullet lists to the same page.",
-      "acceptanceCriteria": [
-        "The page includes a visible heading \"III. Copper War–Era Rank Structure\".",
-        "The sentence \"During the Copper War, the Brotherhood becomes more militarized, more desperate, and more mythic.\" is rendered as body text under the III heading.",
-        "A visible \"New / Temporary Ranks\" subheading is rendered, followed by the five ranks in the specified order with their exact bullet items (including \"T-10B\" and quotation marks around “Breaker”).",
-        "The new section matches the site’s existing layout patterns (container width, spacing, card/section styling) without changing the shared SiteLayout navigation or footer behavior."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/UniformArmorVariantsByRankPage.tsx",
-          "operation": "modify",
-          "description": "Extend the Uniform & Armor Variants by Rank page to include the new \"III. Copper War–Era Rank Structure\" section, including the exact intro sentence and the \"New / Temporary Ranks\" subsection with ranks in the required order and exact bullet text. Use existing shadcn/ui components (e.g., Card, Separator) and the existing copper-themed typography/spacing patterns; verify the component's usage instructions before implementing."
+          "description": "Append a new disclaimer block after the existing Call to Action section so it renders as the last content on the page. Use the exact text: \"This is a 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios.\" Style it at 14px (e.g., Tailwind text-[14px]) and use theme-aware text classes (e.g., muted/foreground tokens) to ensure readability in both light and dark modes. Do not modify any files under frontend/src/components/ui and do not change SiteLayout navigation/footer behavior; keep the disclaimer within HomePage content only."
         }
       ]
     }
