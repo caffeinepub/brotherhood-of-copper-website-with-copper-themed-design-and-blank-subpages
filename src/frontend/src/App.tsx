@@ -3,6 +3,7 @@ import SiteLayout from './components/SiteLayout';
 import HomePage from './pages/HomePage';
 import RanksPage from './pages/RanksPage';
 import DivisionsPage from './pages/DivisionsPage';
+import UniformArmorVariantsByRankPage from './pages/UniformArmorVariantsByRankPage';
 import BlankPage from './pages/BlankPage';
 
 const rootRoute = createRootRoute({
@@ -30,7 +31,7 @@ const divisionsRoute = createRoute({
 const loreRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/lore',
-  component: BlankPage,
+  component: UniformArmorVariantsByRankPage,
 });
 
 const historyRoute = createRoute({

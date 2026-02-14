@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Hammer, BookOpen, Compass, Zap } from 'lucide-react';
+import { Hammer, BookOpen, Compass, Zap, Key } from 'lucide-react';
 
 export default function DivisionsPage() {
   return (
@@ -130,6 +130,34 @@ export default function DivisionsPage() {
                   The Circuit Division harnesses the power of copper's conductivity, where engineers design intricate systems, 
                   energy technicians channel the flow of power, and communications specialists maintain the vital connections 
                   that bind our Brotherhood. Through wire and current, they bring light and unity to our order.
+                </p>
+              </CardContent>
+            </Card>
+
+            {/* Custodian Division */}
+            <Card className="border-2 border-primary/20 shadow-copper">
+              <CardHeader>
+                <CardTitle className="font-display text-3xl flex items-center gap-3">
+                  <Key className="h-8 w-8 text-primary" />
+                  Custodian Division
+                </CardTitle>
+                <CardDescription className="text-lg">
+                  (Pre-War Machine Interface Specialists)
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                <div className="flex justify-center">
+                  <img 
+                    src="/assets/CUSTODIANDIVISON.png" 
+                    alt="Custodian Division" 
+                    className="w-full max-w-md rounded-lg border-2 border-primary/20 shadow-copper"
+                  />
+                </div>
+                <p className="text-muted-foreground text-center max-w-2xl mx-auto">
+                  The Custodian Division guards the secrets of the old world, where specialists maintain and interface with 
+                  pre-war machines, unlocking the forgotten knowledge encoded in ancient systems. Through careful study and 
+                  reverent preservation, they bridge the gap between past and present, ensuring the Brotherhood's access to 
+                  the technological wisdom of ages long past.
                 </p>
               </CardContent>
             </Card>

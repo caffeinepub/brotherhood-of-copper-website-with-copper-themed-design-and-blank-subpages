@@ -1,44 +1,44 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add Circuit Division card + static image on Divisions page",
+  "title": "Add II–III content to Uniform & Armor Variants by Rank page",
   "requirements": [
     {
-      "id": "REQ-14",
-      "summary": "Add a new Circuit Division section to the Divisions page, matching existing division card styling and preserving SiteLayout and existing sections.",
+      "id": "REQ-18",
+      "summary": "Add section II (Uniform & Armor Variants by Rank) with rank-ordered bullet lists to the Uniform & Armor Variants by Rank page.",
       "acceptanceCriteria": [
-        "Visiting /divisions shows an additional card/section titled \"Circuit Division\".",
-        "The new section displays the subtitle text exactly as: \"(Engineers, Energy Techs, Comms)\".",
-        "The new section uses the same Card-based styling patterns as the other division sections (consistent spacing, typography, borders/shadows).",
-        "Existing Forge, Archive, and Field sections remain present and unchanged in content and order unless necessary to append the new section.",
-        "The global header navigation and footer (SiteLayout) are not modified."
+        "The Uniform & Armor Variants by Rank page includes a visible heading \"II. Uniform & Armor Variants by Rank\".",
+        "The section renders all listed ranks in the specified order, each with the exact bullet items provided (including punctuation and terms like \"T-10A\", \"T-1\", \"T-3\").",
+        "All user-facing text on this page is in English.",
+        "Styling is consistent with the existing copper-themed design (e.g., similar typography, spacing, card/section treatments) and remains readable on mobile and desktop."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/DivisionsPage.tsx",
+          "path": "frontend/src/pages/UniformArmorVariantsByRankPage.tsx",
+          "operation": "create",
+          "description": "Create (or replace, if missing) the \"Uniform & Armor Variants by Rank\" page view and implement the new \"II. Uniform & Armor Variants by Rank\" section, rendering the ranks in the required order with the exact provided bullet text. Use shadcn/ui components (e.g., Card, Separator) to match existing copper-themed layout patterns; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Append a new \"Circuit Division\" Card section to the existing DivisionsPage content (after the current sections), using the existing shadcn/ui Card components for consistent layout and styling. Verify the component's usage instructions before implementing."
+          "description": "Wire the UniformArmorVariantsByRankPage into the existing router so it is navigable via an existing route (preferably the current /lore placeholder route) without changing SiteLayout behavior."
         }
       ]
     },
     {
-      "id": "REQ-15",
-      "summary": "Add circuitdivison.png as a frontend static asset and render it inside the new Circuit Division section with consistent image styling.",
+      "id": "REQ-19",
+      "summary": "Add section III (Copper War–Era Rank Structure) with intro sentence and New / Temporary Ranks subsection and bullet lists to the same page.",
       "acceptanceCriteria": [
-        "The file \"circuitdivison.png\" is available as a static asset in the frontend and can be loaded by the app at runtime.",
-        "The Circuit Division section renders an <img> using the circuit image and an appropriate alt text (e.g., \"Circuit Division\").",
-        "The circuit image is styled consistently with the existing division images (e.g., max width, rounded corners, border, copper shadow)."
+        "The page includes a visible heading \"III. Copper War–Era Rank Structure\".",
+        "The sentence \"During the Copper War, the Brotherhood becomes more militarized, more desperate, and more mythic.\" is rendered as body text under the III heading.",
+        "A visible \"New / Temporary Ranks\" subheading is rendered, followed by the five ranks in the specified order with their exact bullet items (including \"T-10B\" and quotation marks around “Breaker”).",
+        "The new section matches the site’s existing layout patterns (container width, spacing, card/section styling) without changing the shared SiteLayout navigation or footer behavior."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/circuitdivison.png",
-          "operation": "create",
-          "description": "Add the uploaded static asset \"circuitdivison.png\" to the public assets folder so it can be loaded at runtime."
-        },
-        {
-          "path": "frontend/src/pages/DivisionsPage.tsx",
+          "path": "frontend/src/pages/UniformArmorVariantsByRankPage.tsx",
           "operation": "modify",
-          "description": "Render the Circuit Division image within the new Circuit Division Card using the same image treatment as existing division images (e.g., max width, rounded corners, border, shadow) and set alt text to \"Circuit Division\"."
+          "description": "Extend the Uniform & Armor Variants by Rank page to include the new \"III. Copper War–Era Rank Structure\" section, including the exact intro sentence and the \"New / Temporary Ranks\" subsection with ranks in the required order and exact bullet text. Use existing shadcn/ui components (e.g., Card, Separator) and the existing copper-themed typography/spacing patterns; verify the component's usage instructions before implementing."
         }
       ]
     }

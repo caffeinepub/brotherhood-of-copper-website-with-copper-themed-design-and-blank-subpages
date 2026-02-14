@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T22:51:10.025Z",
+  "generatedAt": "2026-02-14T23:09:32.046Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -11,26 +11,27 @@
     "implemented": 2,
     "items": [
       {
-        "id": "REQ-14",
-        "summary": "Add a new division section to the Divisions page for \"Circuit Division\" with the subtitle text \"(Engineers, Energy Techs, Comms)\", styled consistently with the existing Forge/Archive/Field division cards and without changing the shared SiteLayout (navigation/footer) or existing division sections.",
+        "id": "REQ-18",
+        "summary": "Update the existing \"Uniform & Armor Variants by Rank\" page to include a new section titled \"II. Uniform & Armor Variants by Rank\" and render the provided uniform/armor bullet lists for each of these ranks in order: High Conductor, Conductor, Paladin-Forgemaster, Paladin, Artificer, Knight-Ranger, Knight, Apprentice, Copper-Bearer.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/DivisionsPage.tsx"
+          "frontend/src/pages/UniformArmorVariantsByRankPage.tsx",
+          "frontend/src/App.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/DivisionsPage.tsx"
+          "frontend/src/pages/UniformArmorVariantsByRankPage.tsx",
+          "frontend/src/App.tsx"
         ]
       },
       {
-        "id": "REQ-15",
-        "summary": "Add the user-uploaded image file \"circuitdivison.png\" to the frontend as a static asset and render it within the new Circuit Division section on the Divisions page using the same image treatment (size, border, rounding, shadow) as the other division images.",
+        "id": "REQ-19",
+        "summary": "On the same \"Uniform & Armor Variants by Rank\" page, add a new section titled \"III. Copper War–Era Rank Structure\" that includes the provided introductory sentence and a \"New / Temporary Ranks\" subsection rendering each of the provided war-era ranks with their bullet lists: War Conductor, Paladin-Breaker, Artificer-Prime, Signal Rangers, Copper Conscripts.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/public/assets/circuitdivison.png",
-          "frontend/src/pages/DivisionsPage.tsx"
+          "frontend/src/pages/UniformArmorVariantsByRankPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/pages/DivisionsPage.tsx"
+          "frontend/src/pages/UniformArmorVariantsByRankPage.tsx"
         ]
       }
     ]
@@ -40,7 +41,8 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/pages/DivisionsPage.tsx",
+    "frontend/src/App.tsx",
+    "frontend/src/pages/UniformArmorVariantsByRankPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

@@ -1,56 +1,56 @@
 {
   "kind": "build_request",
-  "title": "Add Circuit Division section and image to Divisions page",
+  "title": "Add II–III content to Uniform & Armor Variants by Rank page",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-14",
-      "text": "Add a new division section to the Divisions page for \"Circuit Division\" with the subtitle text \"(Engineers, Energy Techs, Comms)\", styled consistently with the existing Forge/Archive/Field division cards and without changing the shared SiteLayout (navigation/footer) or existing division sections.",
+      "id": "REQ-18",
+      "text": "Update the existing \"Uniform & Armor Variants by Rank\" page to include a new section titled \"II. Uniform & Armor Variants by Rank\" and render the provided uniform/armor bullet lists for each of these ranks in order: High Conductor, Conductor, Paladin-Forgemaster, Paladin, Artificer, Knight-Ranger, Knight, Apprentice, Copper-Bearer.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4"
         ],
         "quotes": [
-          "add to division  Circuit Division (Engineers, Energy Techs, Comms)"
+          "add  to the new uniform & variants by rank page   II. Uniform & Armor Variants by Rank\nHigh Conductor\n    • Long copper-threaded mantle with circuitry embroidery.\n    • T-10A armor with ceremonial plating and engraved doctrine lines.\n    • Copper torque worn at the neck.\nConductor\n    • Reinforced T-10A variant with division-colored trim.\n    • Copper-etched vambraces indicating craft mastery.\n    • Optional half-cloak showing division insignia.\nPaladin-Forgemaster\n    • Heavy T-10A with oversized pauldrons and forge-scarred plating.\n    • Engraved copper filigree showing completed masterworks.\n    • Blacksmith’s hammer holstered at the hip (symbolic or functional).\nPaladin\n    • Standard T-10A with tactical engravings.\n    • Copper-reinforced greaves and gauntlets.\n    • Ranger-style cloak for field operations.\nArtificer\n    • Hybrid armor: light copper-reinforced plates over a tool-laden jumpsuit.\n    • Modular gauntlets with built-in micro-tools.\n    • Circuit Division colors if applicable.\nKnight-Ranger\n    • Lightweight copper-laminated armor optimized for mobility.\n    • Desert cloak with Field Division insignia.\n    • Copper-rimmed goggles for sandstorms.\nKnight\n    • Standardized copper-plated armor (T-1 or T-3 depending on era).\n    • Personalized engravings allowed after first successful salvage run.\nApprentice\n    • Simple leather and canvas uniform with copper studs.\n    • No full armor; only a copper-reinforced bracer.\nCopper-Bearer\n    • Minimal uniform.\n    • Required to carry a raw copper ingot at all times during training."
         ]
       },
       "acceptanceCriteria": [
-        "Visiting /divisions shows an additional card/section titled \"Circuit Division\".",
-        "The new section displays the subtitle text exactly as: \"(Engineers, Energy Techs, Comms)\".",
-        "The new section uses the same Card-based styling patterns as the other division sections (consistent spacing, typography, borders/shadows).",
-        "Existing Forge, Archive, and Field sections remain present and unchanged in content and order unless necessary to append the new section.",
-        "The global header navigation and footer (SiteLayout) are not modified."
+        "The Uniform & Armor Variants by Rank page includes a visible heading \"II. Uniform & Armor Variants by Rank\".",
+        "The section renders all listed ranks in the specified order, each with the exact bullet items provided (including punctuation and terms like \"T-10A\", \"T-1\", \"T-3\").",
+        "All user-facing text on this page is in English.",
+        "Styling is consistent with the existing copper-themed design (e.g., similar typography, spacing, card/section treatments) and remains readable on mobile and desktop."
       ]
     },
     {
-      "id": "REQ-15",
-      "text": "Add the user-uploaded image file \"circuitdivison.png\" to the frontend as a static asset and render it within the new Circuit Division section on the Divisions page using the same image treatment (size, border, rounding, shadow) as the other division images.",
+      "id": "REQ-19",
+      "text": "On the same \"Uniform & Armor Variants by Rank\" page, add a new section titled \"III. Copper War–Era Rank Structure\" that includes the provided introductory sentence and a \"New / Temporary Ranks\" subsection rendering each of the provided war-era ranks with their bullet lists: War Conductor, Paladin-Breaker, Artificer-Prime, Signal Rangers, Copper Conscripts.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4"
         ],
         "quotes": [
-          "The user has uploaded 1 image(s): circuitdivison.png."
+          "III. Copper War–Era Rank Structure\nDuring the Copper War, the Brotherhood becomes more militarized, more desperate, and more mythic.\nNew / Temporary Ranks\nWar Conductor\n    • Emergency authority over all divisions.\n    • Wears a copper-black mantle symbolizing the “storm before the signal.”\nPaladin-Breaker\n    • Shock-troop commanders specializing in anti-warlord operations.\n    • Armor: T-10B “Breaker” variant with reinforced chest plating.\nArtificer-Prime\n    • Oversees mass-production of wartime tech.\n    • Wears a copper mask to symbolize anonymity and unity.\nSignal Rangers\n    • Elite scouts who operate behind enemy lines.\n    • Armor: matte copper with minimal shine to avoid detection.\nCopper Conscripts\n    • Civilians trained rapidly to defend settlements.\n    • Wear simple copper-patched armor and carry basic weapon"
         ]
       },
       "acceptanceCriteria": [
-        "The file \"circuitdivison.png\" is available as a static asset in the frontend and can be loaded by the app at runtime.",
-        "The Circuit Division section renders an <img> using the circuit image and an appropriate alt text (e.g., \"Circuit Division\").",
-        "The circuit image is styled consistently with the existing division images (e.g., max width, rounded corners, border, copper shadow)."
+        "The page includes a visible heading \"III. Copper War–Era Rank Structure\".",
+        "The sentence \"During the Copper War, the Brotherhood becomes more militarized, more desperate, and more mythic.\" is rendered as body text under the III heading.",
+        "A visible \"New / Temporary Ranks\" subheading is rendered, followed by the five ranks in the specified order with their exact bullet items (including \"T-10B\" and quotation marks around “Breaker”).",
+        "The new section matches the site’s existing layout patterns (container width, spacing, card/section styling) without changing the shared SiteLayout navigation or footer behavior."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files under frontend/src/components/ui (Shadcn UI components); compose them as-is.",
-    "Preserve the existing shared SiteLayout behavior and appearance (top navigation and footer).",
-    "Keep the existing division sections (Forge, Archive, Field) intact; only add the new Circuit Division section."
+    "Do not modify shared layout behavior (top navigation and footer) provided by SiteLayout.",
+    "Do not edit files under frontend/src/components/ui (compose existing UI components instead).",
+    "Keep all user-facing text in English for this change."
   ],
   "nonGoals": [
-    "No backend/Motoko changes.",
-    "No new routes or navigation changes.",
-    "No requirement to add additional page content beyond the new Circuit Division section and its image."
+    "No backend/canister changes (backend/main.mo remains unchanged).",
+    "No new images or asset generation for this request.",
+    "No new authentication, data persistence, or React Query features."
   ],
   "imageRequirements": {
     "required": [],

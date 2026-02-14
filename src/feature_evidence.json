@@ -2,10 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-a-new-division-section-to-the-divisions-page-for-circuit-division-with-the-subtitle-text-engineers-energy-techs-comms-styled-consistently-with-the-existing-forge-archive-field-division-cards-and-without-changing-the-shared-sitelayout-navigation-footer-or-existing-division-sections",
-      "featureTitle": "Add a new division section to the Divisions page for \"Circuit Division\" with the subtitle text \"(Engineers, Energy Techs, Comms)\", styled consistently with the existing Forge/Archive/Field division cards and without changing the shared SiteLayout (navigation/footer) or existing division sections.",
+      "featureId": "feature-update-the-existing-uniform-armor-variants-by-rank-page-to-include-a-new-section-titled-ii-uniform-armor-variants-by-rank-and-render-the-provided-uniform-armor-bullet-lists-for-each-of-these-ranks-in-order-high-conductor-conductor-paladin-forgemaster-paladin-artificer-knight-ranger-knight-apprentice-copper-bearer",
+      "featureTitle": "Update the existing \"Uniform & Armor Variants by Rank\" page to include a new section titled \"II. Uniform & Armor Variants by Rank\" and render the provided uniform/armor bullet lists for each of these ranks in order: High Conductor, Conductor, Paladin-Forgemaster, Paladin, Artificer, Knight-Ranger, Knight, Apprentice, Copper-Bearer.",
       "files": [
-        "frontend/src/pages/DivisionsPage.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/pages/UniformArmorVariantsByRankPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -15,15 +16,15 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-14"
+        "REQ-18"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-the-user-uploaded-image-file-circuitdivison-png-to-the-frontend-as-a-static-asset-and-render-it-within-the-new-circuit-division-section-on-the-divisions-page-using-the-same-image-treatment-size-border-rounding-shadow-as-the-other-division-images",
-      "featureTitle": "Add the user-uploaded image file \"circuitdivison.png\" to the frontend as a static asset and render it within the new Circuit Division section on the Divisions page using the same image treatment (size, border, rounding, shadow) as the other division images.",
+      "featureId": "feature-on-the-same-uniform-armor-variants-by-rank-page-add-a-new-section-titled-iii-copper-war-era-rank-structure-that-includes-the-provided-introductory-sentence-and-a-new-temporary-ranks-subsection-rendering-each-of-the-provided-war-era-ranks-with-their-bullet-lists-war-conductor-paladin-breaker-artificer-prime-signal-rangers-copper-conscripts",
+      "featureTitle": "On the same \"Uniform & Armor Variants by Rank\" page, add a new section titled \"III. Copper War–Era Rank Structure\" that includes the provided introductory sentence and a \"New / Temporary Ranks\" subsection rendering each of the provided war-era ranks with their bullet lists: War Conductor, Paladin-Breaker, Artificer-Prime, Signal Rangers, Copper Conscripts.",
       "files": [
-        "frontend/src/pages/DivisionsPage.tsx"
+        "frontend/src/pages/UniformArmorVariantsByRankPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -33,7 +34,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-15"
+        "REQ-19"
       ],
       "confidence": "high"
     }
