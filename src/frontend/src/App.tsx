@@ -2,6 +2,7 @@ import { RouterProvider, createRouter, createRoute, createRootRoute } from '@tan
 import SiteLayout from './components/SiteLayout';
 import HomePage from './pages/HomePage';
 import RanksPage from './pages/RanksPage';
+import DivisionsPage from './pages/DivisionsPage';
 import BlankPage from './pages/BlankPage';
 
 const rootRoute = createRootRoute({
@@ -23,7 +24,7 @@ const ranksRoute = createRoute({
 const divisionsRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: '/divisions',
-  component: BlankPage,
+  component: DivisionsPage,
 });
 
 const loreRoute = createRoute({

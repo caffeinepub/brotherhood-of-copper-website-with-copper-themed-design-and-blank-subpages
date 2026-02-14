@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-replace-the-current-blank-ranks-route-content-with-a-dedicated-ranks-page-that-renders-the-user-provided-sections-for-leadership-ranks-high-conductor-conductor-its-divisions-list-command-ranks-paladin-forgemaster-paladin-specialist-ranks-artificer-knight-ranger-knight-initiate-ranks-apprentice-copper-bearer-and-internal-regulations-culture-the-copper-ledger-the-rite-of-tempering-the-law-of-resonance",
-      "featureTitle": "Replace the current blank \"/ranks\" route content with a dedicated Ranks page that renders the user-provided sections for: Leadership Ranks (High Conductor, Conductor + its divisions list), Command Ranks (Paladin-Forgemaster, Paladin), Specialist Ranks (Artificer, Knight-Ranger, Knight), Initiate Ranks (Apprentice, Copper-Bearer), and \"Internal Regulations & Culture\" (The Copper Ledger, The Rite of Tempering, The Law of Resonance).",
+      "featureId": "feature-add-a-new-division-section-to-the-divisions-page-for-circuit-division-with-the-subtitle-text-engineers-energy-techs-comms-styled-consistently-with-the-existing-forge-archive-field-division-cards-and-without-changing-the-shared-sitelayout-navigation-footer-or-existing-division-sections",
+      "featureTitle": "Add a new division section to the Divisions page for \"Circuit Division\" with the subtitle text \"(Engineers, Energy Techs, Comms)\", styled consistently with the existing Forge/Archive/Field division cards and without changing the shared SiteLayout (navigation/footer) or existing division sections.",
       "files": [
-        "frontend/src/pages/RanksPage.tsx"
+        "frontend/src/pages/DivisionsPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -15,15 +15,15 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-4"
+        "REQ-14"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-implement-the-ranks-page-with-styling-consistent-with-the-existing-copper-themed-design-system-typography-spacing-readable-content-width-and-card-section-treatments-as-appropriate-without-changing-the-look-behavior-of-the-shared-site-layout-top-navigation-and-footer",
-      "featureTitle": "Implement the Ranks page with styling consistent with the existing copper-themed design system (typography, spacing, readable content width, and card/section treatments as appropriate), without changing the look/behavior of the shared site layout (top navigation and footer).",
+      "featureId": "feature-add-the-user-uploaded-image-file-circuitdivison-png-to-the-frontend-as-a-static-asset-and-render-it-within-the-new-circuit-division-section-on-the-divisions-page-using-the-same-image-treatment-size-border-rounding-shadow-as-the-other-division-images",
+      "featureTitle": "Add the user-uploaded image file \"circuitdivison.png\" to the frontend as a static asset and render it within the new Circuit Division section on the Divisions page using the same image treatment (size, border, rounding, shadow) as the other division images.",
       "files": [
-        "frontend/src/pages/RanksPage.tsx"
+        "frontend/src/pages/DivisionsPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -33,25 +33,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-routing-so-that-the-ranks-route-renders-the-new-ranks-page-component-instead-of-the-shared-blankpage-component-while-leaving-the-divisions-lore-and-history-routes-using-blankpage",
-      "featureTitle": "Update routing so that the \"/ranks\" route renders the new Ranks page component instead of the shared BlankPage component, while leaving the \"/divisions\", \"/lore\", and \"/history\" routes using BlankPage.",
-      "files": [
-        "frontend/src/App.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-6"
+        "REQ-15"
       ],
       "confidence": "high"
     }

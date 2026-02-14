@@ -1,11 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Populate the `/ranks` route with a dedicated Ranks page that displays the Brotherhood of Copper hierarchy and internal regulations/culture content provided by the user.
+**Goal:** Add a new “Circuit Division” card to the Divisions page and display the provided Circuit Division image, matching the existing division card styling.
 
 **Planned changes:**
-- Create a new Ranks page component that renders the provided sections: Leadership Ranks, Command Ranks, Specialist Ranks, Initiate Ranks, and Internal Regulations & Culture, preserving headings and bullet lists.
-- Apply styling consistent with the existing copper-themed design system (readable width, spacing, headings, list formatting) while keeping the shared site layout (top navigation and footer) unchanged.
-- Update routing so `/ranks` uses the new Ranks page component, while `/divisions`, `/lore`, and `/history` continue to render the existing BlankPage behavior.
+- Add a new division section/card on `/divisions` titled **“Circuit Division”** with subtitle text **“(Engineers, Energy Techs, Comms)”**, styled consistently with the existing Forge/Archive/Field cards.
+- Add `circuitdivison.png` as a static frontend asset and render it inside the new Circuit Division card with the same image treatment as the other division images (size, rounding, border/shadow) and appropriate alt text.
+- Keep the shared SiteLayout (header/footer) and existing Forge/Archive/Field division sections unchanged (content and order), only appending the new section.
 
-**User-visible outcome:** Visiting `/ranks` shows a fully structured, readable page with all rank titles, divisions, and regulations displayed as headings and bullet lists, while other placeholder routes remain blank beyond the shared site chrome.
+**User-visible outcome:** Visiting `/divisions` shows an additional “Circuit Division” card with the subtitle “(Engineers, Energy Techs, Comms)” and the Circuit Division image displayed in the same style as the other division cards.

@@ -1,8 +1,13 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "Build a copper-themed 'Brotherhood of Copper' website with a main page and navigable pages for Ranks & Divisions, Lore, and History; the Ranks page should now include the provided rank hierarchy and internal regulations/culture content.",
-  "architectural_notes": [],
+  "projectStateVersion": 13,
+  "summary": "Expand the copper-themed 'Brotherhood of Copper' website Divisions page to include Forge Division (Armorers, Weaponsmiths) with a photo, Archive Division (Scribes, Historians, Analysts), Field Division (Scouts, Rangers, Tacticians), and add a new Circuit Division section (Engineers, Energy Techs, Comms), while keeping the shared site layout consistent.",
+  "architectural_notes": [
+    "Divisions page is no longer fully blank; it should render a Forge Division section (Armorers, Weaponsmiths) including a photo while keeping the shared site layout consistent.",
+    "Divisions page should include an additional 'Archive Division' section with the text '(Scribes, Historians, Analysts)' alongside the existing Forge Division section, preserving the shared site layout/styling.",
+    "Divisions page should include an additional 'Field Division' section with the text '(Scouts, Rangers, Tacticians)' alongside existing division sections, preserving the shared site layout/styling.",
+    "Divisions page should include an additional 'Circuit Division' section with the text '(Engineers, Energy Techs, Comms)' alongside existing division sections, preserving the shared site layout/styling."
+  ],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
@@ -53,6 +58,78 @@
         "REQ-6"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-create-a-dedicated-divisions-page-replacing-the-current-blank-divisions-route-that-displays-a-single-division-section-titled-forge-division-and-includes-the-text-armorers-weaponsmiths",
+      "title": "Create a dedicated Divisions page (replacing the current blank /divisions route) that displays a single division section titled \"Forge Division\" and includes the text \"(Armorers, Weaponsmiths)\".",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-user-uploaded-image-file-forgedivison-png-to-the-frontend-as-a-static-asset-and-render-it-on-the-divisions-page-within-the-forge-division-section",
+      "title": "Add the user-uploaded image file \"forgedivison.png\" to the frontend as a static asset and render it on the Divisions page within the \"Forge Division\" section.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-routing-so-that-the-divisions-route-renders-the-new-divisions-page-component-while-leaving-the-lore-and-history-routes-using-the-existing-blankpage-component-and-preserving-the-shared-sitelayout-top-navigation-and-footer-behavior",
+      "title": "Update routing so that the \"/divisions\" route renders the new Divisions page component, while leaving the \"/lore\" and \"/history\" routes using the existing BlankPage component and preserving the shared SiteLayout (top navigation and footer) behavior.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-division-section-to-the-divisions-page-for-archive-division-with-the-subtitle-text-scribes-historians-analysts-styled-consistently-with-the-existing-forge-division-card-and-without-changing-the-shared-site-layout-navigation-footer",
+      "title": "Add a new division section to the Divisions page for \"Archive Division\" with the subtitle text \"(Scribes, Historians, Analysts)\", styled consistently with the existing Forge Division card and without changing the shared site layout (navigation/footer).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-user-uploaded-image-file-archivedivison-png-to-the-frontend-as-a-static-asset-and-render-it-within-the-new-archive-division-section-on-the-divisions-page",
+      "title": "Add the user-uploaded image file \"archivedivison.png\" to the frontend as a static asset and render it within the new Archive Division section on the Divisions page.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-division-section-to-the-divisions-page-for-field-division-with-the-subtitle-text-scouts-rangers-tacticians-styled-consistently-with-the-existing-forge-and-archive-division-cards-without-changing-the-shared-site-layout-navigation-footer-or-the-existing-division-sections",
+      "title": "Add a new division section to the Divisions page for \"Field Division\" with the subtitle text \"(Scouts, Rangers, Tacticians)\", styled consistently with the existing Forge and Archive Division cards, without changing the shared site layout (navigation/footer) or the existing division sections.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-user-uploaded-image-file-fielddivison-png-to-the-frontend-as-a-static-asset-and-render-it-within-the-new-field-division-section-on-the-divisions-page",
+      "title": "Add the user-uploaded image file \"fielddivison.png\" to the frontend as a static asset and render it within the new Field Division section on the Divisions page.",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-new-division-section-to-the-divisions-page-for-circuit-division-with-the-subtitle-text-engineers-energy-techs-comms-styled-consistently-with-the-existing-forge-archive-field-division-cards-and-without-changing-the-shared-sitelayout-navigation-footer-or-existing-division-sections",
+      "title": "Add a new division section to the Divisions page for \"Circuit Division\" with the subtitle text \"(Engineers, Energy Techs, Comms)\", styled consistently with the existing Forge/Archive/Field division cards and without changing the shared SiteLayout (navigation/footer) or existing division sections.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-user-uploaded-image-file-circuitdivison-png-to-the-frontend-as-a-static-asset-and-render-it-within-the-new-circuit-division-section-on-the-divisions-page-using-the-same-image-treatment-size-border-rounding-shadow-as-the-other-division-images",
+      "title": "Add the user-uploaded image file \"circuitdivison.png\" to the frontend as a static asset and render it within the new Circuit Division section on the Divisions page using the same image treatment (size, border, rounding, shadow) as the other division images.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -65,6 +142,30 @@
     {
       "id": "AR-2",
       "summary": "Add provided 'Leadership/Command/Specialist/Initiate Ranks' and 'Internal Regulations & Culture' content to the Ranks page.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add content to the Divisions page for 'Forge Division (Armorers, Weaponsmiths)' and include a photo for the division section.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add a new Divisions page section for 'Archive Division (Scribes, Historians, Analysts)'.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add a new Divisions page section for 'Field Division (Scouts, Rangers, Tacticians)'.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add a new Divisions page section for 'Circuit Division (Engineers, Energy Techs, Comms)'.",
       "reqIds": [],
       "status": "pending"
     }
