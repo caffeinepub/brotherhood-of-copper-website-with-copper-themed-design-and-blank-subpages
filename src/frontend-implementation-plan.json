@@ -1,21 +1,37 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add fictional-copyright disclaimer to Home page bottom",
+  "title": "Refactor and add in-page navigation to History page",
   "requirements": [
     {
-      "id": "REQ-32",
-      "summary": "Add the exact fictional-copyright disclaimer as the final block of content on the Home page, styled at 14px and readable in light/dark themes.",
+      "id": "REQ-1",
+      "summary": "Refactor the eight History narrative sections into a single structured in-file data array and render the section cards by mapping over the data without changing any visible story text.",
       "acceptanceCriteria": [
-        "Visiting the Home page shows the disclaimer as the last content on the page (below the existing Call to Action section).",
-        "The disclaimer text matches the user-provided wording exactly, including capitalization and punctuation.",
-        "The disclaimer is styled at 14px font size (e.g., Tailwind text-sm or an explicit 14px class) and remains readable in both light and dark themes."
+        "HistoryPage renders the same hero title/subtitle and the same eight sections (I–VIII) with the same visible wording as before.",
+        "The eight sections are defined in a single in-file data structure (e.g., an array of objects) and rendered via iteration (no repeated copy/paste Card blocks).",
+        "No console errors/warnings are introduced when visiting /history."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/HomePage.tsx",
+          "path": "frontend/src/pages/HistoryPage.tsx",
           "operation": "modify",
-          "description": "Append a new disclaimer block after the existing Call to Action section so it renders as the last content on the page. Use the exact text: \"This is a 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios.\" Style it at 14px (e.g., Tailwind text-[14px]) and use theme-aware text classes (e.g., muted/foreground tokens) to ensure readability in both light and dark modes. Do not modify any files under frontend/src/components/ui and do not change SiteLayout navigation/footer behavior; keep the disclaimer within HomePage content only."
+          "description": "Replace the repeated Section I–VIII Card JSX blocks with a single in-file data structure (array of section objects including numeral, title, stable anchor id, and content as React nodes) and render cards via iteration. Keep the hero title/subtitle and all visible story wording identical to the current page. Use existing shadcn-ui Card primitives (Card, CardHeader, CardTitle, CardContent) for layout and consistency; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add a table of contents near the top of the History page that links to anchored IDs for each section (I–VIII) and works on desktop and mobile, including direct URL fragments.",
+      "acceptanceCriteria": [
+        "A table of contents is visible on the History page and lists links for sections I through VIII using the section titles.",
+        "Clicking a table-of-contents link scrolls to the corresponding section card on the same page.",
+        "Each section card has a stable `id`/anchor target so direct URL fragments (e.g., `/history#section-iii`) scroll to the correct section."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/pages/HistoryPage.tsx",
+          "operation": "modify",
+          "description": "Add an in-page Table of Contents block near the top of the main content that maps over the same sections data to render anchor links to each section’s stable id (e.g., section-i ... section-viii). Ensure each rendered section card is wrapped or decorated with the matching id and appropriate scroll offset handling for the sticky SiteNav (e.g., scroll margin utilities). Add lightweight hash-fragment handling on initial render so visiting /history#section-iii scrolls reliably on both desktop and mobile. Use existing shadcn-ui Card and Separator components to present the TOC and visually separate it from the narrative sections; verify the component's usage instructions before implementing."
         }
       ]
     }

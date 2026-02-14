@@ -1,259 +1,24 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 29,
-  "summary": "Expand the copper-themed 'Brotherhood of Copper' site by adding content to a new \"Uniform & Armor Variants by Rank\" page (including \"II. Uniform & Armor Variants by Rank\" per rank and \"III. Copper War–Era Rank Structure\"), populating the History page with the provided \"The Dawn of Copper (2105)\" narrative sections, and adding a new Photo page, while keeping the shared site layout consistent.",
-  "architectural_notes": [
-    "Divisions page is no longer fully blank; it should render a Forge Division section (Armorers, Weaponsmiths) including a photo while keeping the shared site layout consistent.",
-    "Divisions page should include an additional 'Archive Division' section with the text '(Scribes, Historians, Analysts)' alongside the existing Forge Division section, preserving the shared site layout/styling.",
-    "Divisions page should include an additional 'Field Division' section with the text '(Scouts, Rangers, Tacticians)' alongside existing division sections, preserving the shared site layout/styling.",
-    "Divisions page should include an additional 'Circuit Division' section with the text '(Engineers, Energy Techs, Comms)' alongside existing division sections, preserving the shared site layout/styling.",
-    "Divisions page should include an additional 'Custodian Division' section with the text '(Pre-War Machine Interface Specialists)' alongside existing division sections, preserving the shared site layout/styling.",
-    "Add/extend the \"Uniform & Armor Variants by Rank\" page to render the user-provided sections \"II. Uniform & Armor Variants by Rank\" and \"III. Copper War–Era Rank Structure\" as structured headings with bullet lists, preserving the shared SiteLayout (navigation/footer) styling.",
-    "Update site navigation and the /lore page labeling to be titled \"Uniform & Armor Variants\" instead of \"Lore\" while preserving the shared SiteLayout styling/behavior.",
-    "Update the History page to render the provided \"The Dawn of Copper (2105)\" content as structured headings (title/subtitle, sections I–VIII) with paragraph text, preserving the shared SiteLayout (navigation/footer) styling.",
-    "Photo page should include a new photo entry/section titled \"The first T-10 Copper Based Power Armor\" (no image specified yet), preserving the shared SiteLayout styling.",
-    "Photo page: update the \"The first T-10 Copper Based Power Armor\" entry to include accessories text for \"calibrated shocks\" and \"tesla bracers\", preserving shared SiteLayout styling."
-  ],
+  "projectStateVersion": 3,
+  "summary": "New project",
+  "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-create-a-primary-website-page-dedicated-to-the-brotherhood-of-copper-with-a-copper-like-visual-theme-copper-bronze-palette-appropriate-typography-and-consistent-layout-styling-across-the-site",
-      "title": "Create a primary website page dedicated to the \"Brotherhood of Copper\" with a copper-like visual theme (copper/bronze palette, appropriate typography, and consistent layout styling across the site).",
+      "id": "feature-update-frontend-src-pages-historypage-tsx-to-make-the-history-page-easier-to-navigate-and-maintain-by-refactoring-the-eight-narrative-sections-i-viii-into-a-single-structured-data-array-and-rendering-the-cards-by-mapping-over-that-data-without-changing-the-visible-story-text",
+      "title": "Update `frontend/src/pages/HistoryPage.tsx` to make the History page easier to navigate and maintain by refactoring the eight narrative sections (I–VIII) into a single structured data array and rendering the cards by mapping over that data, without changing the visible story text.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-additional-navigable-pages-routes-for-ranks-divisions-lore-and-history-and-include-navigation-links-so-users-can-reach-each-page-from-the-site",
-      "title": "Add additional navigable pages/routes for \"Ranks\", \"Divisions\", \"Lore\", and \"History\", and include navigation links so users can reach each page from the site.",
+      "id": "feature-add-in-page-navigation-to-frontend-src-pages-historypage-tsx-by-including-a-table-of-contents-near-the-top-of-the-main-content-that-links-to-each-section-i-viii-using-anchored-ids-and-ensure-the-anchor-links-work-on-both-desktop-and-mobile",
+      "title": "Add in-page navigation to `frontend/src/pages/HistoryPage.tsx` by including a table of contents near the top of the main content that links to each section (I–VIII) using anchored IDs, and ensure the anchor links work on both desktop and mobile.",
       "reqIds": [
         "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-ensure-the-ranks-divisions-lore-and-history-pages-contain-no-content-beyond-the-shared-site-chrome-e-g-navigation-layout-do-not-add-page-specific-text-lists-or-sections",
-      "title": "Ensure the \"Ranks\", \"Divisions\", \"Lore\", and \"History\" pages contain no content beyond the shared site chrome (e.g., navigation/layout); do not add page-specific text, lists, or sections.",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-replace-the-current-blank-ranks-route-content-with-a-dedicated-ranks-page-that-renders-the-user-provided-sections-for-leadership-ranks-high-conductor-conductor-its-divisions-list-command-ranks-paladin-forgemaster-paladin-specialist-ranks-artificer-knight-ranger-knight-initiate-ranks-apprentice-copper-bearer-and-internal-regulations-culture-the-copper-ledger-the-rite-of-tempering-the-law-of-resonance",
-      "title": "Replace the current blank \"/ranks\" route content with a dedicated Ranks page that renders the user-provided sections for: Leadership Ranks (High Conductor, Conductor + its divisions list), Command Ranks (Paladin-Forgemaster, Paladin), Specialist Ranks (Artificer, Knight-Ranger, Knight), Initiate Ranks (Apprentice, Copper-Bearer), and \"Internal Regulations & Culture\" (The Copper Ledger, The Rite of Tempering, The Law of Resonance).",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-the-ranks-page-with-styling-consistent-with-the-existing-copper-themed-design-system-typography-spacing-readable-content-width-and-card-section-treatments-as-appropriate-without-changing-the-look-behavior-of-the-shared-site-layout-top-navigation-and-footer",
-      "title": "Implement the Ranks page with styling consistent with the existing copper-themed design system (typography, spacing, readable content width, and card/section treatments as appropriate), without changing the look/behavior of the shared site layout (top navigation and footer).",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-routing-so-that-the-ranks-route-renders-the-new-ranks-page-component-instead-of-the-shared-blankpage-component-while-leaving-the-divisions-lore-and-history-routes-using-blankpage",
-      "title": "Update routing so that the \"/ranks\" route renders the new Ranks page component instead of the shared BlankPage component, while leaving the \"/divisions\", \"/lore\", and \"/history\" routes using BlankPage.",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-a-dedicated-divisions-page-replacing-the-current-blank-divisions-route-that-displays-a-single-division-section-titled-forge-division-and-includes-the-text-armorers-weaponsmiths",
-      "title": "Create a dedicated Divisions page (replacing the current blank /divisions route) that displays a single division section titled \"Forge Division\" and includes the text \"(Armorers, Weaponsmiths)\".",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-user-uploaded-image-file-forgedivison-png-to-the-frontend-as-a-static-asset-and-render-it-on-the-divisions-page-within-the-forge-division-section",
-      "title": "Add the user-uploaded image file \"forgedivison.png\" to the frontend as a static asset and render it on the Divisions page within the \"Forge Division\" section.",
-      "reqIds": [
-        "REQ-8"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-routing-so-that-the-divisions-route-renders-the-new-divisions-page-component-while-leaving-the-lore-and-history-routes-using-the-existing-blankpage-component-and-preserving-the-shared-sitelayout-top-navigation-and-footer-behavior",
-      "title": "Update routing so that the \"/divisions\" route renders the new Divisions page component, while leaving the \"/lore\" and \"/history\" routes using the existing BlankPage component and preserving the shared SiteLayout (top navigation and footer) behavior.",
-      "reqIds": [
-        "REQ-9"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-new-division-section-to-the-divisions-page-for-archive-division-with-the-subtitle-text-scribes-historians-analysts-styled-consistently-with-the-existing-forge-division-card-and-without-changing-the-shared-site-layout-navigation-footer",
-      "title": "Add a new division section to the Divisions page for \"Archive Division\" with the subtitle text \"(Scribes, Historians, Analysts)\", styled consistently with the existing Forge Division card and without changing the shared site layout (navigation/footer).",
-      "reqIds": [
-        "REQ-10"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-user-uploaded-image-file-archivedivison-png-to-the-frontend-as-a-static-asset-and-render-it-within-the-new-archive-division-section-on-the-divisions-page",
-      "title": "Add the user-uploaded image file \"archivedivison.png\" to the frontend as a static asset and render it within the new Archive Division section on the Divisions page.",
-      "reqIds": [
-        "REQ-11"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-new-division-section-to-the-divisions-page-for-field-division-with-the-subtitle-text-scouts-rangers-tacticians-styled-consistently-with-the-existing-forge-and-archive-division-cards-without-changing-the-shared-site-layout-navigation-footer-or-the-existing-division-sections",
-      "title": "Add a new division section to the Divisions page for \"Field Division\" with the subtitle text \"(Scouts, Rangers, Tacticians)\", styled consistently with the existing Forge and Archive Division cards, without changing the shared site layout (navigation/footer) or the existing division sections.",
-      "reqIds": [
-        "REQ-12"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-user-uploaded-image-file-fielddivison-png-to-the-frontend-as-a-static-asset-and-render-it-within-the-new-field-division-section-on-the-divisions-page",
-      "title": "Add the user-uploaded image file \"fielddivison.png\" to the frontend as a static asset and render it within the new Field Division section on the Divisions page.",
-      "reqIds": [
-        "REQ-13"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-new-division-section-to-the-divisions-page-for-circuit-division-with-the-subtitle-text-engineers-energy-techs-comms-styled-consistently-with-the-existing-forge-archive-field-division-cards-and-without-changing-the-shared-sitelayout-navigation-footer-or-existing-division-sections",
-      "title": "Add a new division section to the Divisions page for \"Circuit Division\" with the subtitle text \"(Engineers, Energy Techs, Comms)\", styled consistently with the existing Forge/Archive/Field division cards and without changing the shared SiteLayout (navigation/footer) or existing division sections.",
-      "reqIds": [
-        "REQ-14"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-user-uploaded-image-file-circuitdivison-png-to-the-frontend-as-a-static-asset-and-render-it-within-the-new-circuit-division-section-on-the-divisions-page-using-the-same-image-treatment-size-border-rounding-shadow-as-the-other-division-images",
-      "title": "Add the user-uploaded image file \"circuitdivison.png\" to the frontend as a static asset and render it within the new Circuit Division section on the Divisions page using the same image treatment (size, border, rounding, shadow) as the other division images.",
-      "reqIds": [
-        "REQ-15"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-new-division-section-to-the-divisions-page-for-custodian-division-with-the-subtitle-text-pre-war-machine-interface-specialists-styled-consistently-with-the-existing-forge-archive-field-circuit-division-cards-and-without-changing-the-shared-sitelayout-top-navigation-and-footer-behavior-or-existing-division-sections",
-      "title": "Add a new division section to the Divisions page for \"Custodian Division\" with the subtitle text \"(Pre-War Machine Interface Specialists)\", styled consistently with the existing Forge/Archive/Field/Circuit division cards and without changing the shared SiteLayout (top navigation and footer) behavior or existing division sections.",
-      "reqIds": [
-        "REQ-16"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-user-uploaded-image-file-custodiandivison-png-to-the-frontend-as-a-static-asset-and-render-it-within-the-new-custodian-division-section-on-the-divisions-page-using-the-same-image-treatment-size-border-rounding-shadow-as-the-other-division-images",
-      "title": "Add the user-uploaded image file \"CUSTODIANDIVISON.png\" to the frontend as a static asset and render it within the new Custodian Division section on the Divisions page using the same image treatment (size, border, rounding, shadow) as the other division images.",
-      "reqIds": [
-        "REQ-17"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-existing-uniform-armor-variants-by-rank-page-to-include-a-new-section-titled-ii-uniform-armor-variants-by-rank-and-render-the-provided-uniform-armor-bullet-lists-for-each-of-these-ranks-in-order-high-conductor-conductor-paladin-forgemaster-paladin-artificer-knight-ranger-knight-apprentice-copper-bearer",
-      "title": "Update the existing \"Uniform & Armor Variants by Rank\" page to include a new section titled \"II. Uniform & Armor Variants by Rank\" and render the provided uniform/armor bullet lists for each of these ranks in order: High Conductor, Conductor, Paladin-Forgemaster, Paladin, Artificer, Knight-Ranger, Knight, Apprentice, Copper-Bearer.",
-      "reqIds": [
-        "REQ-18"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-on-the-same-uniform-armor-variants-by-rank-page-add-a-new-section-titled-iii-copper-war-era-rank-structure-that-includes-the-provided-introductory-sentence-and-a-new-temporary-ranks-subsection-rendering-each-of-the-provided-war-era-ranks-with-their-bullet-lists-war-conductor-paladin-breaker-artificer-prime-signal-rangers-copper-conscripts",
-      "title": "On the same \"Uniform & Armor Variants by Rank\" page, add a new section titled \"III. Copper War–Era Rank Structure\" that includes the provided introductory sentence and a \"New / Temporary Ranks\" subsection rendering each of the provided war-era ranks with their bullet lists: War Conductor, Paladin-Breaker, Artificer-Prime, Signal Rangers, Copper Conscripts.",
-      "reqIds": [
-        "REQ-19"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-rename-the-existing-top-navigation-link-label-for-the-lore-route-from-lore-to-uniform-armor-variants-while-keeping-the-route-path-as-lore-and-keeping-the-page-component-rendering-unchanged-it-should-continue-to-render-the-existing-uniformarmorvariantsbyrankpage",
-      "title": "Rename the existing top navigation link label for the \"/lore\" route from \"Lore\" to \"Uniform & Armor Variants\" while keeping the route path as \"/lore\" and keeping the page component rendering unchanged (it should continue to render the existing UniformArmorVariantsByRankPage).",
-      "reqIds": [
-        "REQ-20"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-home-page-user-facing-text-that-references-the-lore-page-so-it-uses-the-new-label-uniform-armor-variants-e-g-the-hero-button-text-and-the-feature-card-title-without-changing-the-destination-path-still-lore",
-      "title": "Update Home page user-facing text that references the \"/lore\" page so it uses the new label \"Uniform & Armor Variants\" (e.g., the hero button text and the feature card title), without changing the destination path (still \"/lore\").",
-      "reqIds": [
-        "REQ-21"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-a-dedicated-history-page-component-that-renders-the-provided-narrative-content-exactly-as-supplied-including-the-title-the-dawn-of-copper-2105-the-subtitle-year-zero-of-the-copper-age-and-sections-i-viii-with-their-headings-and-paragraph-formatting-preserved",
-      "title": "Create a dedicated History page component that renders the provided narrative content exactly as supplied, including the title \"The Dawn of Copper (2105)\", the subtitle \"Year Zero of the Copper Age\", and sections I–VIII with their headings and paragraph formatting preserved.",
-      "reqIds": [
-        "REQ-22"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-frontend-routing-so-the-history-route-renders-the-new-history-page-component-instead-of-the-shared-blankpage-component-while-preserving-the-existing-shared-sitelayout-behavior-top-navigation-and-footer",
-      "title": "Update frontend routing so the \"/history\" route renders the new History page component instead of the shared BlankPage component, while preserving the existing shared SiteLayout behavior (top navigation and footer).",
-      "reqIds": [
-        "REQ-23"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-style-the-history-page-to-match-the-existing-copper-themed-design-system-used-on-other-content-pages-e-g-hero-section-readable-max-width-consistent-typography-spacing-and-section-card-treatments-without-changing-the-look-or-behavior-of-the-shared-navigation-and-footer",
-      "title": "Style the History page to match the existing copper-themed design system used on other content pages (e.g., hero section, readable max width, consistent typography, spacing, and section/card treatments), without changing the look or behavior of the shared navigation and footer.",
-      "reqIds": [
-        "REQ-24"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-create-a-new-photo-page-component-at-frontend-src-pages-photopage-tsx-that-renders-within-the-existing-shared-sitelayout-and-uses-the-existing-copper-themed-design-language-hero-header-section-readable-max-width-and-card-section-styling-consistent-with-other-pages-include-english-user-facing-text-page-title-photo-and-a-short-description-indicating-photos-will-be-added-later-e-g-a-curated-look-at-brotherhood-artifacts-and-moments-photos-coming-soon",
-      "title": "Create a new Photo page component at \"frontend/src/pages/PhotoPage.tsx\" that renders within the existing shared SiteLayout and uses the existing copper-themed design language (hero/header section, readable max width, and card/section styling consistent with other pages). Include English user-facing text: page title \"Photo\" and a short description indicating photos will be added later (e.g., \"A curated look at Brotherhood artifacts and moments. Photos coming soon.\").",
-      "reqIds": [
-        "REQ-25"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-new-route-photo-to-the-tanstack-router-configuration-in-frontend-src-app-tsx-that-renders-the-new-photopage-component",
-      "title": "Add a new route \"/photo\" to the TanStack Router configuration in \"frontend/src/App.tsx\" that renders the new PhotoPage component.",
-      "reqIds": [
-        "REQ-26"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-site-navigation-in-frontend-src-components-sitenav-tsx-to-include-a-new-link-labeled-photo-that-navigates-to-photo-and-behaves-consistently-with-existing-desktop-mobile-nav-links-active-styling-and-mobile-menu-close-on-click",
-      "title": "Update the site navigation in \"frontend/src/components/SiteNav.tsx\" to include a new link labeled \"Photo\" that navigates to \"/photo\" and behaves consistently with existing desktop/mobile nav links (active styling and mobile menu close-on-click).",
-      "reqIds": [
-        "REQ-27"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-frontend-src-pages-photopage-tsx-to-include-a-new-photo-entry-titled-the-first-t-10-copper-based-power-armor-that-displays-the-uploaded-image-the-first-copper-plated-power-armor-t-10-png-with-an-appropriate-alt-attribute-using-the-existing-copper-themed-design-language-card-styling-borders-shadow-copper-spacing-consistent-with-other-content-pages",
-      "title": "Update \"frontend/src/pages/PhotoPage.tsx\" to include a new photo entry titled \"The first T-10 Copper Based Power Armor\" that displays the uploaded image \"the first copper plated power armor t-10.png\" with an appropriate alt attribute, using the existing copper-themed design language (Card styling, borders, shadow-copper, spacing) consistent with other content pages.",
-      "reqIds": [
-        "REQ-29"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-existing-t-10-entry-on-the-photo-page-frontend-src-pages-photopage-tsx-to-include-an-accessories-section-listing-the-accessories-calibrated-shocks-and-tesla-bracers-and-displaying-the-uploaded-accessory-images",
-      "title": "Update the existing T-10 entry on the Photo page (frontend/src/pages/PhotoPage.tsx) to include an Accessories section listing the accessories \"Calibrated Shocks\" and \"Tesla Bracers\" and displaying the uploaded accessory images.",
-      "reqIds": [
-        "REQ-31"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-disclaimer-at-the-very-bottom-of-the-home-page-frontend-src-pages-homepage-tsx-in-14px-font-size-with-the-following-exact-english-text-this-is-a-100-percent-fictional-organization-that-isnt-in-fallout-or-any-games-of-fallout-all-fallout-works-are-copyrighted-and-owned-by-bethesda-game-studios",
-      "title": "Add a disclaimer at the very bottom of the Home page (frontend/src/pages/HomePage.tsx) in 14px font size with the following exact English text: \"This is a 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios.\"",
-      "reqIds": [
-        "REQ-32"
       ],
       "version": 1
     }
@@ -261,106 +26,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Create a copper-themed website for the 'Brotherhood of Copper' with a main page plus additional blank pages: Ranks & Divisions, Lore, and History.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Add provided 'Leadership/Command/Specialist/Initiate Ranks' and 'Internal Regulations & Culture' content to the Ranks page.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Add content to the Divisions page for 'Forge Division (Armorers, Weaponsmiths)' and include a photo for the division section.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Add a new Divisions page section for 'Archive Division (Scribes, Historians, Analysts)'.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Add a new Divisions page section for 'Field Division (Scouts, Rangers, Tacticians)'.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "Add a new Divisions page section for 'Circuit Division (Engineers, Energy Techs, Comms)'.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-7",
-      "summary": "Add a new Divisions page section for 'Custodian Division (Pre-War Machine Interface Specialists)'.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-8",
-      "summary": "Add the provided content to the new \"Uniform & Armor Variants by Rank\" page, including \"II. Uniform & Armor Variants by Rank\" (High Conductor through Copper-Bearer) and \"III. Copper War–Era Rank Structure\" with new/temporary ranks (War Conductor, Paladin-Breaker, Artificer-Prime, Signal Rangers, Copper Conscripts).",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-9",
-      "summary": "Rename the \"Lore\" page (and its navigation label/route title) to \"Uniform & Armor Variants\".",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-10",
-      "summary": "Update the History page to include the provided \"The Dawn of Copper (2105)\" content, including the \"Year Zero of the Copper Age\" subtitle and sections I–VIII.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-11",
-      "summary": "Add a new Photo page to the site (navigable from the existing shared layout/navigation).",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-12",
-      "summary": "Add an entry/section to the Photo page for \"The first T-10 Copper Based Power Armor\".",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-13",
-      "summary": "Add the user-uploaded image file \"the first copper plated power armor t-10.png\" to the frontend as a static asset and ensure it can be referenced from React via a stable public URL path.",
-      "reqIds": [
-        "REQ-28"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-14",
-      "summary": "Update the Photo page's \"The first T-10 Copper Based Power Armor\" entry to include the accessories: calibrated shocks and tesla bracers.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-15",
-      "summary": "Add the two newly uploaded images as frontend static assets so they can be referenced from React via stable public URL paths.",
-      "reqIds": [
-        "REQ-30"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-16",
-      "summary": "Add a disclaimer to the bottom of the Home page in 14px font stating the organization is 100% fictional and not in Fallout, and that all Fallout works are copyrighted/owned by Bethesda Game Studios.",
+      "summary": "Edit/update the History page",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Brotherhood of Copper website with copper-themed design and blank subpages",
+  "projectName": "Edit and improve the History page",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

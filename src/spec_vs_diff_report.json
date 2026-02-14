@@ -1,23 +1,46 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T23:42:49.522Z",
-  "summary": "The diff shows HomePage.tsx was modified and the repo summary claims a fictional-copyright disclaimer was added at the bottom with 14px styling. However, the provided HomePage.tsx diff is truncated before the bottom content, so key REQ-32 acceptance criteria (exact text match and last-on-page placement) cannot be verified from the available evidence.",
+  "generatedAt": "2026-02-14T23:54:21.362Z",
+  "summary": "HistoryPage.tsx shows a new in-file structured data array with section ids/numerals/titles/content, but the truncated diff does not provide enough evidence to confirm that the page now renders all eight sections via iteration, preserves the exact prior story wording, or includes a working table of contents with anchor navigation. Two additional files were modified that were not requested by the BuildRequest.",
   "missing_requirements": [
     {
-      "id": "REQ-32",
-      "requirement": "Add a disclaimer at the very bottom of the Home page (frontend/src/pages/HomePage.tsx) in 14px font size with the exact text: \"This is a 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios.\"",
-      "reason": "HomePage.tsx diff content is truncated before the end of the page, so there is no direct evidence showing (1) the disclaimer is the last block below the existing Call to Action section, (2) the disclaimer text matches exactly, and (3) the font size is explicitly 14px/text-sm and readable in both themes.",
+      "id": "REQ-1",
+      "requirement": "Refactor all eight narrative sections (I–VIII) into a single structured data array and render the cards by mapping over that data, without changing the visible story text.",
+      "reason": "The diff shows a structured data array and the first few sections, but due to truncation it does not show all eight sections (I–VIII), the render/mapping logic (iteration over the array), or evidence that the visible wording is unchanged vs. the previous version.",
       "evidence": [
-        "frontend/src/pages/HomePage.tsx (truncated)"
+        "frontend/src/pages/HistoryPage.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "Add a visible table of contents near the top linking to each section (I–VIII) via stable anchor IDs, supporting direct URL fragments (e.g., /history#section-iii).",
+      "reason": "The provided HistoryPage.tsx excerpt shows section ids (e.g., section-i/ii/iii/iv) but does not show any table-of-contents UI, anchor link elements, or hash/scroll handling; truncation prevents verification that TOC exists and works for all eight sections.",
+      "evidence": [
+        "frontend/src/pages/HistoryPage.tsx (truncated)"
       ]
     }
   ],
-  "hallucinated_features": [],
-  "confidence": 0.62,
+  "hallucinated_features": [
+    {
+      "description": "Modified project metadata/state tracking file (project_state.json).",
+      "reason": "BuildRequest only asked for History page refactor and in-page navigation; it did not request updating project state tracking files.",
+      "evidence": [
+        "project_state.json"
+      ]
+    },
+    {
+      "description": "Modified a generated/summary file listing frontend file summaries (frontend-file-summaries.txt).",
+      "reason": "BuildRequest did not request changes to documentation/summary artifacts; only HistoryPage behavior/content refactor and TOC were requested.",
+      "evidence": [
+        "frontend-file-summaries.txt"
+      ]
+    }
+  ],
+  "confidence": 0.54,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/pages/HistoryPage.tsx",
     "project_state.json"
   ]
 }

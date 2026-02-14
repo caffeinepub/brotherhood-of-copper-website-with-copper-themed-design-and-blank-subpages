@@ -1,34 +1,53 @@
 {
   "kind": "build_request",
-  "title": "Add fictional-copyright disclaimer to bottom of Home page",
+  "title": "Edit and improve the History page",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-32",
-      "text": "Add a disclaimer at the very bottom of the Home page (frontend/src/pages/HomePage.tsx) in 14px font size with the following exact English text: \"This is a 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios.\"",
+      "id": "REQ-1",
+      "text": "Update `frontend/src/pages/HistoryPage.tsx` to make the History page easier to navigate and maintain by refactoring the eight narrative sections (I–VIII) into a single structured data array and rendering the cards by mapping over that data, without changing the visible story text.",
       "target": "frontend",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "add to the home page at the bottom. in size 14 font.. this is 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios."
+          "edit history page"
         ]
       },
       "acceptanceCriteria": [
-        "Visiting the Home page shows the disclaimer as the last content on the page (below the existing Call to Action section).",
-        "The disclaimer text matches the user-provided wording exactly, including capitalization and punctuation.",
-        "The disclaimer is styled at 14px font size (e.g., Tailwind text-sm or an explicit 14px class) and remains readable in both light and dark themes."
+        "HistoryPage renders the same hero title/subtitle and the same eight sections (I–VIII) with the same visible wording as before.",
+        "The eight sections are defined in a single in-file data structure (e.g., an array of objects) and rendered via iteration (no repeated copy/paste Card blocks).",
+        "No console errors/warnings are introduced when visiting /history."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Add in-page navigation to `frontend/src/pages/HistoryPage.tsx` by including a table of contents near the top of the main content that links to each section (I–VIII) using anchored IDs, and ensure the anchor links work on both desktop and mobile.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1"
+        ],
+        "quotes": [
+          "edit history page"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A table of contents is visible on the History page and lists links for sections I through VIII using the section titles.",
+        "Clicking a table-of-contents link scrolls to the corresponding section card on the same page.",
+        "Each section card has a stable `id`/anchor target so direct URL fragments (e.g., `/history#section-iii`) scroll to the correct section."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files under frontend/src/components/ui (read-only).",
-    "Do not change shared SiteLayout navigation or footer behavior; add the disclaimer only within the Home page content."
+    "Do not edit any files under `frontend/src/components/ui` (compose existing UI components instead).",
+    "Do not modify Internet Identity hooks in immutable paths (`frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`).",
+    "Keep the backend as-is; no backend changes are required for this History page edit."
   ],
   "nonGoals": [
-    "Do not add disclaimers to other pages.",
-    "Do not change routing, navigation links, or any existing Home page copy besides adding the new disclaimer block."
+    "Adding admin/authenticated editing of History content with persistence.",
+    "Changing the site navigation structure or routes beyond improving the /history page content presentation."
   ],
   "imageRequirements": {
     "required": [],

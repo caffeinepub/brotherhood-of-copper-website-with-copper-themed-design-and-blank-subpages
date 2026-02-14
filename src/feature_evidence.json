@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-a-disclaimer-at-the-very-bottom-of-the-home-page-frontend-src-pages-homepage-tsx-in-14px-font-size-with-the-following-exact-english-text-this-is-a-100-percent-fictional-organization-that-isnt-in-fallout-or-any-games-of-fallout-all-fallout-works-are-copyrighted-and-owned-by-bethesda-game-studios",
-      "featureTitle": "Add a disclaimer at the very bottom of the Home page (frontend/src/pages/HomePage.tsx) in 14px font size with the following exact English text: \"This is a 100 percent fictional organization that isnt in fallout or any games of fallout. all fallout works are copyrighted and owned by Bethesda Game Studios.\"",
+      "featureId": "feature-update-frontend-src-pages-historypage-tsx-to-make-the-history-page-easier-to-navigate-and-maintain-by-refactoring-the-eight-narrative-sections-i-viii-into-a-single-structured-data-array-and-rendering-the-cards-by-mapping-over-that-data-without-changing-the-visible-story-text",
+      "featureTitle": "Update `frontend/src/pages/HistoryPage.tsx` to make the History page easier to navigate and maintain by refactoring the eight narrative sections (I–VIII) into a single structured data array and rendering the cards by mapping over that data, without changing the visible story text.",
       "files": [
-        "frontend/src/pages/HomePage.tsx"
+        "frontend/src/pages/HistoryPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -15,7 +15,25 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-32"
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-in-page-navigation-to-frontend-src-pages-historypage-tsx-by-including-a-table-of-contents-near-the-top-of-the-main-content-that-links-to-each-section-i-viii-using-anchored-ids-and-ensure-the-anchor-links-work-on-both-desktop-and-mobile",
+      "featureTitle": "Add in-page navigation to `frontend/src/pages/HistoryPage.tsx` by including a table of contents near the top of the main content that links to each section (I–VIII) using anchored IDs, and ensure the anchor links work on both desktop and mobile.",
+      "files": [
+        "frontend/src/pages/HistoryPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
       ],
       "confidence": "high"
     }
