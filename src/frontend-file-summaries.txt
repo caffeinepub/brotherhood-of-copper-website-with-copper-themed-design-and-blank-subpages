@@ -1,0 +1,11 @@
+{
+  "frontend/src/index.css": "Global styles with copper/bronze OKLCH color system for both light and dark modes, featuring warm copper tones (hue ~30-35) throughout the design tokens.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Cinzel display font, copper-themed colors, custom copper shadow, and fade-in animation for enhanced visual appeal.",
+  "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining routes for home, ranks (now using RanksPage), divisions, lore, and history pages within a shared layout.",
+  "frontend/src/components/SiteLayout.tsx": "Shared layout wrapper component providing consistent site structure with navigation header, main content outlet, and footer with attribution.",
+  "frontend/src/components/SiteNav.tsx": "Responsive navigation component with logo, desktop menu, mobile hamburger menu, and active route highlighting in copper theme.",
+  "frontend/src/pages/HomePage.tsx": "Brotherhood of Copper main landing page featuring hero section, feature cards for ranks/divisions/lore, about section, and call-to-action with copper-themed styling.",
+  "frontend/src/pages/BlankPage.tsx": "Intentionally empty page component that renders nothing, used for ranks, divisions, lore, and history routes per requirements.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder file for React Query hooks (no backend queries needed for this static site).",
+  "frontend/src/pages/RanksPage.tsx": "Comprehensive ranks page displaying the Brotherhood of Copper's complete hierarchy (Leadership, Command, Specialist, and Initiate ranks) and internal regulations (Copper Ledger, Rite of Tempering, Law of Resonance) using Card components with copper-themed styling and responsive layout."
+}

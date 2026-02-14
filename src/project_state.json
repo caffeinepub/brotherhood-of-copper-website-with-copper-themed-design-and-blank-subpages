@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 5,
+  "summary": "Build a copper-themed 'Brotherhood of Copper' website with a main page and navigable pages for Ranks & Divisions, Lore, and History; the Ranks page should now include the provided rank hierarchy and internal regulations/culture content.",
+  "architectural_notes": [],
+  "known_issues": [],
+  "isFixRequest": false,
+  "existing_features": [
+    {
+      "id": "feature-create-a-primary-website-page-dedicated-to-the-brotherhood-of-copper-with-a-copper-like-visual-theme-copper-bronze-palette-appropriate-typography-and-consistent-layout-styling-across-the-site",
+      "title": "Create a primary website page dedicated to the \"Brotherhood of Copper\" with a copper-like visual theme (copper/bronze palette, appropriate typography, and consistent layout styling across the site).",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-additional-navigable-pages-routes-for-ranks-divisions-lore-and-history-and-include-navigation-links-so-users-can-reach-each-page-from-the-site",
+      "title": "Add additional navigable pages/routes for \"Ranks\", \"Divisions\", \"Lore\", and \"History\", and include navigation links so users can reach each page from the site.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-ranks-divisions-lore-and-history-pages-contain-no-content-beyond-the-shared-site-chrome-e-g-navigation-layout-do-not-add-page-specific-text-lists-or-sections",
+      "title": "Ensure the \"Ranks\", \"Divisions\", \"Lore\", and \"History\" pages contain no content beyond the shared site chrome (e.g., navigation/layout); do not add page-specific text, lists, or sections.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-replace-the-current-blank-ranks-route-content-with-a-dedicated-ranks-page-that-renders-the-user-provided-sections-for-leadership-ranks-high-conductor-conductor-its-divisions-list-command-ranks-paladin-forgemaster-paladin-specialist-ranks-artificer-knight-ranger-knight-initiate-ranks-apprentice-copper-bearer-and-internal-regulations-culture-the-copper-ledger-the-rite-of-tempering-the-law-of-resonance",
+      "title": "Replace the current blank \"/ranks\" route content with a dedicated Ranks page that renders the user-provided sections for: Leadership Ranks (High Conductor, Conductor + its divisions list), Command Ranks (Paladin-Forgemaster, Paladin), Specialist Ranks (Artificer, Knight-Ranger, Knight), Initiate Ranks (Apprentice, Copper-Bearer), and \"Internal Regulations & Culture\" (The Copper Ledger, The Rite of Tempering, The Law of Resonance).",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-the-ranks-page-with-styling-consistent-with-the-existing-copper-themed-design-system-typography-spacing-readable-content-width-and-card-section-treatments-as-appropriate-without-changing-the-look-behavior-of-the-shared-site-layout-top-navigation-and-footer",
+      "title": "Implement the Ranks page with styling consistent with the existing copper-themed design system (typography, spacing, readable content width, and card/section treatments as appropriate), without changing the look/behavior of the shared site layout (top navigation and footer).",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-routing-so-that-the-ranks-route-renders-the-new-ranks-page-component-instead-of-the-shared-blankpage-component-while-leaving-the-divisions-lore-and-history-routes-using-blankpage",
+      "title": "Update routing so that the \"/ranks\" route renders the new Ranks page component instead of the shared BlankPage component, while leaving the \"/divisions\", \"/lore\", and \"/history\" routes using BlankPage.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Create a copper-themed website for the 'Brotherhood of Copper' with a main page plus additional blank pages: Ranks & Divisions, Lore, and History.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add provided 'Leadership/Command/Specialist/Initiate Ranks' and 'Internal Regulations & Culture' content to the Ranks page.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Brotherhood of Copper website with copper-themed design and blank subpages",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

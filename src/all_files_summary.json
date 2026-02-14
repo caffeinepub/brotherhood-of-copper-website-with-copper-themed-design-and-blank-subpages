@@ -1,0 +1,20 @@
+{
+  "backend/main.mo": "Empty Motoko actor with no methods.",
+  "feature_evidence.json": "Feature evidence report listing ranks-page implementation, routing updates, and related components with high-confidence metadata.",
+  "frontend-file-summaries.txt": "Prewritten summaries describing major frontend files and their roles in the copper-themed site.",
+  "frontend/index.css": "Tailwind base theme defining color tokens and dark mode values using OKLCH values.",
+  "frontend/index.html": "HTML entry point setting up the root element and loading the React app.",
+  "frontend/src/App.tsx": "Defines TanStack Router routes, including the new RanksPage, within the SiteLayout.",
+  "frontend/src/components/SiteLayout.tsx": "Page wrapper providing navigation, main content outlet, and themed footer.",
+  "frontend/src/components/SiteNav.tsx": "Responsive navigation bar with active-route highlighting and mobile menu.",
+  "frontend/src/hooks/useActor.ts": "Creates and manages a backend actor tied to Internet Identity, refetching on identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides Internet Identity context, login flow, and identity persistence.",
+  "frontend/src/hooks/useQueries.ts": "Empty placeholder for backend query hooks.",
+  "frontend/src/index.css": "Tailwind base styles defining a copper-themed light and dark design system.",
+  "frontend/src/main.tsx": "App bootstrap wiring QueryClient, InternetIdentityProvider, and global styles.",
+  "frontend/src/pages/BlankPage.tsx": "Intentionally empty component used for placeholder routes.",
+  "frontend/src/pages/HomePage.tsx": "Hero-style homepage with copper-themed branding, navigation buttons, and feature cards linking to lore, history, ranks, and divisions.",
+  "frontend/src/pages/RanksPage.tsx": "Ranks page rendering detailed hierarchy sections with styled cards, icons, and structured lists for leadership and other rank groups.",
+  "frontend/tailwind.config.js": "Tailwind config defining copper-themed colors, typography, animations, and extended utilities with plugins for typography, container queries, and animations.",
+  "project_state.json": "Metadata describing project requirements, implemented features, and state for the copper-themed website including updates to the Ranks page."
+}

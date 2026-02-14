@@ -1,0 +1,59 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-replace-the-current-blank-ranks-route-content-with-a-dedicated-ranks-page-that-renders-the-user-provided-sections-for-leadership-ranks-high-conductor-conductor-its-divisions-list-command-ranks-paladin-forgemaster-paladin-specialist-ranks-artificer-knight-ranger-knight-initiate-ranks-apprentice-copper-bearer-and-internal-regulations-culture-the-copper-ledger-the-rite-of-tempering-the-law-of-resonance",
+      "featureTitle": "Replace the current blank \"/ranks\" route content with a dedicated Ranks page that renders the user-provided sections for: Leadership Ranks (High Conductor, Conductor + its divisions list), Command Ranks (Paladin-Forgemaster, Paladin), Specialist Ranks (Artificer, Knight-Ranger, Knight), Initiate Ranks (Apprentice, Copper-Bearer), and \"Internal Regulations & Culture\" (The Copper Ledger, The Rite of Tempering, The Law of Resonance).",
+      "files": [
+        "frontend/src/pages/RanksPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-the-ranks-page-with-styling-consistent-with-the-existing-copper-themed-design-system-typography-spacing-readable-content-width-and-card-section-treatments-as-appropriate-without-changing-the-look-behavior-of-the-shared-site-layout-top-navigation-and-footer",
+      "featureTitle": "Implement the Ranks page with styling consistent with the existing copper-themed design system (typography, spacing, readable content width, and card/section treatments as appropriate), without changing the look/behavior of the shared site layout (top navigation and footer).",
+      "files": [
+        "frontend/src/pages/RanksPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-update-routing-so-that-the-ranks-route-renders-the-new-ranks-page-component-instead-of-the-shared-blankpage-component-while-leaving-the-divisions-lore-and-history-routes-using-blankpage",
+      "featureTitle": "Update routing so that the \"/ranks\" route renders the new Ranks page component instead of the shared BlankPage component, while leaving the \"/divisions\", \"/lore\", and \"/history\" routes using BlankPage.",
+      "files": [
+        "frontend/src/App.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    }
+  ]
+}

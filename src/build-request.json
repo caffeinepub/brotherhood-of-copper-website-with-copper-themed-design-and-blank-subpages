@@ -1,0 +1,70 @@
+{
+  "kind": "build_request",
+  "title": "Populate Ranks page with Brotherhood of Copper hierarchy and regulations",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-4",
+      "text": "Replace the current blank \"/ranks\" route content with a dedicated Ranks page that renders the user-provided sections for: Leadership Ranks (High Conductor, Conductor + its divisions list), Command Ranks (Paladin-Forgemaster, Paladin), Specialist Ranks (Artificer, Knight-Ranger, Knight), Initiate Ranks (Apprentice, Copper-Bearer), and \"Internal Regulations & Culture\" (The Copper Ledger, The Rite of Tempering, The Law of Resonance).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ],
+        "quotes": [
+          "add to ranks page  A. Leadership Ranks ... 3. The Law of Resonance ... Violence between members is forbidden."
+        ]
+      },
+      "acceptanceCriteria": [
+        "Navigating to /ranks displays a structured page (not null/blank) containing all provided headings and bullet points in English.",
+        "All rank titles and regulation titles appear as clearly differentiated headings/subheadings (e.g., section headers + item headers).",
+        "All bullet lists from the user message are rendered as visible lists (not collapsed into paragraphs), including the four Conductor divisions and the three conflict-resolution methods.",
+        "No user-provided meaning is altered; text content matches the user’s provided wording aside from removing non-text glyph artifacts (e.g., \"?\", \"??\") if needed for clean rendering."
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "text": "Implement the Ranks page with styling consistent with the existing copper-themed design system (typography, spacing, readable content width, and card/section treatments as appropriate), without changing the look/behavior of the shared site layout (top navigation and footer).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "The /ranks page uses the existing site chrome (SiteNav + footer) unchanged and presents content within a centered container consistent with other pages (e.g., HomePage container usage).",
+        "Content is readable on mobile and desktop (responsive spacing, headings, and lists).",
+        "No changes are introduced to /divisions, /lore, or /history page content (they remain blank beyond shared chrome)."
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "text": "Update routing so that the \"/ranks\" route renders the new Ranks page component instead of the shared BlankPage component, while leaving the \"/divisions\", \"/lore\", and \"/history\" routes using BlankPage.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-4"
+        ]
+      },
+      "acceptanceCriteria": [
+        "/ranks renders the new Ranks page component.",
+        "/divisions, /lore, and /history still render no page-specific content (BlankPage remains null).",
+        "Navigation links in the site nav continue to function and route correctly."
+      ]
+    }
+  ],
+  "constraints": [
+    "Do not edit any files under frontend/src/components/ui (read-only UI component sources).",
+    "Do not modify immutable hook files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx.",
+    "Backend must remain unchanged (no Motoko canister methods needed for this static content update)."
+  ],
+  "nonGoals": [
+    "Adding content to Divisions, Lore, or History pages.",
+    "Adding authentication, admin editing, CMS functionality, or backend persistence for the ranks content.",
+    "Generating or integrating new images for the Ranks page."
+  ],
+  "imageRequirements": {
+    "required": [],
+    "edits": []
+  }
+}
