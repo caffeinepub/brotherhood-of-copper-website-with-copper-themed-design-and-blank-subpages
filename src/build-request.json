@@ -1,65 +1,54 @@
 {
   "kind": "build_request",
-  "title": "Update site-wide theme to a darker copper palette",
+  "title": "Add uploaded banner to Home Page hero section",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update the global Tailwind/CSS theme tokens to use a darker copper palette across the entire app (all routes/pages), by adjusting the copper-related CSS variables in `frontend/src/index.css` for both `:root` (light theme) and `.dark` (dark theme). Ensure the darker copper is reflected in primary/accent/secondary, borders/rings, and any other copper-tinted tokens so that components using `bg-primary`, `text-primary`, `border-primary/*`, gradients, and muted/accent backgrounds all shift consistently without per-page edits.",
+      "text": "Add the uploaded image file `brotherhood of copper banner.png` as a visible banner on the Home Page (`frontend/src/pages/HomePage.tsx`), placed within the existing hero section so it appears above the hero title and scales responsively across mobile and desktop.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-6"
         ],
         "quotes": [
-          "update all pages with darker copper color"
+          "add banner to Home Page"
         ]
       },
       "acceptanceCriteria": [
-        "Across all pages (Home, Ranks, Divisions, Uniform & Armor Variants, History, Photo), copper accents (primary/accent/secondary) appear noticeably darker than before and remain consistent between pages.",
-        "Light theme and dark theme both preserve readable contrast for primary buttons/links and primary-foreground text (no low-contrast copper-on-copper).",
-        "No page-specific color overrides are required to achieve the darker copper update; the change is driven by the global theme variables in `frontend/src/index.css`."
+        "The Home Page hero section renders the uploaded banner image above the \"Brotherhood of Copper\" heading.",
+        "The banner is responsive (maintains aspect ratio, does not overflow horizontally, and looks acceptable on mobile and desktop).",
+        "The image includes appropriate accessibility attributes (e.g., meaningful alt text) and does not cause layout shift (reserve height via CSS/aspect styling)."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Update any Tailwind theme extensions that hardcode the old copper color so they match the new darker copper palette (e.g., the `shadow-copper` definition in `frontend/tailwind.config.js`) to keep shadows/embellishments aligned with the updated theme.",
+      "text": "Add the uploaded banner image to the frontend as a static asset (do not serve it via the backend) and reference it from the Home Page using a stable path under `frontend/public/assets/generated/`.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "recent-messages"
+          "msg-6"
         ],
         "quotes": [
-          "update all pages with darker copper color"
+          "add banner to Home Page"
         ]
       },
       "acceptanceCriteria": [
-        "Elements using `shadow-copper` (e.g., hero icons and featured cards) render with the updated darker copper tint, consistent with the new primary copper color.",
-        "No remaining hardcoded old copper values cause mismatched copper tones versus the updated CSS variable-based palette."
+        "`brotherhood of copper banner.png` is available at runtime as a static file under `frontend/public/assets/generated/` (or an equivalent public static asset path) and is referenced directly by the Home Page.",
+        "No backend (Motoko) changes are required to display the banner."
       ]
     }
   ],
   "constraints": [
-    "Do not edit files under `frontend/src/components/ui` (compose these components instead, if needed).",
-    "Do not modify immutable hook/bootstrap files listed in `frontend.immutablePaths` in SYSTEM_CONTEXT."
+    "Do not edit files under `frontend/src/components/ui` (compose existing UI components instead).",
+    "Do not modify any files in `frontend/src/hooks/` listed as immutable in SYSTEM_CONTEXT."
   ],
   "nonGoals": [
-    "Adding new pages, routes, or features unrelated to theming.",
-    "Changing copy/content on existing pages (only color/theme adjustments).",
-    "Backend changes (Motoko) or state migrations."
+    "Creating or modifying backend canister logic (Motoko).",
+    "Adding new routes or navigation items unrelated to the Home Page banner."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

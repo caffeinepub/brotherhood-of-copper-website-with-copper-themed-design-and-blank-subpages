@@ -7,18 +7,10 @@
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-update-the-global-tailwind-css-theme-tokens-to-use-a-darker-copper-palette-across-the-entire-app-all-routes-pages-by-adjusting-the-copper-related-css-variables-in-frontend-src-index-css-for-both-root-light-theme-and-dark-dark-theme-ensure-the-darker-copper-is-reflected-in-primary-accent-secondary-borders-rings-and-any-other-copper-tinted-tokens-so-that-components-using-bg-primary-text-primary-border-primary-gradients-and-muted-accent-backgrounds-all-shift-consistently-without-per-page-edits",
-      "title": "Update the global Tailwind/CSS theme tokens to use a darker copper palette across the entire app (all routes/pages), by adjusting the copper-related CSS variables in `frontend/src/index.css` for both `:root` (light theme) and `.dark` (dark theme). Ensure the darker copper is reflected in primary/accent/secondary, borders/rings, and any other copper-tinted tokens so that components using `bg-primary`, `text-primary`, `border-primary/*`, gradients, and muted/accent backgrounds all shift consistently without per-page edits.",
+      "id": "feature-add-the-uploaded-image-file-brotherhood-of-copper-banner-png-as-a-visible-banner-on-the-home-page-frontend-src-pages-homepage-tsx-placed-within-the-existing-hero-section-so-it-appears-above-the-hero-title-and-scales-responsively-across-mobile-and-desktop",
+      "title": "Add the uploaded image file `brotherhood of copper banner.png` as a visible banner on the Home Page (`frontend/src/pages/HomePage.tsx`), placed within the existing hero section so it appears above the hero title and scales responsively across mobile and desktop.",
       "reqIds": [
         "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-any-tailwind-theme-extensions-that-hardcode-the-old-copper-color-so-they-match-the-new-darker-copper-palette-e-g-the-shadow-copper-definition-in-frontend-tailwind-config-js-to-keep-shadows-embellishments-aligned-with-the-updated-theme",
-      "title": "Update any Tailwind theme extensions that hardcode the old copper color so they match the new darker copper palette (e.g., the `shadow-copper` definition in `frontend/tailwind.config.js`) to keep shadows/embellishments aligned with the updated theme.",
-      "reqIds": [
-        "REQ-2"
       ],
       "version": 1
     }
@@ -26,12 +18,20 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Update all pages to use a darker copper color theme",
+      "summary": "Add a banner to the Home Page",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Add the uploaded banner image to the frontend as a static asset (do not serve it via the backend) and reference it from the Home Page using a stable path under `frontend/public/assets/generated/`.",
+      "reqIds": [
+        "REQ-2"
+      ],
       "status": "pending"
     }
   ],
-  "projectName": "Update site-wide theme to a darker copper palette",
+  "projectName": "Add uploaded banner to Home Page hero section",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

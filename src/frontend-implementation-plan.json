@@ -1,36 +1,36 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update global theme tokens to a darker copper palette",
+  "title": "Add static hero banner image to Home Page",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Darken the global copper palette by updating CSS variable theme tokens in frontend/src/index.css for both light (:root) and dark (.dark) themes so all Tailwind color utilities shift consistently across the app.",
+      "summary": "Render the uploaded banner image within the existing Home Page hero section above the hero heading, with responsive sizing and no layout shift.",
       "acceptanceCriteria": [
-        "Across all pages (Home, Ranks, Divisions, Uniform & Armor Variants, History, Photo), copper accents (primary/accent/secondary) appear noticeably darker than before and remain consistent between pages.",
-        "Light theme and dark theme both preserve readable contrast for primary buttons/links and primary-foreground text (no low-contrast copper-on-copper).",
-        "No page-specific color overrides are required to achieve the darker copper update; the change is driven by the global theme variables in `frontend/src/index.css`."
+        "The Home Page hero section renders the uploaded banner image above the \"Brotherhood of Copper\" heading.",
+        "The banner is responsive (maintains aspect ratio, does not overflow horizontally, and looks acceptable on mobile and desktop).",
+        "The image includes appropriate accessibility attributes (e.g., meaningful alt text) and does not cause layout shift (reserve height via CSS/aspect styling)."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
+          "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Adjust the copper-related OKLCH CSS variables for :root and .dark (e.g., --primary/--primary-foreground, --secondary/--secondary-foreground, --accent/--accent-foreground, --border, --input, --ring, plus any muted/accent background tokens that create copper tint) to a darker copper palette while preserving contrast. This ensures shadcn-ui and Tailwind utilities (bg-primary, text-primary, border/ring, gradients, muted/accent backgrounds) update globally without per-page edits. Verify the component's usage instructions before implementing."
+          "description": "Insert an <img> (or picture) element for the banner within the existing hero section container, positioned above the hero icon/title. Reference the static asset at frontend/public/assets/generated/brotherhood of copper banner.png, add meaningful alt text, and apply responsive Tailwind classes (e.g., width constraints + aspect-ratio wrapper/utility + object-fit) to preserve aspect ratio, prevent horizontal overflow, and reserve height to avoid layout shift."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Align Tailwind theme extensions that hardcode copper values (e.g., shadow-copper) with the new darker copper palette to avoid mismatched copper tones.",
+      "summary": "Add the uploaded banner image as a public static frontend asset under frontend/public/assets/generated/ and reference it via a stable path from the Home Page.",
       "acceptanceCriteria": [
-        "Elements using `shadow-copper` (e.g., hero icons and featured cards) render with the updated darker copper tint, consistent with the new primary copper color.",
-        "No remaining hardcoded old copper values cause mismatched copper tones versus the updated CSS variable-based palette."
+        "`brotherhood of copper banner.png` is available at runtime as a static file under `frontend/public/assets/generated/` (or an equivalent public static asset path) and is referenced directly by the Home Page.",
+        "No backend (Motoko) changes are required to display the banner."
       ],
       "file_operations": [
         {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Update any hardcoded copper-related theme extensions (including the current boxShadow.copper OKLCH value) to match the new darker copper palette, and audit the Tailwind config for other literal copper values that should be derived from CSS variables or updated to the new palette. Verify the component's usage instructions before implementing."
+          "path": "frontend/public/assets/generated/brotherhood of copper banner.png",
+          "operation": "create",
+          "description": "Add/copy the uploaded file into the public static assets directory so it is served as a static asset at runtime from frontend/public/assets/generated/brotherhood of copper banner.png."
         }
       ]
     }

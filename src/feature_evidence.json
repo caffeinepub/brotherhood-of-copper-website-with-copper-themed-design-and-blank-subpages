@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-global-tailwind-css-theme-tokens-to-use-a-darker-copper-palette-across-the-entire-app-all-routes-pages-by-adjusting-the-copper-related-css-variables-in-frontend-src-index-css-for-both-root-light-theme-and-dark-dark-theme-ensure-the-darker-copper-is-reflected-in-primary-accent-secondary-borders-rings-and-any-other-copper-tinted-tokens-so-that-components-using-bg-primary-text-primary-border-primary-gradients-and-muted-accent-backgrounds-all-shift-consistently-without-per-page-edits",
-      "featureTitle": "Update the global Tailwind/CSS theme tokens to use a darker copper palette across the entire app (all routes/pages), by adjusting the copper-related CSS variables in `frontend/src/index.css` for both `:root` (light theme) and `.dark` (dark theme). Ensure the darker copper is reflected in primary/accent/secondary, borders/rings, and any other copper-tinted tokens so that components using `bg-primary`, `text-primary`, `border-primary/*`, gradients, and muted/accent backgrounds all shift consistently without per-page edits.",
+      "featureId": "feature-add-the-uploaded-image-file-brotherhood-of-copper-banner-png-as-a-visible-banner-on-the-home-page-frontend-src-pages-homepage-tsx-placed-within-the-existing-hero-section-so-it-appears-above-the-hero-title-and-scales-responsively-across-mobile-and-desktop",
+      "featureTitle": "Add the uploaded image file `brotherhood of copper banner.png` as a visible banner on the Home Page (`frontend/src/pages/HomePage.tsx`), placed within the existing hero section so it appears above the hero title and scales responsively across mobile and desktop.",
       "files": [
-        "frontend/src/index.css"
+        "frontend/src/pages/HomePage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -16,24 +16,6 @@
       ],
       "testIds": [
         "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-any-tailwind-theme-extensions-that-hardcode-the-old-copper-color-so-they-match-the-new-darker-copper-palette-e-g-the-shadow-copper-definition-in-frontend-tailwind-config-js-to-keep-shadows-embellishments-aligned-with-the-updated-theme",
-      "featureTitle": "Update any Tailwind theme extensions that hardcode the old copper color so they match the new darker copper palette (e.g., the `shadow-copper` definition in `frontend/tailwind.config.js`) to keep shadows/embellishments aligned with the updated theme.",
-      "files": [
-        "frontend/tailwind.config.js"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
       ],
       "confidence": "high"
     }

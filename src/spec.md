@@ -1,10 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Update the app’s global theme to use a noticeably darker copper palette across all pages, in both light and dark modes.
+**Goal:** Display the uploaded “brotherhood of copper banner.png” image as a responsive banner within the Home Page hero section.
 
 **Planned changes:**
-- Adjust copper-related CSS variables in `frontend/src/index.css` for both `:root` (light) and `.dark` (dark) so primary/accent/secondary, borders/rings, gradients, and muted/accent backgrounds shift consistently to a darker copper without per-page edits.
-- Update Tailwind theme extensions that hardcode old copper values (e.g., `shadow-copper` in `frontend/tailwind.config.js`) to match the new darker copper palette.
+- Add `brotherhood of copper banner.png` to the frontend static assets under `frontend/public/assets/generated/`.
+- Update `frontend/src/pages/HomePage.tsx` to render the banner image inside the existing hero section, positioned above the “Brotherhood of Copper” heading.
+- Ensure the banner is responsive (maintains aspect ratio, no horizontal overflow), includes meaningful alt text, and reserves space to avoid layout shift (e.g., via CSS/aspect styling).
 
-**User-visible outcome:** All routes/pages (Home, Ranks, Divisions, Uniform & Armor Variants, History, Photo) display consistent, darker copper accents with readable contrast in both light and dark themes.
+**User-visible outcome:** The Home Page hero shows the “Brotherhood of Copper” banner above the main heading on both mobile and desktop, scaling cleanly without layout jumps.
