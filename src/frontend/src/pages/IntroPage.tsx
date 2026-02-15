@@ -9,14 +9,12 @@ export default function IntroPage() {
       {/* Background Image */}
       <div 
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: 'url(/assets/brotherhood of copper banner-1.png)',
-        }}
-      >
-        {/* Dark overlay for better text contrast */}
-        <div className="absolute inset-0 bg-black/40" />
-      </div>
-
+        style={{ backgroundImage: 'url(/assets/boclogo.png)' }}
+      />
+      
+      {/* Dark Overlay for Readability */}
+      <div className="absolute inset-0 bg-black/50 backdrop-blur-[2px]" />
+      
       {/* Content */}
       <div className="relative z-10 text-center px-4 animate-fade-in">
         <Button 

@@ -1,44 +1,39 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T01:10:17.637Z",
-  "summary": "Diff adds a new Intro page at \"/\" with a CTA navigating to \"/home\", updates TanStack Router routes accordingly, and updates the main nav to link Home to \"/home\" while hiding nav/footer on the Intro route. However, evidence is insufficient that the banner image is actually bundled as a static asset and that all other internal links to \"/\" were updated to the new Home route. The diff also includes unrequested global styling/theme changes (per file summaries).",
+  "generatedAt": "2026-02-15T01:57:25.364Z",
+  "summary": "PosterPage was updated to render an <img> pointing to /assets/carry-2.png with responsive styling and a non-empty English alt attribute, but the diff does not show the required static asset file (carry-2.png) being added to the frontend.",
   "missing_requirements": [
     {
       "id": "REQ-1",
-      "requirement": "The uploaded image \"brotherhood of copper banner-1.png\" renders correctly in production as a static frontend asset (not fetched from the backend).",
-      "reason": "IntroPage references the image via an absolute URL (\"/assets/brotherhood of copper banner-1.png\"), but the diff summary shows no added/modified asset file or public/static asset placement, so production availability cannot be confirmed from the provided changes.",
+      "requirement": "Add the user-uploaded image file `carry-2.png` to the frontend static assets and render it on the `/posters` route (PosterPage).",
+      "reason": "PosterPage references `/assets/carry-2.png`, but no new static asset file is shown as added in the diff (ADDED FILES: none). Without the actual PNG in the static assets, the image may 404 on refresh and would not satisfy the static-asset requirement.",
       "evidence": [
-        "frontend/src/pages/IntroPage.tsx"
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "requirement": "All internal links that previously pointed to \"/\" for Home are updated to point to the new Home route where appropriate.",
-      "reason": "The nav logo/Home link is updated to \"/home\", but the diff does not show other components/pages being updated (e.g., CTAs or links elsewhere) and no evidence is provided that all prior \"/\" Home links were changed.",
-      "evidence": [
-        "frontend/src/components/SiteNav.tsx",
-        "frontend/src/App.tsx"
+        "File diff summary: ADDED FILES: none",
+        "frontend/src/pages/PosterPage.tsx (uses src=\"/assets/carry-2.png\")"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Global copper/bronze theme and Tailwind configuration changes (new color system, fonts, shadows, animations).",
-      "reason": "BuildRequest is limited to adding an Intro page and updating routing/navigation; it does not request a palette/theme overhaul or Tailwind/font changes.",
+      "description": "Updated/added project tracking entries in project_state.json (new_feature_requests AR-1/AR-2 marked pending).",
+      "reason": "Not requested by the BuildRequest; requirement focuses only on adding a static image asset and rendering it on /posters.",
       "evidence": [
-        "frontend-file-summaries.txt (frontend/src/index.css)",
-        "frontend-file-summaries.txt (frontend/tailwind.config.js)"
+        "project_state.json"
+      ]
+    },
+    {
+      "description": "Updated frontend-file-summaries.txt contents (project-wide summaries of many files).",
+      "reason": "Not requested by the BuildRequest; seems unrelated to implementing REQ-1.",
+      "evidence": [
+        "frontend-file-summaries.txt"
       ]
     }
   ],
-  "confidence": 0.62,
+  "confidence": 0.74,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/App.tsx",
-    "frontend/src/components/SiteLayout.tsx",
-    "frontend/src/components/SiteNav.tsx",
-    "frontend/src/pages/IntroPage.tsx",
+    "frontend/src/pages/PosterPage.tsx",
     "project_state.json"
   ]
 }

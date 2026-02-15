@@ -2,10 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-new-intro-page-that-uses-the-uploaded-image-brotherhood-of-copper-banner-1-png-as-the-primary-intro-visual-and-provides-a-clear-call-to-action-that-navigates-the-user-from-intro-to-the-home-page",
-      "featureTitle": "Create a new Intro page that uses the uploaded image \"brotherhood of copper banner-1.png\" as the primary intro visual and provides a clear call-to-action that navigates the user from Intro to the Home page.",
+      "featureId": "feature-add-the-user-uploaded-image-file-carry-2-png-to-the-frontend-static-assets-and-render-it-on-the-posters-route-posterpage-so-the-posters-page-is-no-longer-empty-and-displays-the-uploaded-poster-image",
+      "featureTitle": "Add the user-uploaded image file `carry-2.png` to the frontend static assets and render it on the `/posters` route (PosterPage) so the Posters page is no longer empty and displays the uploaded poster image.",
       "files": [
-        "frontend/src/pages/IntroPage.tsx"
+        "frontend/src/pages/PosterPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -16,43 +16,6 @@
       ],
       "testIds": [
         "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-routing-so-the-application-opens-on-the-intro-page-and-the-home-page-is-accessible-via-a-dedicated-route-ensuring-navigation-flows-intro-home-without-breaking-existing-routes-ranks-divisions-lore-history-photo-posters",
-      "featureTitle": "Update routing so the application opens on the Intro page and the Home page is accessible via a dedicated route, ensuring navigation flows Intro → Home without breaking existing routes (/ranks, /divisions, /lore, /history, /photo, /posters).",
-      "files": [
-        "frontend/src/App.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-adjust-the-site-navigation-behavior-to-account-for-the-new-intro-page-so-users-can-still-reach-home-easily-and-the-intro-page-is-not-mistakenly-labeled-as-home",
-      "featureTitle": "Adjust the site navigation behavior to account for the new Intro page so users can still reach Home easily and the Intro page is not mistakenly labeled as Home.",
-      "files": [
-        "frontend/src/components/SiteLayout.tsx",
-        "frontend/src/components/SiteNav.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-3"
       ],
       "confidence": "high"
     }

@@ -1,69 +1,26 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Intro landing page routing and navigation updates",
+  "title": "Render uploaded poster image on Posters page",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Add a new Intro page that prominently displays the provided banner image and includes a clear CTA to navigate to Home.",
+      "summary": "Add carry-2.png as a frontend static asset and render it responsively on the existing /posters (PosterPage) route with a non-empty English alt attribute.",
       "acceptanceCriteria": [
-        "A new React page component exists for the Intro page (e.g., IntroPage) and renders the uploaded image prominently (e.g., as a full-bleed background/hero image or centered banner).",
-        "Intro page includes at least one obvious control (button/link) labeled in English (e.g., \"Enter\", \"Continue\", or \"Go to Home\") that navigates to the Home page route.",
-        "The image renders correctly in production as a static frontend asset (not fetched from the backend)."
+        "Visiting `/posters` renders a page (not `null`) that displays the `carry-2.png` image.",
+        "The image is served as a frontend static asset (not fetched from the backend) and loads on refresh without errors.",
+        "The image is displayed responsively (fits within viewport width, maintains aspect ratio) and has a non-empty English `alt` attribute."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/IntroPage.tsx",
+          "path": "frontend/public/assets/carry-2.png",
           "operation": "create",
-          "description": "Create the Intro page component that uses the static banner image as the primary visual and includes a prominent CTA that links to the Home route. Use shadcn-ui (e.g., Button) for the CTA styling consistency; verify the component's usage instructions before implementing."
+          "description": "Add the uploaded poster image as a static frontend asset so it can be referenced by the Posters page and load reliably on refresh."
         },
         {
-          "path": "frontend/public/assets/brotherhood of copper banner-1.png",
-          "operation": "create",
-          "description": "Add the provided uploaded banner image as a static public asset so it is bundled/served by the frontend in production (no backend fetching)."
-        }
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "summary": "Update routing so the app opens on Intro at \"/\" and moves the existing Home page to a dedicated route without breaking existing routes.",
-      "acceptanceCriteria": [
-        "Visiting \"/\" displays the Intro page.",
-        "The Home page is reachable via a stable route (e.g., \"/home\") and renders the existing HomePage content.",
-        "All previously existing routes continue to work as before (/ranks, /divisions, /lore, /history, /photo, /posters).",
-        "All internal links that previously pointed to \"/\" for Home are updated to point to the new Home route where appropriate."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/pages/PosterPage.tsx",
           "operation": "modify",
-          "description": "Update TanStack Router route definitions so \"/\" renders the new Intro page and the existing HomePage is moved to a stable dedicated route (e.g., \"/home\"), while preserving all existing routes (/ranks, /divisions, /lore, /history, /photo, /posters)."
-        },
-        {
-          "path": "frontend/src/pages/HomePage.tsx",
-          "operation": "modify",
-          "description": "Review and update any internal references that assume Home is at \"/\" (if any) to use the new Home route (e.g., \"/home\")."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Adjust site navigation so Home points to the new Home route and Intro is not mislabeled as Home; keep active-link highlighting correct.",
-      "acceptanceCriteria": [
-        "Top navigation includes a \"Home\" link that routes to the Home page route (not the Intro route).",
-        "The Intro route is either not shown in the primary nav, or is clearly labeled as \"Intro\" if included.",
-        "The active-link highlighting works correctly for the Home route and other routes after the routing change."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/SiteNav.tsx",
-          "operation": "modify",
-          "description": "Update primary navigation links so \"Home\" routes to the new Home route (e.g., \"/home\"), ensure the Intro route is not mislabeled as Home (hide it from the main nav or label it explicitly if included), and keep active-link highlighting behavior correct after the route change. Use shadcn-ui Button as currently used; verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/components/SiteLayout.tsx",
-          "operation": "modify",
-          "description": "If needed to support the new Intro experience, adjust layout-level navigation behavior (e.g., optionally hide or simplify nav on the Intro route) while keeping the rest of the site navigation intact."
+          "description": "Replace the null placeholder with a Posters page UI that renders the static image at /assets/carry-2.png using responsive image styling (max width/auto height, maintain aspect ratio) and a non-empty English alt attribute. Optionally use shadcn-ui (e.g., Card) for consistent page framing—verify the component's usage instructions before implementing."
         }
       ]
     }
