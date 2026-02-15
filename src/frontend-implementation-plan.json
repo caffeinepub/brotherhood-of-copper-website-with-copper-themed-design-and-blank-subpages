@@ -1,37 +1,37 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Refactor and add in-page navigation to History page",
+  "title": "Update History page with Texhoma (2105) Copper Age narrative",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Refactor the eight History narrative sections into a single structured in-file data array and render the section cards by mapping over the data without changing any visible story text.",
+      "summary": "Replace the eight History sections (I–VIII) with the user-provided Texhoma/Colt Mercer (2105) narrative while preserving existing hero/TOC/section-card structure and hash/scroll behavior.",
       "acceptanceCriteria": [
-        "HistoryPage renders the same hero title/subtitle and the same eight sections (I–VIII) with the same visible wording as before.",
-        "The eight sections are defined in a single in-file data structure (e.g., an array of objects) and rendered via iteration (no repeated copy/paste Card blocks).",
-        "No console errors/warnings are introduced when visiting /history."
+        "The History page displays exactly eight sections labeled I–VIII with titles matching the user-provided headings: (I) \"Texhoma: The City Split by a Line (2105)\", (II) \"Colt Mercer — The One the Grid Recognizes\", (III) \"The Revelation Beneath Texhoma\", (IV) \"The First Followers — The Texhoma Seekers\", (V) \"The First Armor: T‑1 Copper Frame\", (VI) \"The First Enemy — The Iron Reclaimers\", (VII) \"The Founding of the Brotherhood of Copper (Late 2105)\", (VIII) \"The Final Moment of 2105 — The Copper Sky\".",
+        "Each section’s body text matches the user-provided narrative content, including the quoted line: “The Order will rise again when the world is ready to be rebuilt.” and the list of tenets under section VII.",
+        "The Table of Contents renders all eight updated section titles and clicking each entry smoothly scrolls to the correct section card on both desktop and mobile.",
+        "Direct navigation via URL hash (e.g., loading the page with `#section-v`) scrolls to the correct section as it does currently.",
+        "No changes are made to any read-only paths listed in `frontend.immutablePaths`."
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/HistoryPage.tsx",
           "operation": "modify",
-          "description": "Replace the repeated Section I–VIII Card JSX blocks with a single in-file data structure (array of section objects including numeral, title, stable anchor id, and content as React nodes) and render cards via iteration. Keep the hero title/subtitle and all visible story wording identical to the current page. Use existing shadcn-ui Card primitives (Card, CardHeader, CardTitle, CardContent) for layout and consistency; verify the component's usage instructions before implementing."
+          "description": "Update the `historySections` data to use the user-provided Texhoma/Colt Mercer (2105) narrative: set section titles to exactly match the provided I–VIII headings; replace each section body with the provided English narrative text (including the exact quoted line “The Order will rise again when the world is ready to be rebuilt.” and the section VII tenets list); keep the existing section ids (`section-i` ... `section-viii`) and preserve the current TOC mapping and hash/scroll behavior (TOC click smooth-scroll + URL hash update, plus initial-load/hashchange scrolling)."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Add a table of contents near the top of the History page that links to anchored IDs for each section (I–VIII) and works on desktop and mobile, including direct URL fragments.",
+      "summary": "Update the History page hero heading/subheading to align with the Texhoma-focused 2105 narrative while keeping the existing hero styling and layout.",
       "acceptanceCriteria": [
-        "A table of contents is visible on the History page and lists links for sections I through VIII using the section titles.",
-        "Clicking a table-of-contents link scrolls to the corresponding section card on the same page.",
-        "Each section card has a stable `id`/anchor target so direct URL fragments (e.g., `/history#section-iii`) scroll to the correct section."
+        "The hero title/subtitle are updated to reflect the Texhoma (2105) storyline (English text) and the hero section remains visually consistent with the existing design (icon, spacing, gradient background)."
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/HistoryPage.tsx",
           "operation": "modify",
-          "description": "Add an in-page Table of Contents block near the top of the main content that maps over the same sections data to render anchor links to each section’s stable id (e.g., section-i ... section-viii). Ensure each rendered section card is wrapped or decorated with the matching id and appropriate scroll offset handling for the sticky SiteNav (e.g., scroll margin utilities). Add lightweight hash-fragment handling on initial render so visiting /history#section-iii scrolls reliably on both desktop and mobile. Use existing shadcn-ui Card and Separator components to present the TOC and visually separate it from the narrative sections; verify the component's usage instructions before implementing."
+          "description": "Revise the hero section title and subtitle text to introduce the Texhoma (2105) storyline in English while keeping the current hero structure and styling intact (Zap icon, spacing, and gradient background unchanged)."
         }
       ]
     }

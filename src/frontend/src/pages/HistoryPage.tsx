@@ -14,22 +14,26 @@ const historySections: HistorySection[] = [
   {
     id: 'section-i',
     numeral: 'I',
-    title: 'The World Before the Spark',
+    title: 'Texhoma: The City Split by a Line (2105)',
     content: (
       <>
         <p>
-          By 2105, the Midwest is a graveyard of half-lit ruins and flickering power grids. The Great Plains storms have intensified, turning the region into a corridor of electrical chaos. Most settlements cling to scavenged tech, terrified of anything more advanced than a hand-crank generator.
+          Texhoma is a strange place even before the Copper Age begins.
         </p>
         <p>
-          But beneath the cracked earth of old Missouri, something stirs.
+          Half in Texas, half in Oklahoma, the pre‑war city was built on top of a sprawling subterranean research complex known only in scattered records as The Copper Order Facility. After the bombs, the surface city becomes a fractured frontier settlement — part trading post, part scrapyard, part storm shelter.
         </p>
         <p>
-          A dormant network of pre-war copper conduits — part of an abandoned energy experiment — begins to hum again. Locals call it the Copper Grid, a mythic relic of a world that once believed it could outsmart entropy.
+          But beneath it, the old world sleeps.
         </p>
         <p>
-          Most fear it.<br />
-          A few worship it.<br />
-          One will understand it.
+          The locals know the underground ruins exist, but they avoid them.<br />
+          The walls hum.<br />
+          The floors vibrate.<br />
+          Sometimes the lights flicker even though no power runs through the lines.
+        </p>
+        <p className="font-semibold text-foreground">
+          Texhoma is a city waiting for someone to wake it up.
         </p>
       </>
     ),
@@ -37,20 +41,26 @@ const historySections: HistorySection[] = [
   {
     id: 'section-ii',
     numeral: 'II',
-    title: 'Colt Mercer — The First to Hear the Grid',
+    title: 'Colt Mercer — The One the Grid Recognizes',
     content: (
       <>
         <p>
-          Colt Mercer is 19 in 2105, a scavenger born into a world that has forgotten its own circuitry. He's not a soldier, not a scholar — just a kid with a knack for machines and a stubborn refusal to accept that the world is meant to stay broken.
+          Colt grows up on the Texas side of Texhoma, raised by scavengers who treat technology like a dangerous animal: useful, but liable to bite. He's always been different — drawn to machines, able to "feel" when a circuit is about to fail, able to coax life out of dead terminals.
         </p>
         <p>
-          When a storm surge hits the ruins of the old St. Louis Research Annex, Colt is caught in the blast. Instead of killing him, the surge synchronizes with the dormant Copper Grid beneath the city.
+          In 2105, a supercharged dust storm slams into Texhoma.<br />
+          Lightning strikes the old Copper Order Facility.<br />
+          The underground grid reactivates for the first time in two centuries.
         </p>
         <p>
-          For the first time in two centuries, the Grid speaks — not in words, but in patterns, heat, and memory echoes.
+          Colt is caught in the surge.
         </p>
         <p>
-          Colt becomes the first human in generations to interpret its signals.
+          Instead of killing him, the energy synchronizes with him.<br />
+          The dormant network beneath Texhoma — the Copper Grid — imprints on him, recognizing him as a compatible operator.
+        </p>
+        <p>
+          He becomes the first person since the Great War who can interpret its signals.
         </p>
         <p className="font-semibold text-foreground">
           This is the moment the Copper Age begins.
@@ -61,26 +71,43 @@ const historySections: HistorySection[] = [
   {
     id: 'section-iii',
     numeral: 'III',
-    title: 'The Prophecy of the Copper War',
+    title: 'The Revelation Beneath Texhoma',
     content: (
       <>
         <p>
-          The Grid reveals fragments of a pre-war contingency plan:<br />
-          A conflict the old world feared but never saw — the Copper War, a theoretical civil war between factions who would one day fight over control of the Grid's energy.
+          Guided by visions of circuitry and echoing memories from the Grid, Colt descends into the Copper Order Facility. What he finds is not a bunker — it's a cathedral of technology:
+        </p>
+        <ul className="space-y-2 ml-6">
+          <li className="flex gap-2">
+            <span className="text-primary mt-1">•</span>
+            <span>Copper conduits running like veins through the walls</span>
+          </li>
+          <li className="flex gap-2">
+            <span className="text-primary mt-1">•</span>
+            <span>Massive generators fused with unknown alloys</span>
+          </li>
+          <li className="flex gap-2">
+            <span className="text-primary mt-1">•</span>
+            <span>A central archive filled with fragmented pre‑war data</span>
+          </li>
+          <li className="flex gap-2">
+            <span className="text-primary mt-1">•</span>
+            <span>A dormant armory containing experimental power armor frames</span>
+          </li>
+        </ul>
+        <p>
+          The Grid shows him flashes of a pre‑war contingency:<br />
+          The Copper War, a predicted conflict between future factions who would fight for control of the Grid's energy.
         </p>
         <p>
-          The prophecy is incomplete, corrupted, and dangerous.<br />
-          But one thing is clear:
+          The prophecy is incomplete, corrupted, but one line is clear:
         </p>
         <p className="italic text-foreground border-l-4 border-primary pl-4">
-          "The one who restores the Grid will forge the Order that decides the fate of the Wastes."
+          "The Order will rise again when the world is ready to be rebuilt."
         </p>
         <p>
-          Colt doesn't want to be a prophet.<br />
-          He just wants to keep people alive.
-        </p>
-        <p>
-          But the Wastes don't care what he wants.
+          Colt doesn't want to lead anything.<br />
+          But Texhoma needs someone who understands the storm beneath their feet.
         </p>
       </>
     ),
@@ -88,22 +115,29 @@ const historySections: HistorySection[] = [
   {
     id: 'section-iv',
     numeral: 'IV',
-    title: 'The First Followers',
+    title: 'The First Followers — The Texhoma Seekers',
     content: (
       <>
         <p>
-          Word spreads quickly: a young scavenger survived a copper storm and walked out glowing with static charge. Settlers, raiders, and technomancers all want a piece of him.
+          Word spreads fast in a small frontier town.
         </p>
         <p>
-          But a small group of wanderers — engineers, ex-mercs, and refugees — choose to follow him instead. They see in Colt not a messiah, but a leader who refuses to abandon hope.
+          A kid survived a copper storm.<br />
+          A kid walked into the forbidden ruins and came back alive.<br />
+          A kid can make the old machines obey.
         </p>
         <p>
-          They call themselves the Copper Seekers.
+          Some fear him.<br />
+          Some want to use him.<br />
+          A few choose to follow him.
         </p>
         <p>
-          They are not yet a Brotherhood.<br />
-          Not yet an Order.<br />
-          Just a handful of people who believe the world can be rebuilt.
+          These first followers — engineers, ranchers, ex‑militia, and refugees — become the Texhoma Seekers, the earliest form of the Brotherhood of Copper. They help Colt explore the ruins, decode the archives, and restore fragments of the Grid.
+        </p>
+        <p>
+          They are not soldiers yet.<br />
+          Not an Order.<br />
+          Just people who believe Texhoma can be more than a ruin.
         </p>
       </>
     ),
@@ -115,16 +149,22 @@ const historySections: HistorySection[] = [
     content: (
       <>
         <p>
-          In late 2105, Colt and the Seekers uncover a rusted pre-war power armor frame in a junkyard vault. It's incomplete, unstable, and fused with copper wiring from the Grid's awakening.
+          In a sealed chamber beneath the facility, Colt discovers a rusted experimental power armor frame fused with copper wiring. It's incomplete, unstable, and dangerous.
         </p>
         <p>
-          Colt rebuilds it by hand.
+          He rebuilds it anyway.
         </p>
         <p>
-          This becomes the T‑1 Power Armor, the first copper-forged suit — crude, patchwork, but symbolic. It marks the moment the Seekers become something more.
+          Using scavenged plating, reforged copper, and the Grid's guidance, Colt creates the T‑1 Power Armor — the first copper-forged suit. It's crude, asymmetrical, and heavy, but it works.
+        </p>
+        <p>
+          When Colt emerges from the underground wearing the T‑1, Texhoma sees something it hasn't seen in generations:
         </p>
         <p className="font-semibold text-foreground">
-          The Wastes take notice.
+          A protector.
+        </p>
+        <p>
+          This moment becomes the symbolic birth of the Brotherhood of Copper.
         </p>
       </>
     ),
@@ -132,20 +172,28 @@ const historySections: HistorySection[] = [
   {
     id: 'section-vi',
     numeral: 'VI',
-    title: 'The First Enemy',
+    title: 'The First Enemy — The Iron Reclaimers',
     content: (
       <>
         <p>
-          The reactivation of the Grid draws the attention of a rising warlord faction: The Iron Reclaimers, a brutal group who believe all technology must be seized and weaponized.
+          The reactivation of the Copper Grid sends a signal across the region.<br />
+          One faction hears it: The Iron Reclaimers, a brutal technocratic warband operating out of the Oklahoma wastes.
         </p>
         <p>
-          They see the Copper Grid as the key to domination.
+          They believe all advanced technology belongs to them.<br />
+          They believe the Copper Grid is a weapon.<br />
+          They believe Texhoma is sitting on their future.
         </p>
         <p>
-          They see Colt as a threat.
+          Their scouts arrive in late 2105.<br />
+          Their raids begin soon after.
         </p>
         <p>
-          The first skirmishes begin in winter 2105 — small, desperate, and bloody. These battles will later be remembered as the opening sparks of the Copper War.
+          The Seekers fight back, but they're outnumbered and outgunned.<br />
+          Texhoma becomes a battleground.
+        </p>
+        <p className="font-semibold text-foreground">
+          These early clashes will later be remembered as the opening sparks of the Copper War.
         </p>
       </>
     ),
@@ -153,42 +201,48 @@ const historySections: HistorySection[] = [
   {
     id: 'section-vii',
     numeral: 'VII',
-    title: 'The Birth of the Brotherhood (Late 2105)',
+    title: 'The Founding of the Brotherhood of Copper (Late 2105)',
     content: (
       <>
         <p>
-          After the Reclaimers burn a settlement that sheltered the Seekers, Colt realizes something:
+          After the Reclaimers burn a Texhoma outpost and kill several Seekers, Colt realizes something:
         </p>
         <p>
-          Hope alone won't save anyone.<br />
-          The Wastes need structure.<br />
-          Discipline.<br />
-          A code.
+          Knowledge alone won't save Texhoma.<br />
+          The Grid won't protect anyone unless someone chooses to wield it.
         </p>
         <p>
-          And so, in the ruins of an old electrical substation, Colt drafts the first tenets of what will become the Brotherhood of Copper:
+          So Colt writes the first tenets of the Brotherhood of Copper, carved into a copper plate salvaged from the facility:
         </p>
         <ul className="space-y-2 ml-6">
           <li className="flex gap-2">
             <span className="text-primary mt-1">•</span>
-            <span className="font-semibold text-foreground">Preserve the Grid.</span>
+            <span className="font-semibold text-foreground">Protect Texhoma.</span>
           </li>
           <li className="flex gap-2">
             <span className="text-primary mt-1">•</span>
-            <span className="font-semibold text-foreground">Protect the innocent.</span>
+            <span className="font-semibold text-foreground">Preserve the Copper Grid.</span>
           </li>
           <li className="flex gap-2">
             <span className="text-primary mt-1">•</span>
-            <span className="font-semibold text-foreground">Rebuild the world, one circuit at a time.</span>
+            <span className="font-semibold text-foreground">Rebuild the world through craft and discipline.</span>
           </li>
           <li className="flex gap-2">
             <span className="text-primary mt-1">•</span>
             <span className="font-semibold text-foreground">Knowledge is a current — it must flow.</span>
           </li>
+          <li className="flex gap-2">
+            <span className="text-primary mt-1">•</span>
+            <span className="font-semibold text-foreground">Strength is a circuit — every link matters.</span>
+          </li>
         </ul>
         <p>
           The Seekers swear their oaths.<br />
-          The Copper Age officially begins.
+          The Copper Order Facility becomes their headquarters.<br />
+          Texhoma becomes their fortress-city.
+        </p>
+        <p className="font-semibold text-foreground">
+          The Brotherhood of Copper is born.
         </p>
       </>
     ),
@@ -196,23 +250,24 @@ const historySections: HistorySection[] = [
   {
     id: 'section-viii',
     numeral: 'VIII',
-    title: 'The Final Moment of 2105',
+    title: 'The Final Moment of 2105 — The Copper Sky',
     content: (
       <>
         <p>
-          The year ends with a storm unlike any before it — a copper-charged supercell that lights the sky for hours.
+          The year ends with a storm unlike any in living memory.<br />
+          The sky over Texhoma glows copper for hours, lightning dancing in spirals that mirror the Grid's circuitry.
         </p>
         <p>
-          Colt stands in the doorway of the substation, wearing the T‑1 armor, watching the sky pulse with the same energy that changed his life.
+          Colt stands atop the ruined Texhoma water tower, wearing the T‑1 armor, watching the storm pulse in the same rhythm as the Grid beneath the city.
         </p>
         <p>
           He knows the prophecy is real.<br />
-          He knows the war is coming.<br />
-          And he knows the Brotherhood of Copper must be ready.
+          He knows the Copper War is coming.<br />
+          And he knows Texhoma will be the center of it.
         </p>
         <p className="font-semibold text-foreground">
           The world is waking up.<br />
-          And it's hungry.
+          And it's looking to Texhoma.
         </p>
       </>
     ),
@@ -262,10 +317,10 @@ export default function HistoryPage() {
               <Zap className="h-12 w-12 text-primary" />
             </div>
             <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-              The Dawn of Copper (2105)
+              The Birth of the Brotherhood
             </h1>
             <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Year Zero of the Copper Age
+              Texhoma, 2105 — Where the Copper Age Began
             </p>
           </div>
         </div>

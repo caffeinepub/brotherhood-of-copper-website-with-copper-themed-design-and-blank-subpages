@@ -1,53 +1,53 @@
 {
   "kind": "build_request",
-  "title": "Edit and improve the History page",
+  "title": "Update History page with Texhoma (2105) Copper Age narrative",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update `frontend/src/pages/HistoryPage.tsx` to make the History page easier to navigate and maintain by refactoring the eight narrative sections (I–VIII) into a single structured data array and rendering the cards by mapping over that data, without changing the visible story text.",
+      "text": "Update `frontend/src/pages/HistoryPage.tsx` to replace the existing eight History sections (I–VIII) with the user-provided Texhoma/Colt Mercer (2105) narrative, keeping the same overall page structure (hero, table of contents, and section cards) and using English for all user-facing text.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4"
         ],
         "quotes": [
-          "edit history page"
+          "update history page with following information   I. Texhoma: The City Split by a Line (2105) ... VIII. The Final Moment of 2105 — The Copper Sky ..."
         ]
       },
       "acceptanceCriteria": [
-        "HistoryPage renders the same hero title/subtitle and the same eight sections (I–VIII) with the same visible wording as before.",
-        "The eight sections are defined in a single in-file data structure (e.g., an array of objects) and rendered via iteration (no repeated copy/paste Card blocks).",
-        "No console errors/warnings are introduced when visiting /history."
+        "The History page displays exactly eight sections labeled I–VIII with titles matching the user-provided headings: (I) \"Texhoma: The City Split by a Line (2105)\", (II) \"Colt Mercer — The One the Grid Recognizes\", (III) \"The Revelation Beneath Texhoma\", (IV) \"The First Followers — The Texhoma Seekers\", (V) \"The First Armor: T‑1 Copper Frame\", (VI) \"The First Enemy — The Iron Reclaimers\", (VII) \"The Founding of the Brotherhood of Copper (Late 2105)\", (VIII) \"The Final Moment of 2105 — The Copper Sky\".",
+        "Each section’s body text matches the user-provided narrative content, including the quoted line: “The Order will rise again when the world is ready to be rebuilt.” and the list of tenets under section VII.",
+        "The Table of Contents renders all eight updated section titles and clicking each entry smoothly scrolls to the correct section card on both desktop and mobile.",
+        "Direct navigation via URL hash (e.g., loading the page with `#section-v`) scrolls to the correct section as it does currently.",
+        "No changes are made to any read-only paths listed in `frontend.immutablePaths`."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Add in-page navigation to `frontend/src/pages/HistoryPage.tsx` by including a table of contents near the top of the main content that links to each section (I–VIII) using anchored IDs, and ensure the anchor links work on both desktop and mobile.",
+      "text": "Update the History page hero heading/subheading in `frontend/src/pages/HistoryPage.tsx` so the top-of-page introduction aligns with the new Texhoma-focused 2105 narrative (while remaining consistent with the current layout and styling).",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1"
+          "msg-4"
         ],
         "quotes": [
-          "edit history page"
+          "I. Texhoma: The City Split by a Line (2105)"
         ]
       },
       "acceptanceCriteria": [
-        "A table of contents is visible on the History page and lists links for sections I through VIII using the section titles.",
-        "Clicking a table-of-contents link scrolls to the corresponding section card on the same page.",
-        "Each section card has a stable `id`/anchor target so direct URL fragments (e.g., `/history#section-iii`) scroll to the correct section."
+        "The hero title/subtitle are updated to reflect the Texhoma (2105) storyline (English text) and the hero section remains visually consistent with the existing design (icon, spacing, gradient background)."
       ]
     }
   ],
   "constraints": [
-    "Do not edit any files under `frontend/src/components/ui` (compose existing UI components instead).",
-    "Do not modify Internet Identity hooks in immutable paths (`frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`).",
-    "Keep the backend as-is; no backend changes are required for this History page edit."
+    "Frontend immutable paths must not be edited: `frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`, `frontend/src/components/ui/*`.",
+    "Keep the existing in-page navigation behavior (TOC anchor click + hashchange scrolling) intact while updating content."
   ],
   "nonGoals": [
-    "Adding admin/authenticated editing of History content with persistence.",
-    "Changing the site navigation structure or routes beyond improving the /history page content presentation."
+    "No backend/canister changes (Motoko) are required for this content update.",
+    "No new routes or pages are required.",
+    "No authentication or data persistence changes."
   ],
   "imageRequirements": {
     "required": [],

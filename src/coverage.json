@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T23:54:21.365Z",
+  "generatedAt": "2026-02-14T23:59:29.080Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,7 +12,7 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Update `frontend/src/pages/HistoryPage.tsx` to make the History page easier to navigate and maintain by refactoring the eight narrative sections (I–VIII) into a single structured data array and rendering the cards by mapping over that data, without changing the visible story text.",
+        "summary": "Update `frontend/src/pages/HistoryPage.tsx` to replace the existing eight History sections (I–VIII) with the user-provided Texhoma/Colt Mercer (2105) narrative, keeping the same overall page structure (hero, table of contents, and section cards) and using English for all user-facing text.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/pages/HistoryPage.tsx"
@@ -23,7 +23,7 @@
       },
       {
         "id": "REQ-2",
-        "summary": "Add in-page navigation to `frontend/src/pages/HistoryPage.tsx` by including a table of contents near the top of the main content that links to each section (I–VIII) using anchored IDs, and ensure the anchor links work on both desktop and mobile.",
+        "summary": "Update the History page hero heading/subheading in `frontend/src/pages/HistoryPage.tsx` so the top-of-page introduction aligns with the new Texhoma-focused 2105 narrative (while remaining consistent with the current layout and styling).",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/pages/HistoryPage.tsx"

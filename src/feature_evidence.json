@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-frontend-src-pages-historypage-tsx-to-make-the-history-page-easier-to-navigate-and-maintain-by-refactoring-the-eight-narrative-sections-i-viii-into-a-single-structured-data-array-and-rendering-the-cards-by-mapping-over-that-data-without-changing-the-visible-story-text",
-      "featureTitle": "Update `frontend/src/pages/HistoryPage.tsx` to make the History page easier to navigate and maintain by refactoring the eight narrative sections (I–VIII) into a single structured data array and rendering the cards by mapping over that data, without changing the visible story text.",
+      "featureId": "feature-update-frontend-src-pages-historypage-tsx-to-replace-the-existing-eight-history-sections-i-viii-with-the-user-provided-texhoma-colt-mercer-2105-narrative-keeping-the-same-overall-page-structure-hero-table-of-contents-and-section-cards-and-using-english-for-all-user-facing-text",
+      "featureTitle": "Update `frontend/src/pages/HistoryPage.tsx` to replace the existing eight History sections (I–VIII) with the user-provided Texhoma/Colt Mercer (2105) narrative, keeping the same overall page structure (hero, table of contents, and section cards) and using English for all user-facing text.",
       "files": [
         "frontend/src/pages/HistoryPage.tsx"
       ],
@@ -20,8 +20,8 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-in-page-navigation-to-frontend-src-pages-historypage-tsx-by-including-a-table-of-contents-near-the-top-of-the-main-content-that-links-to-each-section-i-viii-using-anchored-ids-and-ensure-the-anchor-links-work-on-both-desktop-and-mobile",
-      "featureTitle": "Add in-page navigation to `frontend/src/pages/HistoryPage.tsx` by including a table of contents near the top of the main content that links to each section (I–VIII) using anchored IDs, and ensure the anchor links work on both desktop and mobile.",
+      "featureId": "feature-update-the-history-page-hero-heading-subheading-in-frontend-src-pages-historypage-tsx-so-the-top-of-page-introduction-aligns-with-the-new-texhoma-focused-2105-narrative-while-remaining-consistent-with-the-current-layout-and-styling",
+      "featureTitle": "Update the History page hero heading/subheading in `frontend/src/pages/HistoryPage.tsx` so the top-of-page introduction aligns with the new Texhoma-focused 2105 narrative (while remaining consistent with the current layout and styling).",
       "files": [
         "frontend/src/pages/HistoryPage.tsx"
       ],

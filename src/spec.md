@@ -1,10 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Improve the /history page’s maintainability and navigation without changing any visible story text.
+**Goal:** Update the History page to present the Texhoma (2105) / Colt Mercer “Copper Age” narrative while preserving the existing layout and in-page navigation behavior.
 
 **Planned changes:**
-- Refactor the eight History narrative sections (I–VIII) in `frontend/src/pages/HistoryPage.tsx` into a single in-file structured data array and render the section cards by mapping over the data.
-- Add an in-page table of contents near the top of the History page that links to anchored IDs for each section (I–VIII), supporting direct URL fragments (e.g., `/history#section-iii`) and working on desktop and mobile.
+- Replace the existing eight History sections (I–VIII) on `frontend/src/pages/HistoryPage.tsx` with the provided Texhoma/Colt Mercer (2105) content, keeping the same hero, table of contents, and section card structure.
+- Update the section titles to exactly match the provided headings for sections I–VIII, and update each section body to match the provided narrative text (including the quoted line and the tenets list under section VII).
+- Update the hero heading/subheading copy to align with the new Texhoma-focused 2105 storyline, without changing the existing visual styling.
+- Keep the current Table of Contents anchor scrolling and URL-hash direct navigation behavior intact across desktop and mobile.
 
-**User-visible outcome:** The History page shows the same hero and the same eight sections with identical wording, plus a table of contents that users can tap/click to jump to any section.
+**User-visible outcome:** The History page shows the Texhoma (2105) storyline across eight updated sections with a matching table of contents; users can click TOC entries or use URL hashes (e.g., `#section-v`) to navigate smoothly to the correct section.

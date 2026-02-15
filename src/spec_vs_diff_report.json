@@ -1,21 +1,29 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T23:54:21.362Z",
-  "summary": "HistoryPage.tsx shows a new in-file structured data array with section ids/numerals/titles/content, but the truncated diff does not provide enough evidence to confirm that the page now renders all eight sections via iteration, preserves the exact prior story wording, or includes a working table of contents with anchor navigation. Two additional files were modified that were not requested by the BuildRequest.",
+  "generatedAt": "2026-02-14T23:59:29.078Z",
+  "summary": "HistoryPage.tsx was modified to include at least the first three updated Texhoma/Colt Mercer (2105) sections with new titles and narrative content, but the diff is truncated and does not provide enough evidence that all REQ-1/REQ-2 acceptance criteria (all eight sections I–VIII, exact required quote, tenets list in section VII, TOC + hash navigation behavior, and hero text updates) were fully implemented. Two additional non-requested files (frontend-file-summaries.txt and project_state.json) were also modified.",
   "missing_requirements": [
     {
       "id": "REQ-1",
-      "requirement": "Refactor all eight narrative sections (I–VIII) into a single structured data array and render the cards by mapping over that data, without changing the visible story text.",
-      "reason": "The diff shows a structured data array and the first few sections, but due to truncation it does not show all eight sections (I–VIII), the render/mapping logic (iteration over the array), or evidence that the visible wording is unchanged vs. the previous version.",
+      "requirement": "History page displays exactly eight sections labeled I–VIII with titles matching the provided headings, and each section body matches the user-provided narrative (including the quoted line and the tenets list under section VII).",
+      "reason": "The diff for HistoryPage.tsx is truncated and only shows sections I–III; there is no visible evidence of sections IV–VIII, the exact required quoted line, or the section VII tenets list.",
+      "evidence": [
+        "frontend/src/pages/HistoryPage.tsx (truncated)"
+      ]
+    },
+    {
+      "id": "REQ-1",
+      "requirement": "Table of Contents renders all eight updated section titles and clicking each entry smoothly scrolls to the correct section card; direct navigation via URL hash scrolls correctly as currently.",
+      "reason": "The truncated diff does not show the Table of Contents rendering, anchor click handlers, hashchange handling, or smooth scrolling logic, so maintaining/updating in-page navigation cannot be verified.",
       "evidence": [
         "frontend/src/pages/HistoryPage.tsx (truncated)"
       ]
     },
     {
       "id": "REQ-2",
-      "requirement": "Add a visible table of contents near the top linking to each section (I–VIII) via stable anchor IDs, supporting direct URL fragments (e.g., /history#section-iii).",
-      "reason": "The provided HistoryPage.tsx excerpt shows section ids (e.g., section-i/ii/iii/iv) but does not show any table-of-contents UI, anchor link elements, or hash/scroll handling; truncation prevents verification that TOC exists and works for all eight sections.",
+      "requirement": "Update the History page hero heading/subheading to align with the Texhoma-focused 2105 narrative while keeping the existing layout/styling.",
+      "reason": "The truncated diff only shows the historySections array content (sections I–III) and does not include the hero heading/subheading portion of the page.",
       "evidence": [
         "frontend/src/pages/HistoryPage.tsx (truncated)"
       ]
@@ -23,21 +31,21 @@
   ],
   "hallucinated_features": [
     {
-      "description": "Modified project metadata/state tracking file (project_state.json).",
-      "reason": "BuildRequest only asked for History page refactor and in-page navigation; it did not request updating project state tracking files.",
-      "evidence": [
-        "project_state.json"
-      ]
-    },
-    {
-      "description": "Modified a generated/summary file listing frontend file summaries (frontend-file-summaries.txt).",
-      "reason": "BuildRequest did not request changes to documentation/summary artifacts; only HistoryPage behavior/content refactor and TOC were requested.",
+      "description": "Updated/maintained a repository-wide frontend file summary document.",
+      "reason": "The BuildRequest only asked for content updates in HistoryPage.tsx and explicitly focused on keeping navigation behavior intact; it did not request editing or adding meta documentation files.",
       "evidence": [
         "frontend-file-summaries.txt"
       ]
+    },
+    {
+      "description": "Updated project state tracking JSON (new_feature_requests/status/summary metadata).",
+      "reason": "The BuildRequest did not request modifying any project tracking/state files; it only specified frontend content changes to HistoryPage.tsx.",
+      "evidence": [
+        "project_state.json"
+      ]
     }
   ],
-  "confidence": 0.54,
+  "confidence": 0.62,
   "changed_files": [
     "frontend-file-summaries.txt",
     "frontend/src/pages/HistoryPage.tsx",
