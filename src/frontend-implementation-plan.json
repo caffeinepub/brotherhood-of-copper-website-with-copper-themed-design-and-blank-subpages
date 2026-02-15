@@ -1,85 +1,59 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Fix Propaganda uploaded poster preview and wire poster React Query hooks",
+  "title": "Photos page: add T-0 Junkyard-built Power Armor card and authenticated image uploads",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Add an authenticated poster upload UI on Propaganda that previews the selected image immediately and refreshes the latest canister image after upload.",
-      "acceptanceCriteria": [
-        "When a signed-in user selects an image file and uploads it, the UI shows a correct preview of the selected image immediately (no black rectangle).",
-        "After the upload completes, the page refreshes/reloads the latest uploaded image from canister state and displays it.",
-        "If the user is not authenticated, the upload UI is not shown and the page remains readable (no crashes).",
-        "If an upload fails (e.g., unauthorized), the UI shows a clear error message in English and does not render a broken/black preview."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/PropagandaPage.tsx",
-          "operation": "modify",
-          "description": "Implement an authenticated upload section gated by Internet Identity (hide upload UI when unauthenticated), show instant local preview using an object URL from the selected file (avoid any blank/black state), upload using the existing backend actor method uploadPoster(ExternalBlob), and on success trigger a refetch so the displayed poster swaps to the newest canister-backed image. Display clear English error text on failure and keep the last valid preview/image rendered. Use the blob-storage ExternalBlob capability (fromBytes/withUploadProgress/getDirectURL as appropriate); verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/hooks/usePosterQueries.ts",
-          "operation": "create",
-          "description": "Create dedicated TanStack React Query hooks for poster operations used by the Propaganda UI: a posters listing query (enabled only when authenticated) and an upload mutation that accepts a File, converts it to a blob-storage ExternalBlob, and invalidates the posters query on success. Use the blob-storage ExternalBlob capability for upload and URL derivation; verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "summary": "Update Propaganda page to show the newest user-uploaded poster when available, otherwise fall back to the existing static carry-3.png asset.",
-      "acceptanceCriteria": [
-        "If the backend returns at least one poster for the current user, the Propaganda page displays the newest one instead of the static carry-3.png.",
-        "If the backend returns zero posters, the Propaganda page continues to display /assets/generated/carry-3.png.",
-        "The image element uses a valid URL source (e.g., object URL or data URL) derived from the uploaded file and/or retrieved blob so it renders correctly in modern browsers."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/pages/PropagandaPage.tsx",
-          "operation": "modify",
-          "description": "Fetch posters via the new posters query hook; if authenticated and posters exist, select the newest item (last element) and render it using a browser-valid URL (prefer blob-storage ExternalBlob.getDirectURL(), with safe fallback). If no posters (or not authenticated), keep rendering the existing static asset at frontend/public/assets/generated/carry-3.png. Use blob-storage ExternalBlob URL capability; verify the component's usage instructions before implementing."
-        }
-      ]
-    },
-    {
       "id": "REQ-3",
-      "summary": "Add/restore React Query hooks (list + upload) for posters wired to backend actor methods getPosters() and uploadPoster(blob), and use them from Propaganda.",
+      "summary": "Add a new copper-themed Card on /photo for “T-0 Junkyard-built Power Armor” that shows the provided image and a real English description, matching the existing T-10 layout styling.",
       "acceptanceCriteria": [
-        "There are dedicated React Query hooks (query for listing posters, mutation for uploading) used by the Propaganda upload/display UI.",
-        "Successful upload invalidates/refetches the posters query so the UI updates without a manual refresh.",
-        "No changes are made to any files under frontend/src/components/ui or other immutablePaths listed in SYSTEM_CONTEXT."
+        "Navigating to /photo shows a clearly labeled “T-0 Junkyard-built Power Armor” section/card.",
+        "The image \"junkyard power armor t-2.png\" is displayed in that section and renders correctly in production build.",
+        "The section includes an English description of the T-0 Junkyard-built Power Armor (not placeholder text) with readable typography consistent with the page."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/usePosterQueries.ts",
+          "path": "frontend/public/assets/junkyard power armor t-2.png",
           "operation": "create",
-          "description": "Implement usePostersQuery (calling actor.getPosters()) and useUploadPosterMutation (calling actor.uploadPoster(ExternalBlob)) using TanStack React Query, and ensure mutation success invalidates/refetches the posters query. Ensure hooks depend on useActor() and are disabled until actor is available; additionally gate listing/upload behavior based on authentication state from Internet Identity. Use blob-storage ExternalBlob for uploads and poster URL handling; verify the component's usage instructions before implementing."
+          "description": "Add the user-provided image asset so it can be referenced on the Photos page and reliably served in production builds."
         },
         {
-          "path": "frontend/src/pages/PropagandaPage.tsx",
+          "path": "frontend/src/pages/PhotoPage.tsx",
           "operation": "modify",
-          "description": "Replace any ad-hoc poster fetch/upload logic with the dedicated poster React Query hooks; ensure the mutation invalidation drives automatic UI refresh (no manual reload). Keep all changes outside immutable paths (do not modify anything under frontend/src/components/ui, and do not modify the immutable hooks listed)."
+          "description": "Add a new copper-themed Card below/near the existing T-10 section for “T-0 Junkyard-built Power Armor”, rendering the static image from frontend/public/assets/junkyard power armor t-2.png and a polished English description with typography consistent with the existing Card layout. Verify the component's usage instructions before implementing (shadcn-ui Card)."
         }
       ]
     },
     {
       "id": "REQ-4",
-      "summary": "Add frontend-side robust poster rendering that can construct a correct browser image URL even if stored blob data lacks sufficient rendering metadata.",
+      "summary": "On /photo, add an authenticated image upload UI with local preview and upload-to-backend flow, then display uploaded images in a gallery without refresh and with clear auth/error states.",
       "acceptanceCriteria": [
-        "Frontend can always render the uploaded poster image using an appropriate MIME type (e.g., image/png, image/jpeg) and correct byte payload.",
-        "The Propaganda page no longer displays a black/blank space for newly uploaded posters.",
-        "Backend continues to enforce existing permission checks (only users can upload/access posters)."
+        "When not authenticated, the Photos page does not attempt to fetch private blobs; it shows a clear sign-in requirement/state instead of failing silently.",
+        "When authenticated, the user can choose an image file and see a local preview before uploading.",
+        "Clicking Upload successfully calls the backend upload API and, on success, the uploaded image appears in the Photos page list/gallery without requiring a hard refresh.",
+        "Upload errors (e.g., unauthorized, actor not available) are surfaced to the user in a readable way.",
+        "The Photos page continues to show the existing T-10 content and styling; new upload UI and gallery do not break the layout on mobile and desktop."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/utils/posterImage.ts",
+          "path": "frontend/src/components/PhotoUploadGallery.tsx",
           "operation": "create",
-          "description": "Add a small utility to reliably produce a renderable image URL from a blob-storage ExternalBlob: prefer ExternalBlob.getDirectURL(); if that fails or is unavailable for immediate rendering, fetch bytes via ExternalBlob.getBytes() and create an object URL using a best-effort MIME type (use the File.type for the immediate post-upload preview; otherwise default to a safe image MIME like image/png). Include safe cleanup guidance (revoking object URLs) for consumers. Use blob-storage ExternalBlob byte/URL capabilities; verify the component's usage instructions before implementing."
+          "description": "Create a Photos-page-only component that: (1) uses the authorization component capability (useInternetIdentity) to detect authentication and provide a sign-in/sign-out action, (2) uses the blob-storage component capability (ExternalBlob + getDirectURL/getBytes) to render uploaded images, and (3) provides file selection, local preview, upload progress/state, and readable error messages. Verify the component's usage instructions before implementing (authorization, blob-storage, shadcn-ui Button/Input/Card)."
         },
         {
-          "path": "frontend/src/pages/PropagandaPage.tsx",
+          "path": "frontend/src/pages/PhotoPage.tsx",
           "operation": "modify",
-          "description": "Use the new posterImage utility to avoid broken/black rendering for both (a) immediate post-selection preview and (b) rendering newly fetched posters. Add img onError handling to swap from direct URL to bytes-backed object URL if needed, ensuring the UI never shows a black/blank rectangle after upload. Use blob-storage ExternalBlob conversion capabilities; verify the component's usage instructions before implementing."
+          "description": "Wire the upload/gallery UI into the existing /photo page without adding new routes: render an authenticated-only upload panel and a gallery section; render a clear sign-in required state when unauthenticated; ensure existing T-10 and new T-0 cards remain intact and the layout stays responsive. Verify the component's usage instructions before implementing (authorization for auth state; blob-storage for displaying uploaded images; shadcn-ui components for consistent styling)."
+        },
+        {
+          "path": "frontend/src/hooks/usePosterQueries.ts",
+          "operation": "modify",
+          "description": "Adjust poster query/mutation behavior as needed for the Photos page upload flow: ensure queries are disabled when unauthenticated (no private blob fetch attempts), propagate upload errors cleanly, and keep query invalidation so newly uploaded images appear without a hard refresh. Verify the component's usage instructions before implementing (authorization for auth gating; blob-storage ExternalBlob upload patterns)."
+        },
+        {
+          "path": "frontend/src/utils/posterImage.ts",
+          "operation": "modify",
+          "description": "Extend image URL utilities as needed for the Photos gallery: support local preview URL lifecycle cleanup and robustly derive display URLs for ExternalBlob instances (prefer direct URL, fallback to bytes) with predictable error propagation for UI surfacing. Verify the component's usage instructions before implementing (blob-storage ExternalBlob getDirectURL/getBytes)."
         }
       ]
     }

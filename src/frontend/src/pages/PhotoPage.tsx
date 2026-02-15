@@ -1,5 +1,6 @@
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Camera } from 'lucide-react';
+import PhotoUploadGallery from '@/components/PhotoUploadGallery';
 
 export default function PhotoPage() {
   return (
@@ -80,6 +81,47 @@ export default function PhotoPage() {
                 </div>
               </CardContent>
             </Card>
+
+            {/* T-0 Junkyard-built Power Armor */}
+            <Card className="border-2 border-primary/20 shadow-copper">
+              <CardHeader>
+                <CardTitle className="font-display text-2xl">
+                  T-0 Junkyard-built Power Armor
+                </CardTitle>
+              </CardHeader>
+              <CardContent className="space-y-6">
+                {/* Main Armor Image */}
+                <div className="flex justify-center">
+                  <img
+                    src="/assets/junkyard power armor t-2.png"
+                    alt="T-0 Junkyard-built Power Armor"
+                    className="max-w-full h-auto rounded-lg border-2 border-primary/20 shadow-copper"
+                  />
+                </div>
+
+                {/* Description */}
+                <div className="prose prose-copper max-w-none">
+                  <p className="text-base text-foreground leading-relaxed">
+                    The T-0 represents the Brotherhood's earliest attempts at power armor construction, 
+                    cobbled together from salvaged pre-war materials and scavenged components found in 
+                    the junkyards of the Texhoma wastes. Unlike the refined T-10 series, the T-0 was 
+                    born of necessity rather than design—a testament to the ingenuity and resourcefulness 
+                    of the first Copper-Bearers.
+                  </p>
+                  <p className="text-base text-foreground leading-relaxed mt-4">
+                    Each T-0 suit is unique, bearing the weathered patina of rust and verdigris that 
+                    tells the story of its construction. The armor's distinctive copper plating, salvaged 
+                    from old electrical infrastructure and industrial machinery, provides both protection 
+                    and a connection to the Copper Grid that would become central to Brotherhood technology. 
+                    While crude by modern standards, the T-0 proved that even in the harshest conditions, 
+                    the Brotherhood could forge strength from scrap and determination from desperation.
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* Upload and Gallery Section */}
+            <PhotoUploadGallery />
           </div>
         </div>
       </section>

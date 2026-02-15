@@ -1,5 +1,3 @@
-import Array "mo:core/Array";
-import Iter "mo:core/Iter";
 import List "mo:core/List";
 import Map "mo:core/Map";
 import Principal "mo:core/Principal";

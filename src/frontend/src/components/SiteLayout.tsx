@@ -3,9 +3,18 @@ import SiteNav from './SiteNav';
 
 export default function SiteLayout() {
   const currentYear = new Date().getFullYear();
-  const appIdentifier = typeof window !== 'undefined' 
-    ? encodeURIComponent(window.location.hostname) 
-    : 'brotherhood-of-copper';
+  
+  // Safely compute app identifier with fallback
+  const appIdentifier = (() => {
+    if (typeof window !== 'undefined' && window.location && window.location.hostname) {
+      try {
+        return encodeURIComponent(window.location.hostname);
+      } catch (error) {
+        console.warn('Failed to encode hostname:', error);
+      }
+    }
+    return 'brotherhood-of-copper';
+  })();
   
   const routerState = useRouterState();
   const isIntroPage = routerState.location.pathname === '/';

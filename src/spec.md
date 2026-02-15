@@ -1,14 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Fix the Propaganda poster image upload and preview so user-uploaded images render correctly immediately after upload and on subsequent page loads, without black/blank preview states.
+**Goal:** Expand the existing Photos page to include a new “T-0 Junkyard-built Power Armor” entry with its image and description, and allow authenticated users to upload additional photos that appear on the page.
 
 **Planned changes:**
-- Add an authenticated poster image upload UI on the Propaganda page that uses existing backend canister methods and shows a correct immediate preview of the selected file.
-- After a successful upload, refetch posters from canister state and display the newest uploaded poster automatically (no manual refresh required).
-- Update Propaganda page display logic to show the most recent user-uploaded poster when available, otherwise fall back to `/assets/generated/carry-3.png`.
-- Add/restore React Query hooks for poster list and upload operations, wired to `uploadPoster(blob)` and `getPosters()`, including query invalidation/refetch after upload.
-- If `getPosters()` does not return enough data to reliably render images in the browser, extend the backend with a query method that returns image bytes + MIME type for a stored poster reference, and use it to construct a valid image URL.
-- Ensure unauthenticated users do not see the upload UI, and upload failures show a clear English error without rendering broken/black previews.
+- Add a new copper-themed card/section on `/photo` labeled “T-0 Junkyard-built Power Armor” that displays `junkyard power armor t-2.png` and includes a well-written English description consistent with existing typography and layout (alongside the existing T-10 entry).
+- Add an authenticated-only image upload UI on `/photo` to select an image, show a local preview, upload to the existing backend blob upload API, and render uploaded images in the Photos page gallery/list without a hard refresh.
+- Add clear signed-out behavior on `/photo` (show sign-in required state and avoid fetching private blobs) and user-readable error states for upload failures (e.g., unauthorized, actor unavailable).
+- Update the backend Motoko actor as needed to support the upload/list/display flow using existing blob storage patterns (no new database or auth system).
 
-**User-visible outcome:** Signed-in users can upload a poster image on the Propaganda page and immediately see a correct preview; after upload the newest poster loads from the canister automatically. Signed-out users can still read the page and see the fallback image, and any upload errors show a clear message without broken visuals.
+**User-visible outcome:** Visiting `/photo` shows the existing T-10 content plus a new “T-0 Junkyard-built Power Armor” card with its image and description; signed-in users can upload a photo with a preview and see the uploaded image(s) appear on the page, while signed-out users see a clear sign-in requirement.

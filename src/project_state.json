@@ -1,48 +1,39 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
-  "architectural_notes": [],
-  "known_issues": [
-    "Uploaded photo preview renders as a black/blank space immediately after upload (appears broken)."
+  "summary": "App with a Photos page to upload images and display descriptive text (e.g., T-0 Junkyard-built Power Armor).",
+  "architectural_notes": [
+    "Photos page should support image upload plus associated description/caption text per photo/item."
   ],
-  "isFixRequest": true,
+  "known_issues": [],
+  "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-implement-an-authenticated-poster-propaganda-image-upload-flow-on-the-frontend-that-uses-the-existing-backend-canister-methods-to-persist-the-uploaded-image-and-refresh-the-displayed-image-immediately-after-upload-no-black-blank-preview-state",
-      "title": "Implement an authenticated poster/propaganda image upload flow on the frontend that uses the existing backend canister methods to persist the uploaded image and refresh the displayed image immediately after upload (no black/blank preview state).",
-      "reqIds": [
-        "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-update-the-propaganda-page-to-display-the-most-recent-user-uploaded-poster-image-when-available-otherwise-fall-back-to-the-existing-static-asset-assets-generated-carry-3-png",
-      "title": "Update the Propaganda page to display the most recent user-uploaded poster image when available; otherwise fall back to the existing static asset \"/assets/generated/carry-3.png\".",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-restore-react-query-hooks-and-mutations-for-poster-operations-upload-list-and-ensure-they-are-wired-to-the-existing-backend-actor-methods-uploadposter-blob-and-getposters",
-      "title": "Add/restore React Query hooks and mutations for poster operations (upload + list) and ensure they are wired to the existing backend actor methods uploadPoster(blob) and getPosters().",
+      "id": "feature-add-a-new-entry-on-the-existing-photos-page-photo-for-the-t-0-junkyard-built-power-armor-that-displays-the-user-provided-image-file-junkyard-power-armor-t-2-png-and-a-well-written-english-description-paragraph-or-short-multi-paragraph-description-of-the-armor-matching-the-existing-copper-themed-card-layout-used-for-the-t-10-entry",
+      "title": "Add a new entry on the existing Photos page (/photo) for the “T-0 Junkyard-built Power Armor” that displays the user-provided image file (\"junkyard power armor t-2.png\") and a well-written English description paragraph (or short multi-paragraph description) of the armor, matching the existing copper-themed Card layout used for the T-10 entry.",
       "reqIds": [
         "REQ-3"
       ],
       "version": 1
     },
     {
-      "id": "feature-if-the-current-blob-data-returned-by-getposters-is-insufficient-for-correct-browser-rendering-e-g-missing-bytes-or-content-type-extend-the-backend-api-with-a-query-method-that-returns-the-necessary-image-bytes-and-mime-type-for-a-given-stored-poster-reference-and-use-it-on-the-frontend-to-construct-a-correct-preview-url",
-      "title": "If the current blob data returned by getPosters() is insufficient for correct browser rendering (e.g., missing bytes or content-type), extend the backend API with a query method that returns the necessary image bytes and MIME type for a given stored poster reference, and use it on the frontend to construct a correct preview URL.",
+      "id": "feature-implement-an-image-upload-ui-on-the-photos-page-that-lets-an-authenticated-user-select-an-image-file-preview-it-locally-upload-it-to-the-existing-backend-blob-upload-api-and-then-display-the-uploaded-image-s-on-the-photos-page",
+      "title": "Implement an image upload UI on the Photos page that lets an authenticated user select an image file, preview it locally, upload it to the existing backend blob upload API, and then display the uploaded image(s) on the Photos page.",
       "reqIds": [
         "REQ-4"
       ],
       "version": 1
     }
   ],
-  "new_feature_requests": [],
-  "projectName": "Fix uploaded poster image preview showing black space on Propaganda",
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add ability to upload a photo to the Photos page and include a written description for the T-0 Junkyard-built Power Armor entry.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "projectName": "Add T-0 Junkyard-built Power Armor photo + description to Photos page and enable uploads",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

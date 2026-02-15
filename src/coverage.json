@@ -1,76 +1,51 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T03:52:02.194Z",
+  "generatedAt": "2026-02-15T17:57:29.810Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 4,
-    "implemented": 4,
+    "total": 2,
+    "implemented": 2,
     "items": [
       {
-        "id": "REQ-1",
-        "summary": "Implement an authenticated poster/propaganda image upload flow on the frontend that uses the existing backend canister methods to persist the uploaded image and refresh the displayed image immediately after upload (no black/blank preview state).",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/PropagandaPage.tsx",
-          "frontend/src/hooks/usePosterQueries.ts"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/PropagandaPage.tsx",
-          "frontend/src/hooks/usePosterQueries.ts"
-        ]
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Update the Propaganda page to display the most recent user-uploaded poster image when available; otherwise fall back to the existing static asset \"/assets/generated/carry-3.png\".",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/pages/PropagandaPage.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/pages/PropagandaPage.tsx"
-        ]
-      },
-      {
         "id": "REQ-3",
-        "summary": "Add/restore React Query hooks and mutations for poster operations (upload + list) and ensure they are wired to the existing backend actor methods uploadPoster(blob) and getPosters().",
+        "summary": "Add a new entry on the existing Photos page (/photo) for the “T-0 Junkyard-built Power Armor” that displays the user-provided image file (\"junkyard power armor t-2.png\") and a well-written English description paragraph (or short multi-paragraph description) of the armor, matching the existing copper-themed Card layout used for the T-10 entry.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/hooks/usePosterQueries.ts",
-          "frontend/src/pages/PropagandaPage.tsx"
+          "frontend/public/assets/junkyard power armor t-2.png",
+          "frontend/src/pages/PhotoPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/hooks/usePosterQueries.ts",
-          "frontend/src/pages/PropagandaPage.tsx"
+          "frontend/src/pages/PhotoPage.tsx"
         ]
       },
       {
         "id": "REQ-4",
-        "summary": "If the current blob data returned by getPosters() is insufficient for correct browser rendering (e.g., missing bytes or content-type), extend the backend API with a query method that returns the necessary image bytes and MIME type for a given stored poster reference, and use it on the frontend to construct a correct preview URL.",
+        "summary": "Implement an image upload UI on the Photos page that lets an authenticated user select an image file, preview it locally, upload it to the existing backend blob upload API, and then display the uploaded image(s) on the Photos page.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/utils/posterImage.ts",
-          "frontend/src/pages/PropagandaPage.tsx"
+          "frontend/src/components/PhotoUploadGallery.tsx",
+          "frontend/src/pages/PhotoPage.tsx",
+          "frontend/src/hooks/usePosterQueries.ts",
+          "frontend/src/utils/posterImage.ts"
         ],
         "matchedFiles": [
-          "frontend/src/utils/posterImage.ts",
-          "frontend/src/pages/PropagandaPage.tsx"
+          "frontend/src/components/PhotoUploadGallery.tsx",
+          "frontend/src/pages/PhotoPage.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/hooks/usePosterQueries.ts",
-    "frontend/src/pages/PropagandaPage.tsx",
-    "frontend/src/utils/posterImage.ts",
+    "frontend/src/components/PhotoUploadGallery.tsx",
+    "frontend/src/pages/PhotoPage.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

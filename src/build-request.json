@@ -1,107 +1,56 @@
 {
   "kind": "build_request",
-  "title": "Fix uploaded poster image preview showing black space on Propaganda",
-  "priority": "high",
+  "title": "Add T-0 Junkyard-built Power Armor photo + description to Photos page and enable uploads",
+  "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-1",
-      "text": "Implement an authenticated poster/propaganda image upload flow on the frontend that uses the existing backend canister methods to persist the uploaded image and refresh the displayed image immediately after upload (no black/blank preview state).",
-      "target": "both",
-      "source": {
-        "messageIds": [
-          "msg-1",
-          "msg-2",
-          "msg-3",
-          "msg-4"
-        ],
-        "quotes": [
-          "photo in propaganda not loading",
-          "shows black space",
-          "comes from my own upload",
-          "black space appears immediately after upload it looks likes broken"
-        ]
-      },
-      "acceptanceCriteria": [
-        "When a signed-in user selects an image file and uploads it, the UI shows a correct preview of the selected image immediately (no black rectangle).",
-        "After the upload completes, the page refreshes/reloads the latest uploaded image from canister state and displays it.",
-        "If the user is not authenticated, the upload UI is not shown and the page remains readable (no crashes).",
-        "If an upload fails (e.g., unauthorized), the UI shows a clear error message in English and does not render a broken/black preview."
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Update the Propaganda page to display the most recent user-uploaded poster image when available; otherwise fall back to the existing static asset \"/assets/generated/carry-3.png\".",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1",
-          "msg-4",
-          "msg-5"
-        ],
-        "quotes": [
-          "photo in propaganda not loading",
-          "black space appears immediately after upload it looks likes broken",
-          "go ahead"
-        ]
-      },
-      "acceptanceCriteria": [
-        "If the backend returns at least one poster for the current user, the Propaganda page displays the newest one instead of the static carry-3.png.",
-        "If the backend returns zero posters, the Propaganda page continues to display /assets/generated/carry-3.png.",
-        "The image element uses a valid URL source (e.g., object URL or data URL) derived from the uploaded file and/or retrieved blob so it renders correctly in modern browsers."
-      ]
-    },
-    {
       "id": "REQ-3",
-      "text": "Add/restore React Query hooks and mutations for poster operations (upload + list) and ensure they are wired to the existing backend actor methods uploadPoster(blob) and getPosters().",
+      "text": "Add a new entry on the existing Photos page (/photo) for the “T-0 Junkyard-built Power Armor” that displays the user-provided image file (\"junkyard power armor t-2.png\") and a well-written English description paragraph (or short multi-paragraph description) of the armor, matching the existing copper-themed Card layout used for the T-10 entry.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-1",
-          "msg-3",
-          "msg-5"
+          "msg-user-1"
         ],
         "quotes": [
-          "photo in propaganda not loading",
-          "comes from my own upload",
-          "go ahead"
+          "upload photo to photos page write the decription of the T-0 Junkyard built Power armor"
         ]
       },
       "acceptanceCriteria": [
-        "There are dedicated React Query hooks (query for listing posters, mutation for uploading) used by the Propaganda upload/display UI.",
-        "Successful upload invalidates/refetches the posters query so the UI updates without a manual refresh.",
-        "No changes are made to any files under frontend/src/components/ui or other immutablePaths listed in SYSTEM_CONTEXT."
+        "Navigating to /photo shows a clearly labeled “T-0 Junkyard-built Power Armor” section/card.",
+        "The image \"junkyard power armor t-2.png\" is displayed in that section and renders correctly in production build.",
+        "The section includes an English description of the T-0 Junkyard-built Power Armor (not placeholder text) with readable typography consistent with the page."
       ]
     },
     {
       "id": "REQ-4",
-      "text": "If the current blob data returned by getPosters() is insufficient for correct browser rendering (e.g., missing bytes or content-type), extend the backend API with a query method that returns the necessary image bytes and MIME type for a given stored poster reference, and use it on the frontend to construct a correct preview URL.",
+      "text": "Implement an image upload UI on the Photos page that lets an authenticated user select an image file, preview it locally, upload it to the existing backend blob upload API, and then display the uploaded image(s) on the Photos page.",
       "target": "both",
       "source": {
         "messageIds": [
-          "msg-2",
-          "msg-4"
+          "msg-user-1"
         ],
         "quotes": [
-          "shows black space",
-          "black space appears immediately after upload it looks likes broken"
+          "upload photo to photos page"
         ]
       },
       "acceptanceCriteria": [
-        "Frontend can always render the uploaded poster image using an appropriate MIME type (e.g., image/png, image/jpeg) and correct byte payload.",
-        "The Propaganda page no longer displays a black/blank space for newly uploaded posters.",
-        "Backend continues to enforce existing permission checks (only users can upload/access posters)."
+        "When not authenticated, the Photos page does not attempt to fetch private blobs; it shows a clear sign-in requirement/state instead of failing silently.",
+        "When authenticated, the user can choose an image file and see a local preview before uploading.",
+        "Clicking Upload successfully calls the backend upload API and, on success, the uploaded image appears in the Photos page list/gallery without requiring a hard refresh.",
+        "Upload errors (e.g., unauthorized, actor not available) are surfaced to the user in a readable way.",
+        "The Photos page continues to show the existing T-10 content and styling; new upload UI and gallery do not break the layout on mobile and desktop."
       ]
     }
   ],
   "constraints": [
-    "Backend must remain a single Motoko actor with logic in backend/main.mo; only add backend/migration.mo if an actual state migration is required.",
-    "Do not edit frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, and anything under frontend/src/components/ui.",
-    "Use English for any user-facing UI text (errors, labels, empty states)."
+    "Backend must remain a single Motoko actor in backend/main.mo.",
+    "Do not edit files under frontend/src/components/ui or any other frontend immutablePaths; compose existing UI components instead.",
+    "Do not introduce external databases or third-party auth; use existing Internet Identity and the current blob storage patterns."
   ],
   "nonGoals": [
-    "Adding third-party authentication providers (only Internet Identity is supported).",
-    "Adding external databases or storage services outside the canister.",
-    "Implementing real-time updates via WebSockets or push notifications."
+    "Fixing or diagnosing deployment errors unrelated to the Photos page changes.",
+    "Creating new routes/pages beyond updating the existing /photo page.",
+    "Adding non-image media types (video/audio) upload support."
   ],
   "imageRequirements": {
     "required": [],

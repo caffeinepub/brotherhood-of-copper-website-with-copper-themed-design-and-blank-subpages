@@ -1,43 +1,49 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T03:52:02.192Z",
-  "summary": "Most core requirements appear implemented: new React Query hooks for listing/uploading posters, Propaganda page logic to show immediate local preview on file select and then display the latest poster (with fallback to /assets/generated/carry-3.png), and backend permission checks remain in place. However, some acceptance-criteria behaviors are not verifiable due to truncated PropagandaPage diff, and the backend adds unrequested poster-retention/ordering behavior.",
+  "generatedAt": "2026-02-15T17:57:29.807Z",
+  "summary": "Diff adds a new PhotoUploadGallery component and integrates it into PhotoPage, and begins adding a new T-0 Junkyard-built Power Armor card. However, evidence is insufficient or contradicts some acceptance criteria: the T-0 image asset/reference isn’t visible in the diff, unauthenticated state may still fetch blobs, and upload errors are not clearly surfaced in the UI.",
   "missing_requirements": [
     {
-      "id": "REQ-1",
-      "requirement": "If an upload fails (e.g., unauthorized), the UI shows a clear error message in English and does not render a broken/black preview.",
-      "reason": "The PropagandaPage.tsx diff is truncated before the upload completion/error handling path. While there is some validation error text (\"Please select an image file\"), there is no visible evidence in the provided diff that backend upload errors (e.g., unauthorized trap) are caught and surfaced to the user, nor that the preview/display URL is restored on failure.",
+      "id": "REQ-3",
+      "requirement": "Display the user-provided image file \"junkyard power armor t-2.png\" in the new “T-0 Junkyard-built Power Armor” card on /photo.",
+      "reason": "The PhotoPage diff is truncated right as the T-0 card begins, and the diff summary does not show an <img> referencing \"/assets/junkyard power armor t-2.png\" nor an added asset file. Therefore it cannot be verified that the specified image is actually displayed/renderable in production.",
       "evidence": [
-        "frontend/src/pages/PropagandaPage.tsx (truncated)"
+        "frontend/src/pages/PhotoPage.tsx (truncated; T-0 section begins but image reference not shown)",
+        "file-diff summary (no added asset file listed)"
       ]
     },
     {
-      "id": "REQ-1",
-      "requirement": "If the user is not authenticated, the upload UI is not shown and the page remains readable (no crashes).",
-      "reason": "The diff shows `isAuthenticated` is computed and posters query is gated by authentication in the hook, but the PropagandaPage render logic that conditionally hides the upload UI is not included in the truncated snippet, so this cannot be confirmed from the provided evidence.",
+      "id": "REQ-4",
+      "requirement": "When not authenticated, the Photos page does not attempt to fetch private blobs; it shows a clear sign-in requirement/state instead of failing silently.",
+      "reason": "PhotoUploadGallery calls usePostersQuery() unconditionally before checking authentication, which likely triggers fetching even when not authenticated.",
       "evidence": [
-        "frontend/src/pages/PropagandaPage.tsx (truncated)",
-        "frontend/src/hooks/usePosterQueries.ts"
+        "frontend/src/components/PhotoUploadGallery.tsx: `const { data: posters, isLoading: postersLoading, error: postersError } = usePostersQuery();` appears before the `if (!isAuthenticated) { return (...) }` gate"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "requirement": "Upload errors (e.g., unauthorized, actor not available) are surfaced to the user in a readable way.",
+      "reason": "The upload handler catches errors but only logs to console; the provided truncated portion shows no UI state (e.g., Alert) wired to display upload failure messages.",
+      "evidence": [
+        "frontend/src/components/PhotoUploadGallery.tsx: `catch (error) { console.error('Upload failed:', error); }` (no user-visible error handling shown)"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Backend now limits stored posters per user to 2 and reverses the list order when returning from getPosters().",
-      "reason": "The BuildRequest/REQs do not mention enforcing a maximum number of posters per user nor reversing/sorting semantics; this is additional behavior beyond the requested API usage/fix.",
+      "description": "Poster-oriented naming and API hooks (usePostersQuery/useUploadPosterMutation) introduced for the Photos upload/gallery feature.",
+      "reason": "BuildRequest asks for photo/image upload to an existing blob upload API; the diff implements this via “poster” queries/mutations, which may be an internal naming mismatch and is not requested explicitly.",
       "evidence": [
-        "backend/main.mo"
+        "frontend/src/components/PhotoUploadGallery.tsx: imports `usePostersQuery`, `useUploadPosterMutation`, `createPosterImageURL`"
       ]
     }
   ],
-  "confidence": 0.62,
+  "confidence": 0.68,
   "changed_files": [
-    "backend/main.mo",
     "frontend-file-summaries.txt",
-    "frontend/src/hooks/usePosterQueries.ts",
-    "frontend/src/pages/PropagandaPage.tsx",
-    "frontend/src/utils/posterImage.ts",
+    "frontend/src/components/PhotoUploadGallery.tsx",
+    "frontend/src/pages/PhotoPage.tsx",
     "project_state.json"
   ]
 }

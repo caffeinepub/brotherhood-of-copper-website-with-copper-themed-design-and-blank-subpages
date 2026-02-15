@@ -2,52 +2,10 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-implement-an-authenticated-poster-propaganda-image-upload-flow-on-the-frontend-that-uses-the-existing-backend-canister-methods-to-persist-the-uploaded-image-and-refresh-the-displayed-image-immediately-after-upload-no-black-blank-preview-state",
-      "featureTitle": "Implement an authenticated poster/propaganda image upload flow on the frontend that uses the existing backend canister methods to persist the uploaded image and refresh the displayed image immediately after upload (no black/blank preview state).",
+      "featureId": "feature-add-a-new-entry-on-the-existing-photos-page-photo-for-the-t-0-junkyard-built-power-armor-that-displays-the-user-provided-image-file-junkyard-power-armor-t-2-png-and-a-well-written-english-description-paragraph-or-short-multi-paragraph-description-of-the-armor-matching-the-existing-copper-themed-card-layout-used-for-the-t-10-entry",
+      "featureTitle": "Add a new entry on the existing Photos page (/photo) for the “T-0 Junkyard-built Power Armor” that displays the user-provided image file (\"junkyard power armor t-2.png\") and a well-written English description paragraph (or short multi-paragraph description) of the armor, matching the existing copper-themed Card layout used for the T-10 entry.",
       "files": [
-        "frontend/src/hooks/usePosterQueries.ts",
-        "frontend/src/pages/PropagandaPage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0",
-        "blob-storage@4.0.0"
-      ],
-      "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-propaganda-page-to-display-the-most-recent-user-uploaded-poster-image-when-available-otherwise-fall-back-to-the-existing-static-asset-assets-generated-carry-3-png",
-      "featureTitle": "Update the Propaganda page to display the most recent user-uploaded poster image when available; otherwise fall back to the existing static asset \"/assets/generated/carry-3.png\".",
-      "files": [
-        "frontend/src/pages/PropagandaPage.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0",
-        "authorization@4.0.0",
-        "blob-storage@4.0.0"
-      ],
-      "testIds": [
-        "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-restore-react-query-hooks-and-mutations-for-poster-operations-upload-list-and-ensure-they-are-wired-to-the-existing-backend-actor-methods-uploadposter-blob-and-getposters",
-      "featureTitle": "Add/restore React Query hooks and mutations for poster operations (upload + list) and ensure they are wired to the existing backend actor methods uploadPoster(blob) and getPosters().",
-      "files": [
-        "frontend/src/hooks/usePosterQueries.ts",
-        "frontend/src/pages/PropagandaPage.tsx"
+        "frontend/src/pages/PhotoPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -64,11 +22,11 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-if-the-current-blob-data-returned-by-getposters-is-insufficient-for-correct-browser-rendering-e-g-missing-bytes-or-content-type-extend-the-backend-api-with-a-query-method-that-returns-the-necessary-image-bytes-and-mime-type-for-a-given-stored-poster-reference-and-use-it-on-the-frontend-to-construct-a-correct-preview-url",
-      "featureTitle": "If the current blob data returned by getPosters() is insufficient for correct browser rendering (e.g., missing bytes or content-type), extend the backend API with a query method that returns the necessary image bytes and MIME type for a given stored poster reference, and use it on the frontend to construct a correct preview URL.",
+      "featureId": "feature-implement-an-image-upload-ui-on-the-photos-page-that-lets-an-authenticated-user-select-an-image-file-preview-it-locally-upload-it-to-the-existing-backend-blob-upload-api-and-then-display-the-uploaded-image-s-on-the-photos-page",
+      "featureTitle": "Implement an image upload UI on the Photos page that lets an authenticated user select an image file, preview it locally, upload it to the existing backend blob upload API, and then display the uploaded image(s) on the Photos page.",
       "files": [
-        "frontend/src/pages/PropagandaPage.tsx",
-        "frontend/src/utils/posterImage.ts"
+        "frontend/src/components/PhotoUploadGallery.tsx",
+        "frontend/src/pages/PhotoPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
