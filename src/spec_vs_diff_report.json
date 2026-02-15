@@ -1,74 +1,48 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T02:07:16.259Z",
-  "summary": "Diff adds backend poster upload/fetch methods and a Posters-page upload UI with preview/progress, but misses several backend persistence/validation requirements and may not implement the required fallback image behavior. It also introduces unrelated admin-token URL utilities and user-profile setup features not requested.",
+  "generatedAt": "2026-02-15T02:53:27.713Z",
+  "summary": "REQ-1 is partially addressed: the `/posters` route and nav link appear removed, but the Posters page file still exists in the frontend tree per the diff summary. REQ-2 (publish/redeploy failure) is not evidenced as resolved by the diff summary. Several changes (NotFound page and backend poster/profile authorization/logic changes) appear not explicitly requested by the BuildRequest.",
   "missing_requirements": [
     {
       "id": "REQ-1",
-      "requirement": "Persist uploaded poster image across canister upgrades using stable storage.",
-      "reason": "backend/main.mo stores posters in an in-memory Map (let posters = Map.empty...) with no shown stable variables or preupgrade/postupgrade handling in the diff summary.",
+      "requirement": "Remove the Posters page implementation so it is no longer part of the frontend build (delete/remove Posters page completely).",
+      "reason": "The diff shows `frontend/src/pages/PosterPage.tsx` still present (not removed). While the route/nav link were removed, the requirement calls for removing the page implementation so it is no longer part of the frontend build.",
       "evidence": [
-        "backend/main.mo"
-      ]
-    },
-    {
-      "id": "REQ-1",
-      "requirement": "Reject uploads above a reasonable size limit and return a clear error message from the backend.",
-      "reason": "uploadPoster in backend/main.mo unconditionally stores the provided blob and does not check blob size or trap with a size-limit error. (Only frontend enforces a 10MB check.)",
-      "evidence": [
-        "backend/main.mo",
-        "frontend/src/pages/PosterPage.tsx"
-      ]
-    },
-    {
-      "id": "REQ-1",
-      "requirement": "Backend upload should accept both image bytes and a content type.",
-      "reason": "backend/main.mo uploadPoster takes a single Storage.ExternalBlob parameter; the diff summary does not show separate content-type handling or validation. If ExternalBlob contains content type, it is not evidenced here.",
-      "evidence": [
-        "backend/main.mo"
+        "frontend/src/pages/PosterPage.tsx (still present in diff summary; no removed files listed)",
+        "<file-diff> REMOVED FILES: none"
       ]
     },
     {
       "id": "REQ-2",
-      "requirement": "UI shows loading and error states during upload/fetch (e.g., disabled button while uploading, readable error message on failure).",
-      "reason": "PosterPage.tsx shows state variables for uploadError/uploadProgress and uses a Progress component, but the diff is truncated before confirming clear rendering of error messages, disabled states, and handling of fetch/upload loading in the UI.",
+      "requirement": "Resolve the publish/republish failure so a publish/redeploy run completes successfully without the platform error message and the deployed app works.",
+      "reason": "No diff evidence directly addresses publish/redeploy pipeline/configuration issues or the specific platform error; only application code changes are shown, and success of publish cannot be confirmed from the diff.",
       "evidence": [
-        "frontend/src/pages/PosterPage.tsx"
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "requirement": "If no user-uploaded image exists, PosterPage still renders the existing static poster image (/assets/carry-2.png) as fallback, with English alt text describing the image.",
-      "reason": "PosterPage.tsx sets posterImageUrl to null when no posterBlob exists, but the truncated diff does not show rendering logic that falls back to /assets/carry-2.png or the required alt text.",
-      "evidence": [
-        "frontend/src/pages/PosterPage.tsx"
+        "<file-diff> (no deployment/publish config changes shown)"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Admin-token URL/session parameter utilities (getPersistedUrlParameter, sessionStorage helpers, hash query parsing).",
-      "reason": "BuildRequest is about poster image upload/persistence; no requirements mention URL parameter persistence or admin-token handling.",
+      "description": "Added a custom NotFound page and configured TanStack Router `notFoundComponent`.",
+      "reason": "BuildRequest only asked to remove Posters page and fix publish failure; adding a new NotFound component/route handler is not requested and could be considered a new feature.",
       "evidence": [
-        "frontend/src/utils/urlParams.ts",
-        "frontend/src/hooks/useActor.ts"
+        "frontend/src/components/NotFound.tsx (added)",
+        "frontend/src/App.tsx (rootRoute.notFoundComponent = NotFound)"
       ]
     },
     {
-      "description": "Actor initialization with a secret admin token parameter (caffeineAdminToken) and access-control initialization call.",
-      "reason": "Not requested by REQ-1/2/3; BuildRequest non-goals mention auth constraints but do not request adding admin-token bootstrapping.",
+      "description": "Modified backend poster/profile logic and authorization checks (uploadPoster/getPosters/profile methods) including limiting stored posters.",
+      "reason": "BuildRequest explicitly states not to change poster/profile backend APIs or data model unless required to fix publish failure; the diff shows substantive backend logic changes without any explicit linkage to the publish failure in the provided diff summary.",
       "evidence": [
-        "frontend/src/hooks/useActor.ts"
+        "backend/main.mo (significant changes: poster storage logic, permission checks, traps, poster limiting)"
       ]
     },
     {
-      "description": "User profile storage and profile-setup modal/flows on the Posters page.",
-      "reason": "BuildRequest does not request user profile features or requiring profile setup to upload posters.",
+      "description": "Removed poster-related operations from `useQueries` and kept only user-profile hooks.",
+      "reason": "REQ-1 focuses on removing the Posters page route/nav/implementation; refactoring query hooks is not explicitly requested (though it may be cleanup).",
       "evidence": [
-        "backend/main.mo",
-        "frontend/src/hooks/useQueries.ts",
-        "frontend/src/pages/PosterPage.tsx"
+        "frontend/src/hooks/useQueries.ts (\"with all poster-related operations removed\" per diff content)"
       ]
     }
   ],
@@ -77,10 +51,10 @@
     "backend/main.mo",
     "frontend-file-summaries.txt",
     "frontend/src/App.tsx",
-    "frontend/src/hooks/useActor.ts",
+    "frontend/src/components/NotFound.tsx",
+    "frontend/src/components/SiteNav.tsx",
     "frontend/src/hooks/useQueries.ts",
     "frontend/src/pages/PosterPage.tsx",
-    "frontend/src/utils/urlParams.ts",
     "project_state.json"
   ]
 }

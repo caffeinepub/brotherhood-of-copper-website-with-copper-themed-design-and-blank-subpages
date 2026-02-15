@@ -1,54 +1,56 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "PosterPage user poster upload UI with persisted display and static fallbacks",
+  "title": "Remove Posters page and stabilize frontend publish/redeploy",
   "requirements": [
     {
-      "id": "REQ-2",
-      "summary": "Add a signed-in user poster image upload UI on PosterPage that previews, uploads to backend, and persists across refresh by fetching from backend.",
+      "id": "REQ-1",
+      "summary": "Completely remove the Posters page by deleting its implementation, unregistering the `/posters` route, and removing all navigation links to it so the frontend builds cleanly.",
       "acceptanceCriteria": [
-        "Posters page includes a clearly labeled file picker and an \"Upload\" action with user-facing text in English.",
-        "When an image is selected, the user can preview it before uploading.",
-        "On successful upload, the page displays the uploaded image (using a browser-safe rendering approach such as a Blob URL or data URL).",
-        "The uploaded image persists after a full page refresh (fetched from the backend).",
-        "UI shows loading and error states during upload/fetch (e.g., disabled button while uploading, readable error message on failure)."
+        "The app no longer registers a route at `/posters` (attempting to navigate to `/posters` does not render the Posters page).",
+        "The primary site navigation no longer includes a 'Posters' link in either desktop or mobile menus.",
+        "The frontend builds successfully with no unused-import/module-not-found errors related to the removed Posters page."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/hooks/useQueries.ts",
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Replace the placeholder export with poster-related React Query hooks (fetch current user's poster + upload mutation) that use useActor. Use the blob-storage ExternalBlob capability for upload and display (e.g., direct URL / bytes access). Verify the component's usage instructions before implementing."
+          "description": "Remove the Posters page import and remove the `/posters` route from the TanStack Router route tree so it is no longer registered."
+        },
+        {
+          "path": "frontend/src/components/SiteNav.tsx",
+          "operation": "modify",
+          "description": "Remove the 'Posters' item from the navLinks array so both desktop and mobile menus no longer link to `/posters`."
         },
         {
           "path": "frontend/src/pages/PosterPage.tsx",
-          "operation": "modify",
-          "description": "Implement signed-in-only upload UI: file picker restricted to PNG/JPG, pre-upload preview via browser URL, Upload action calling the backend upload capability, and post-upload refetch to display persisted image. Use authorization (Internet Identity) via useInternetIdentity/useActor to require login before enabling upload, and show clear English loading/error states. Use blob-storage ExternalBlob display capability (prefer direct URL when available) and ensure rendering is browser-safe. Verify the component's usage instructions before implementing."
+          "operation": "delete",
+          "description": "Delete the Posters page implementation so it is no longer part of the frontend build."
         },
         {
-          "path": "frontend/src/backend.d.ts",
+          "path": "frontend/src/hooks/useQueries.ts",
           "operation": "modify",
-          "description": "Align frontend backend type definitions with the poster upload/fetch capabilities used by PosterPage (e.g., reflect any updated upload signature and poster return shape needed for content type/rendering)."
+          "description": "Remove poster-related React Query hooks (e.g., fetching/uploading posters) and any related imports/types so no orphaned code or unused imports remain after removing the Posters page."
         }
       ]
     },
     {
-      "id": "REQ-3",
-      "summary": "Preserve the existing static poster image as the fallback when no user-uploaded image exists, and add craft-1.png as an optional additional static fallback/sample.",
+      "id": "REQ-2",
+      "summary": "Resolve the publish/republish failure by ensuring the frontend build is robust after page removal and unknown routes are handled safely in production deployments.",
       "acceptanceCriteria": [
-        "If no user-uploaded image exists, PosterPage still renders the existing static poster image (/assets/carry-2.png).",
-        "If craft-1.png is added as a static asset, it is placed under frontend/public/assets and can be rendered without backend involvement.",
-        "Alt text for any displayed image remains in English and describes the image content."
+        "A publish/redeploy run completes successfully without showing the error message 'AI was unable to complete your request'.",
+        "The deployed application loads and routes work as expected after publishing."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/craft-1.png",
+          "path": "frontend/src/components/NotFound.tsx",
           "operation": "create",
-          "description": "Add the optional sample fallback asset craft-1.png under frontend/public/assets so it can be rendered directly as a static file (no backend involvement)."
+          "description": "Add a simple Not Found screen component to render for unknown routes, preventing runtime failures when users navigate to removed paths (including the former `/posters` path)."
         },
         {
-          "path": "frontend/src/pages/PosterPage.tsx",
+          "path": "frontend/src/App.tsx",
           "operation": "modify",
-          "description": "Keep /assets/carry-2.png as the default fallback when the user has no uploaded poster. Optionally render /assets/craft-1.png as an additional sample/fallback choice. Ensure all image alt text remains in English and describes the image content."
+          "description": "Wire the NotFound component into the router/root route configuration as the not-found handler so navigating to removed/unknown routes does not break the app and publishing/deploying remains stable."
         }
       ]
     }

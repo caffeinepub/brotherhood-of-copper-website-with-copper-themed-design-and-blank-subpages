@@ -15,7 +15,6 @@ export default function SiteNav() {
     { path: '/lore', label: 'Uniform & Armor Variants' },
     { path: '/history', label: 'History' },
     { path: '/photo', label: 'Photo' },
-    { path: '/posters', label: 'Posters' },
   ];
 
   const isActive = (path: string) => currentPath === path;

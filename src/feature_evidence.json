@@ -2,9 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-update-the-posters-page-frontend-src-pages-posterpage-tsx-to-include-an-image-upload-ui-that-lets-a-signed-in-user-select-an-image-file-png-jpg-upload-it-to-the-backend-and-display-the-uploaded-image-on-the-page",
-      "featureTitle": "Update the Posters page (frontend/src/pages/PosterPage.tsx) to include an image upload UI that lets a signed-in user select an image file (PNG/JPG), upload it to the backend, and display the uploaded image on the page.",
+      "featureId": "feature-delete-the-posters-page-from-the-website-completely-by-removing-its-route-and-all-navigation-links-to-it-and-remove-the-posters-page-implementation-so-it-is-no-longer-part-of-the-frontend-build",
+      "featureTitle": "Delete the Posters page from the website completely by removing its route and all navigation links to it, and remove the Posters page implementation so it is no longer part of the frontend build.",
       "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/SiteNav.tsx",
         "frontend/src/hooks/useQueries.ts",
         "frontend/src/pages/PosterPage.tsx"
       ],
@@ -18,15 +20,16 @@
         "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-1"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-keep-the-existing-static-poster-image-assets-carry-2-png-as-a-fallback-display-when-the-user-has-not-uploaded-a-poster-image-yet-and-optionally-add-the-newly-uploaded-asset-craft-1-png-to-the-frontend-static-assets-as-an-additional-fallback-sample-poster",
-      "featureTitle": "Keep the existing static poster image (/assets/carry-2.png) as a fallback display when the user has not uploaded a poster image yet, and optionally add the newly uploaded asset craft-1.png to the frontend static assets as an additional fallback/sample poster.",
+      "featureId": "feature-resolve-the-publish-republish-failure-so-the-project-can-be-published-successfully-without-the-platform-error-message",
+      "featureTitle": "Resolve the publish/republish failure so the project can be published successfully without the platform error message.",
       "files": [
-        "frontend/src/pages/PosterPage.tsx"
+        "frontend/src/App.tsx",
+        "frontend/src/components/NotFound.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -38,7 +41,7 @@
         "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-3"
+        "REQ-2"
       ],
       "confidence": "high"
     }

@@ -1,3 +1,6 @@
+import Array "mo:core/Array";
+import Iter "mo:core/Iter";
+import List "mo:core/List";
 import Map "mo:core/Map";
 import Principal "mo:core/Principal";
 import Runtime "mo:core/Runtime";
@@ -6,15 +9,16 @@ import AccessControl "authorization/access-control";
 import MixinStorage "blob-storage/Mixin";
 import Storage "blob-storage/Storage";
 
+
 actor {
   let accessControlState = AccessControl.initState();
   include MixinAuthorization(accessControlState);
   include MixinStorage();
 
   let userProfiles = Map.empty<Principal, UserProfile>();
-  let posters = Map.empty<Principal, Storage.ExternalBlob>();
+  let posters = Map.empty<Principal, List.List<Storage.ExternalBlob>>();
 
-  public type UserProfile = {
+  type UserProfile = {
     name : Text;
   };
 
@@ -22,14 +26,33 @@ actor {
     if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
       Runtime.trap("Unauthorized: Only users can upload posters");
     };
-    posters.add(caller, blob);
+
+    let currentPosters = switch (posters.get(caller)) {
+      case (null) { List.fromArray([blob]) };
+      case (?plist) {
+        let array = plist.toArray();
+        if (array.size() < 2) {
+          let newArray = [blob].concat(array);
+          List.fromArray(newArray);
+        } else {
+          let limitedArray = array.sliceToArray(0, 1);
+          let newArray = [blob].concat(limitedArray);
+          List.fromArray(newArray);
+        };
+      };
+    };
+
+    posters.add(caller, currentPosters);
   };
 
-  public query ({ caller }) func getPoster() : async ?Storage.ExternalBlob {
+  public query ({ caller }) func getPosters() : async [Storage.ExternalBlob] {
     if (not (AccessControl.hasPermission(accessControlState, caller, #user))) {
       Runtime.trap("Unauthorized: Only users can access posters");
     };
-    posters.get(caller);
+    switch (posters.get(caller)) {
+      case (null) { [] };
+      case (?plist) { plist.reverse().toArray() };
+    };
   };
 
   public query ({ caller }) func getCallerUserProfile() : async ?UserProfile {

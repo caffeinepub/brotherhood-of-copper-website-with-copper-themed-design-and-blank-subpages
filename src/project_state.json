@@ -1,24 +1,26 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Add photo upload functionality to the poster page.",
+  "summary": "New project",
   "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
+  "known_issues": [
+    "Publishing failed with an error ('AI was unable to complete your request'); user requested republish."
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-update-the-posters-page-frontend-src-pages-posterpage-tsx-to-include-an-image-upload-ui-that-lets-a-signed-in-user-select-an-image-file-png-jpg-upload-it-to-the-backend-and-display-the-uploaded-image-on-the-page",
-      "title": "Update the Posters page (frontend/src/pages/PosterPage.tsx) to include an image upload UI that lets a signed-in user select an image file (PNG/JPG), upload it to the backend, and display the uploaded image on the page.",
+      "id": "feature-delete-the-posters-page-from-the-website-completely-by-removing-its-route-and-all-navigation-links-to-it-and-remove-the-posters-page-implementation-so-it-is-no-longer-part-of-the-frontend-build",
+      "title": "Delete the Posters page from the website completely by removing its route and all navigation links to it, and remove the Posters page implementation so it is no longer part of the frontend build.",
       "reqIds": [
-        "REQ-2"
+        "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-keep-the-existing-static-poster-image-assets-carry-2-png-as-a-fallback-display-when-the-user-has-not-uploaded-a-poster-image-yet-and-optionally-add-the-newly-uploaded-asset-craft-1-png-to-the-frontend-static-assets-as-an-additional-fallback-sample-poster",
-      "title": "Keep the existing static poster image (/assets/carry-2.png) as a fallback display when the user has not uploaded a poster image yet, and optionally add the newly uploaded asset craft-1.png to the frontend static assets as an additional fallback/sample poster.",
+      "id": "feature-resolve-the-publish-republish-failure-so-the-project-can-be-published-successfully-without-the-platform-error-message",
+      "title": "Resolve the publish/republish failure so the project can be published successfully without the platform error message.",
       "reqIds": [
-        "REQ-3"
+        "REQ-2"
       ],
       "version": 1
     }
@@ -26,20 +28,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Enable users to upload a photo that appears on the poster page",
+      "summary": "Delete/remove the 'Posters' page from the website completely (including navigation links)",
       "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Implement backend storage for a single uploaded poster image (bytes + content type) keyed by the authenticated user Principal, and expose methods to set and fetch the current user's poster image.",
-      "reqIds": [
-        "REQ-1"
-      ],
       "status": "pending"
     }
   ],
-  "projectName": "Add photo upload to Posters page and persist uploaded poster image",
+  "projectName": "Remove Posters page and ensure publish/redeploy succeeds",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

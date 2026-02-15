@@ -9,7 +9,7 @@ import DivisionsPage from './pages/DivisionsPage';
 import UniformArmorVariantsByRankPage from './pages/UniformArmorVariantsByRankPage';
 import HistoryPage from './pages/HistoryPage';
 import PhotoPage from './pages/PhotoPage';
-import PosterPage from './pages/PosterPage';
+import NotFound from './components/NotFound';
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,6 +22,7 @@ const queryClient = new QueryClient({
 
 const rootRoute = createRootRoute({
   component: SiteLayout,
+  notFoundComponent: NotFound,
 });
 
 const indexRoute = createRoute({
@@ -66,12 +67,6 @@ const photoRoute = createRoute({
   component: PhotoPage,
 });
 
-const posterRoute = createRoute({
-  getParentRoute: () => rootRoute,
-  path: '/posters',
-  component: PosterPage,
-});
-
 const routeTree = rootRoute.addChildren([
   indexRoute,
   homeRoute,
@@ -80,7 +75,6 @@ const routeTree = rootRoute.addChildren([
   loreRoute,
   historyRoute,
   photoRoute,
-  posterRoute,
 ]);
 
 const router = createRouter({ routeTree });
