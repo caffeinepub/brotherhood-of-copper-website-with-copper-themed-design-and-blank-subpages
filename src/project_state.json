@@ -4,36 +4,45 @@
   "summary": "New project",
   "architectural_notes": [],
   "known_issues": [
-    "Publishing failed with an error ('AI was unable to complete your request'); user requested republish."
+    "Uploaded photo preview renders as a black/blank space immediately after upload (appears broken)."
   ],
   "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-delete-the-posters-page-from-the-website-completely-by-removing-its-route-and-all-navigation-links-to-it-and-remove-the-posters-page-implementation-so-it-is-no-longer-part-of-the-frontend-build",
-      "title": "Delete the Posters page from the website completely by removing its route and all navigation links to it, and remove the Posters page implementation so it is no longer part of the frontend build.",
+      "id": "feature-implement-an-authenticated-poster-propaganda-image-upload-flow-on-the-frontend-that-uses-the-existing-backend-canister-methods-to-persist-the-uploaded-image-and-refresh-the-displayed-image-immediately-after-upload-no-black-blank-preview-state",
+      "title": "Implement an authenticated poster/propaganda image upload flow on the frontend that uses the existing backend canister methods to persist the uploaded image and refresh the displayed image immediately after upload (no black/blank preview state).",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-resolve-the-publish-republish-failure-so-the-project-can-be-published-successfully-without-the-platform-error-message",
-      "title": "Resolve the publish/republish failure so the project can be published successfully without the platform error message.",
+      "id": "feature-update-the-propaganda-page-to-display-the-most-recent-user-uploaded-poster-image-when-available-otherwise-fall-back-to-the-existing-static-asset-assets-generated-carry-3-png",
+      "title": "Update the Propaganda page to display the most recent user-uploaded poster image when available; otherwise fall back to the existing static asset \"/assets/generated/carry-3.png\".",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
-    }
-  ],
-  "new_feature_requests": [
+    },
     {
-      "id": "AR-1",
-      "summary": "Delete/remove the 'Posters' page from the website completely (including navigation links)",
-      "reqIds": [],
-      "status": "pending"
+      "id": "feature-add-restore-react-query-hooks-and-mutations-for-poster-operations-upload-list-and-ensure-they-are-wired-to-the-existing-backend-actor-methods-uploadposter-blob-and-getposters",
+      "title": "Add/restore React Query hooks and mutations for poster operations (upload + list) and ensure they are wired to the existing backend actor methods uploadPoster(blob) and getPosters().",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-if-the-current-blob-data-returned-by-getposters-is-insufficient-for-correct-browser-rendering-e-g-missing-bytes-or-content-type-extend-the-backend-api-with-a-query-method-that-returns-the-necessary-image-bytes-and-mime-type-for-a-given-stored-poster-reference-and-use-it-on-the-frontend-to-construct-a-correct-preview-url",
+      "title": "If the current blob data returned by getPosters() is insufficient for correct browser rendering (e.g., missing bytes or content-type), extend the backend API with a query method that returns the necessary image bytes and MIME type for a given stored poster reference, and use it on the frontend to construct a correct preview URL.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
     }
   ],
-  "projectName": "Remove Posters page and ensure publish/redeploy succeeds",
+  "new_feature_requests": [],
+  "projectName": "Fix uploaded poster image preview showing black space on Propaganda",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

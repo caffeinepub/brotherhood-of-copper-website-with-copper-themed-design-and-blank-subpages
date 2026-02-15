@@ -1,43 +1,63 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T02:53:27.716Z",
+  "generatedAt": "2026-02-15T03:52:02.194Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 4,
+    "implemented": 4,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Delete the Posters page from the website completely by removing its route and all navigation links to it, and remove the Posters page implementation so it is no longer part of the frontend build.",
+        "summary": "Implement an authenticated poster/propaganda image upload flow on the frontend that uses the existing backend canister methods to persist the uploaded image and refresh the displayed image immediately after upload (no black/blank preview state).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/App.tsx",
-          "frontend/src/components/SiteNav.tsx",
-          "frontend/src/pages/PosterPage.tsx",
-          "frontend/src/hooks/useQueries.ts"
+          "frontend/src/pages/PropagandaPage.tsx",
+          "frontend/src/hooks/usePosterQueries.ts"
         ],
         "matchedFiles": [
-          "frontend/src/App.tsx",
-          "frontend/src/components/SiteNav.tsx",
-          "frontend/src/pages/PosterPage.tsx",
-          "frontend/src/hooks/useQueries.ts"
+          "frontend/src/pages/PropagandaPage.tsx",
+          "frontend/src/hooks/usePosterQueries.ts"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Resolve the publish/republish failure so the project can be published successfully without the platform error message.",
+        "summary": "Update the Propaganda page to display the most recent user-uploaded poster image when available; otherwise fall back to the existing static asset \"/assets/generated/carry-3.png\".",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/components/NotFound.tsx",
-          "frontend/src/App.tsx"
+          "frontend/src/pages/PropagandaPage.tsx"
         ],
         "matchedFiles": [
-          "frontend/src/components/NotFound.tsx",
-          "frontend/src/App.tsx"
+          "frontend/src/pages/PropagandaPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add/restore React Query hooks and mutations for poster operations (upload + list) and ensure they are wired to the existing backend actor methods uploadPoster(blob) and getPosters().",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/hooks/usePosterQueries.ts",
+          "frontend/src/pages/PropagandaPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/hooks/usePosterQueries.ts",
+          "frontend/src/pages/PropagandaPage.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "If the current blob data returned by getPosters() is insufficient for correct browser rendering (e.g., missing bytes or content-type), extend the backend API with a query method that returns the necessary image bytes and MIME type for a given stored poster reference, and use it on the frontend to construct a correct preview URL.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/utils/posterImage.ts",
+          "frontend/src/pages/PropagandaPage.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/utils/posterImage.ts",
+          "frontend/src/pages/PropagandaPage.tsx"
         ]
       }
     ]
@@ -48,11 +68,9 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/App.tsx",
-    "frontend/src/components/NotFound.tsx",
-    "frontend/src/components/SiteNav.tsx",
-    "frontend/src/hooks/useQueries.ts",
-    "frontend/src/pages/PosterPage.tsx",
+    "frontend/src/hooks/usePosterQueries.ts",
+    "frontend/src/pages/PropagandaPage.tsx",
+    "frontend/src/utils/posterImage.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

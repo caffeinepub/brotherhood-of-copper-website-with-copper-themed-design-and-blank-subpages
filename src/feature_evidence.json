@@ -2,13 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-delete-the-posters-page-from-the-website-completely-by-removing-its-route-and-all-navigation-links-to-it-and-remove-the-posters-page-implementation-so-it-is-no-longer-part-of-the-frontend-build",
-      "featureTitle": "Delete the Posters page from the website completely by removing its route and all navigation links to it, and remove the Posters page implementation so it is no longer part of the frontend build.",
+      "featureId": "feature-implement-an-authenticated-poster-propaganda-image-upload-flow-on-the-frontend-that-uses-the-existing-backend-canister-methods-to-persist-the-uploaded-image-and-refresh-the-displayed-image-immediately-after-upload-no-black-blank-preview-state",
+      "featureTitle": "Implement an authenticated poster/propaganda image upload flow on the frontend that uses the existing backend canister methods to persist the uploaded image and refresh the displayed image immediately after upload (no black/blank preview state).",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/SiteNav.tsx",
-        "frontend/src/hooks/useQueries.ts",
-        "frontend/src/pages/PosterPage.tsx"
+        "frontend/src/hooks/usePosterQueries.ts",
+        "frontend/src/pages/PropagandaPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -25,11 +23,10 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-resolve-the-publish-republish-failure-so-the-project-can-be-published-successfully-without-the-platform-error-message",
-      "featureTitle": "Resolve the publish/republish failure so the project can be published successfully without the platform error message.",
+      "featureId": "feature-update-the-propaganda-page-to-display-the-most-recent-user-uploaded-poster-image-when-available-otherwise-fall-back-to-the-existing-static-asset-assets-generated-carry-3-png",
+      "featureTitle": "Update the Propaganda page to display the most recent user-uploaded poster image when available; otherwise fall back to the existing static asset \"/assets/generated/carry-3.png\".",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/NotFound.tsx"
+        "frontend/src/pages/PropagandaPage.tsx"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -42,6 +39,48 @@
       ],
       "testIds": [
         "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-restore-react-query-hooks-and-mutations-for-poster-operations-upload-list-and-ensure-they-are-wired-to-the-existing-backend-actor-methods-uploadposter-blob-and-getposters",
+      "featureTitle": "Add/restore React Query hooks and mutations for poster operations (upload + list) and ensure they are wired to the existing backend actor methods uploadPoster(blob) and getPosters().",
+      "files": [
+        "frontend/src/hooks/usePosterQueries.ts",
+        "frontend/src/pages/PropagandaPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-if-the-current-blob-data-returned-by-getposters-is-insufficient-for-correct-browser-rendering-e-g-missing-bytes-or-content-type-extend-the-backend-api-with-a-query-method-that-returns-the-necessary-image-bytes-and-mime-type-for-a-given-stored-poster-reference-and-use-it-on-the-frontend-to-construct-a-correct-preview-url",
+      "featureTitle": "If the current blob data returned by getPosters() is insufficient for correct browser rendering (e.g., missing bytes or content-type), extend the backend API with a query method that returns the necessary image bytes and MIME type for a given stored poster reference, and use it on the frontend to construct a correct preview URL.",
+      "files": [
+        "frontend/src/pages/PropagandaPage.tsx",
+        "frontend/src/utils/posterImage.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-4"
       ],
       "confidence": "high"
     }

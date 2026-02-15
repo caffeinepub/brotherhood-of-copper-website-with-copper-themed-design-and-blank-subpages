@@ -1,60 +1,43 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T02:53:27.713Z",
-  "summary": "REQ-1 is partially addressed: the `/posters` route and nav link appear removed, but the Posters page file still exists in the frontend tree per the diff summary. REQ-2 (publish/redeploy failure) is not evidenced as resolved by the diff summary. Several changes (NotFound page and backend poster/profile authorization/logic changes) appear not explicitly requested by the BuildRequest.",
+  "generatedAt": "2026-02-15T03:52:02.192Z",
+  "summary": "Most core requirements appear implemented: new React Query hooks for listing/uploading posters, Propaganda page logic to show immediate local preview on file select and then display the latest poster (with fallback to /assets/generated/carry-3.png), and backend permission checks remain in place. However, some acceptance-criteria behaviors are not verifiable due to truncated PropagandaPage diff, and the backend adds unrequested poster-retention/ordering behavior.",
   "missing_requirements": [
     {
       "id": "REQ-1",
-      "requirement": "Remove the Posters page implementation so it is no longer part of the frontend build (delete/remove Posters page completely).",
-      "reason": "The diff shows `frontend/src/pages/PosterPage.tsx` still present (not removed). While the route/nav link were removed, the requirement calls for removing the page implementation so it is no longer part of the frontend build.",
+      "requirement": "If an upload fails (e.g., unauthorized), the UI shows a clear error message in English and does not render a broken/black preview.",
+      "reason": "The PropagandaPage.tsx diff is truncated before the upload completion/error handling path. While there is some validation error text (\"Please select an image file\"), there is no visible evidence in the provided diff that backend upload errors (e.g., unauthorized trap) are caught and surfaced to the user, nor that the preview/display URL is restored on failure.",
       "evidence": [
-        "frontend/src/pages/PosterPage.tsx (still present in diff summary; no removed files listed)",
-        "<file-diff> REMOVED FILES: none"
+        "frontend/src/pages/PropagandaPage.tsx (truncated)"
       ]
     },
     {
-      "id": "REQ-2",
-      "requirement": "Resolve the publish/republish failure so a publish/redeploy run completes successfully without the platform error message and the deployed app works.",
-      "reason": "No diff evidence directly addresses publish/redeploy pipeline/configuration issues or the specific platform error; only application code changes are shown, and success of publish cannot be confirmed from the diff.",
+      "id": "REQ-1",
+      "requirement": "If the user is not authenticated, the upload UI is not shown and the page remains readable (no crashes).",
+      "reason": "The diff shows `isAuthenticated` is computed and posters query is gated by authentication in the hook, but the PropagandaPage render logic that conditionally hides the upload UI is not included in the truncated snippet, so this cannot be confirmed from the provided evidence.",
       "evidence": [
-        "<file-diff> (no deployment/publish config changes shown)"
+        "frontend/src/pages/PropagandaPage.tsx (truncated)",
+        "frontend/src/hooks/usePosterQueries.ts"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Added a custom NotFound page and configured TanStack Router `notFoundComponent`.",
-      "reason": "BuildRequest only asked to remove Posters page and fix publish failure; adding a new NotFound component/route handler is not requested and could be considered a new feature.",
+      "description": "Backend now limits stored posters per user to 2 and reverses the list order when returning from getPosters().",
+      "reason": "The BuildRequest/REQs do not mention enforcing a maximum number of posters per user nor reversing/sorting semantics; this is additional behavior beyond the requested API usage/fix.",
       "evidence": [
-        "frontend/src/components/NotFound.tsx (added)",
-        "frontend/src/App.tsx (rootRoute.notFoundComponent = NotFound)"
-      ]
-    },
-    {
-      "description": "Modified backend poster/profile logic and authorization checks (uploadPoster/getPosters/profile methods) including limiting stored posters.",
-      "reason": "BuildRequest explicitly states not to change poster/profile backend APIs or data model unless required to fix publish failure; the diff shows substantive backend logic changes without any explicit linkage to the publish failure in the provided diff summary.",
-      "evidence": [
-        "backend/main.mo (significant changes: poster storage logic, permission checks, traps, poster limiting)"
-      ]
-    },
-    {
-      "description": "Removed poster-related operations from `useQueries` and kept only user-profile hooks.",
-      "reason": "REQ-1 focuses on removing the Posters page route/nav/implementation; refactoring query hooks is not explicitly requested (though it may be cleanup).",
-      "evidence": [
-        "frontend/src/hooks/useQueries.ts (\"with all poster-related operations removed\" per diff content)"
+        "backend/main.mo"
       ]
     }
   ],
-  "confidence": 0.72,
+  "confidence": 0.62,
   "changed_files": [
     "backend/main.mo",
     "frontend-file-summaries.txt",
-    "frontend/src/App.tsx",
-    "frontend/src/components/NotFound.tsx",
-    "frontend/src/components/SiteNav.tsx",
-    "frontend/src/hooks/useQueries.ts",
-    "frontend/src/pages/PosterPage.tsx",
+    "frontend/src/hooks/usePosterQueries.ts",
+    "frontend/src/pages/PropagandaPage.tsx",
+    "frontend/src/utils/posterImage.ts",
     "project_state.json"
   ]
 }

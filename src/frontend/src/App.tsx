@@ -9,6 +9,7 @@ import DivisionsPage from './pages/DivisionsPage';
 import UniformArmorVariantsByRankPage from './pages/UniformArmorVariantsByRankPage';
 import HistoryPage from './pages/HistoryPage';
 import PhotoPage from './pages/PhotoPage';
+import PropagandaPage from './pages/PropagandaPage';
 import NotFound from './components/NotFound';
 
 const queryClient = new QueryClient({
@@ -67,6 +68,12 @@ const photoRoute = createRoute({
   component: PhotoPage,
 });
 
+const propagandaRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: '/propaganda',
+  component: PropagandaPage,
+});
+
 const routeTree = rootRoute.addChildren([
   indexRoute,
   homeRoute,
@@ -75,6 +82,7 @@ const routeTree = rootRoute.addChildren([
   loreRoute,
   historyRoute,
   photoRoute,
+  propagandaRoute,
 ]);
 
 const router = createRouter({ routeTree });

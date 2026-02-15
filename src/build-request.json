@@ -1,68 +1,110 @@
 {
   "kind": "build_request",
-  "title": "Remove Posters page and ensure publish/redeploy succeeds",
-  "priority": "normal",
+  "title": "Fix uploaded poster image preview showing black space on Propaganda",
+  "priority": "high",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Delete the Posters page from the website completely by removing its route and all navigation links to it, and remove the Posters page implementation so it is no longer part of the frontend build.",
-      "target": "frontend",
+      "text": "Implement an authenticated poster/propaganda image upload flow on the frontend that uses the existing backend canister methods to persist the uploaded image and refresh the displayed image immediately after upload (no black/blank preview state).",
+      "target": "both",
       "source": {
         "messageIds": [
           "msg-1",
-          "msg-2"
+          "msg-2",
+          "msg-3",
+          "msg-4"
         ],
         "quotes": [
-          "remove the posters page from the website..",
-          "delete the posters page completely"
+          "photo in propaganda not loading",
+          "shows black space",
+          "comes from my own upload",
+          "black space appears immediately after upload it looks likes broken"
         ]
       },
       "acceptanceCriteria": [
-        "The app no longer registers a route at `/posters` (attempting to navigate to `/posters` does not render the Posters page).",
-        "The primary site navigation no longer includes a 'Posters' link in either desktop or mobile menus.",
-        "The frontend builds successfully with no unused-import/module-not-found errors related to the removed Posters page."
+        "When a signed-in user selects an image file and uploads it, the UI shows a correct preview of the selected image immediately (no black rectangle).",
+        "After the upload completes, the page refreshes/reloads the latest uploaded image from canister state and displays it.",
+        "If the user is not authenticated, the upload UI is not shown and the page remains readable (no crashes).",
+        "If an upload fails (e.g., unauthorized), the UI shows a clear error message in English and does not render a broken/black preview."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Resolve the publish/republish failure so the project can be published successfully without the platform error message.",
-      "target": "unknown",
+      "text": "Update the Propaganda page to display the most recent user-uploaded poster image when available; otherwise fall back to the existing static asset \"/assets/generated/carry-3.png\".",
+      "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-1",
+          "msg-4",
+          "msg-5"
         ],
         "quotes": [
-          "yes republish"
+          "photo in propaganda not loading",
+          "black space appears immediately after upload it looks likes broken",
+          "go ahead"
         ]
       },
       "acceptanceCriteria": [
-        "A publish/redeploy run completes successfully without showing the error message 'AI was unable to complete your request'.",
-        "The deployed application loads and routes work as expected after publishing."
+        "If the backend returns at least one poster for the current user, the Propaganda page displays the newest one instead of the static carry-3.png.",
+        "If the backend returns zero posters, the Propaganda page continues to display /assets/generated/carry-3.png.",
+        "The image element uses a valid URL source (e.g., object URL or data URL) derived from the uploaded file and/or retrieved blob so it renders correctly in modern browsers."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Add/restore React Query hooks and mutations for poster operations (upload + list) and ensure they are wired to the existing backend actor methods uploadPoster(blob) and getPosters().",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-1",
+          "msg-3",
+          "msg-5"
+        ],
+        "quotes": [
+          "photo in propaganda not loading",
+          "comes from my own upload",
+          "go ahead"
+        ]
+      },
+      "acceptanceCriteria": [
+        "There are dedicated React Query hooks (query for listing posters, mutation for uploading) used by the Propaganda upload/display UI.",
+        "Successful upload invalidates/refetches the posters query so the UI updates without a manual refresh.",
+        "No changes are made to any files under frontend/src/components/ui or other immutablePaths listed in SYSTEM_CONTEXT."
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "If the current blob data returned by getPosters() is insufficient for correct browser rendering (e.g., missing bytes or content-type), extend the backend API with a query method that returns the necessary image bytes and MIME type for a given stored poster reference, and use it on the frontend to construct a correct preview URL.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2",
+          "msg-4"
+        ],
+        "quotes": [
+          "shows black space",
+          "black space appears immediately after upload it looks likes broken"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Frontend can always render the uploaded poster image using an appropriate MIME type (e.g., image/png, image/jpeg) and correct byte payload.",
+        "The Propaganda page no longer displays a black/blank space for newly uploaded posters.",
+        "Backend continues to enforce existing permission checks (only users can upload/access posters)."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files under `frontend/src/components/ui`.",
-    "Do not modify `frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, or `frontend/src/main.tsx` (immutable paths).",
-    "Backend must remain a single Motoko actor in `backend/main.mo`; only add/modify `backend/migration.mo` if a state upgrade is required (not expected for removing a frontend page)."
+    "Backend must remain a single Motoko actor with logic in backend/main.mo; only add backend/migration.mo if an actual state migration is required.",
+    "Do not edit frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, and anything under frontend/src/components/ui.",
+    "Use English for any user-facing UI text (errors, labels, empty states)."
   ],
   "nonGoals": [
-    "Do not add new pages or new navigation items unrelated to removing the Posters page.",
-    "Do not change poster/profile backend APIs or data model unless required to fix the publish failure.",
-    "Do not implement third-party authentication or external services."
+    "Adding third-party authentication providers (only Internet Identity is supported).",
+    "Adding external databases or storage services outside the canister.",
+    "Implementing real-time updates via WebSockets or push notifications."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
   }
 }

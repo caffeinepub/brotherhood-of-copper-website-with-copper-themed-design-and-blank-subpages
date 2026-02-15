@@ -1,56 +1,85 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Remove Posters page and stabilize frontend publish/redeploy",
+  "title": "Fix Propaganda uploaded poster preview and wire poster React Query hooks",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Completely remove the Posters page by deleting its implementation, unregistering the `/posters` route, and removing all navigation links to it so the frontend builds cleanly.",
+      "summary": "Add an authenticated poster upload UI on Propaganda that previews the selected image immediately and refreshes the latest canister image after upload.",
       "acceptanceCriteria": [
-        "The app no longer registers a route at `/posters` (attempting to navigate to `/posters` does not render the Posters page).",
-        "The primary site navigation no longer includes a 'Posters' link in either desktop or mobile menus.",
-        "The frontend builds successfully with no unused-import/module-not-found errors related to the removed Posters page."
+        "When a signed-in user selects an image file and uploads it, the UI shows a correct preview of the selected image immediately (no black rectangle).",
+        "After the upload completes, the page refreshes/reloads the latest uploaded image from canister state and displays it.",
+        "If the user is not authenticated, the upload UI is not shown and the page remains readable (no crashes).",
+        "If an upload fails (e.g., unauthorized), the UI shows a clear error message in English and does not render a broken/black preview."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/pages/PropagandaPage.tsx",
           "operation": "modify",
-          "description": "Remove the Posters page import and remove the `/posters` route from the TanStack Router route tree so it is no longer registered."
+          "description": "Implement an authenticated upload section gated by Internet Identity (hide upload UI when unauthenticated), show instant local preview using an object URL from the selected file (avoid any blank/black state), upload using the existing backend actor method uploadPoster(ExternalBlob), and on success trigger a refetch so the displayed poster swaps to the newest canister-backed image. Display clear English error text on failure and keep the last valid preview/image rendered. Use the blob-storage ExternalBlob capability (fromBytes/withUploadProgress/getDirectURL as appropriate); verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/components/SiteNav.tsx",
-          "operation": "modify",
-          "description": "Remove the 'Posters' item from the navLinks array so both desktop and mobile menus no longer link to `/posters`."
-        },
-        {
-          "path": "frontend/src/pages/PosterPage.tsx",
-          "operation": "delete",
-          "description": "Delete the Posters page implementation so it is no longer part of the frontend build."
-        },
-        {
-          "path": "frontend/src/hooks/useQueries.ts",
-          "operation": "modify",
-          "description": "Remove poster-related React Query hooks (e.g., fetching/uploading posters) and any related imports/types so no orphaned code or unused imports remain after removing the Posters page."
+          "path": "frontend/src/hooks/usePosterQueries.ts",
+          "operation": "create",
+          "description": "Create dedicated TanStack React Query hooks for poster operations used by the Propaganda UI: a posters listing query (enabled only when authenticated) and an upload mutation that accepts a File, converts it to a blob-storage ExternalBlob, and invalidates the posters query on success. Use the blob-storage ExternalBlob capability for upload and URL derivation; verify the component's usage instructions before implementing."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Resolve the publish/republish failure by ensuring the frontend build is robust after page removal and unknown routes are handled safely in production deployments.",
+      "summary": "Update Propaganda page to show the newest user-uploaded poster when available, otherwise fall back to the existing static carry-3.png asset.",
       "acceptanceCriteria": [
-        "A publish/redeploy run completes successfully without showing the error message 'AI was unable to complete your request'.",
-        "The deployed application loads and routes work as expected after publishing."
+        "If the backend returns at least one poster for the current user, the Propaganda page displays the newest one instead of the static carry-3.png.",
+        "If the backend returns zero posters, the Propaganda page continues to display /assets/generated/carry-3.png.",
+        "The image element uses a valid URL source (e.g., object URL or data URL) derived from the uploaded file and/or retrieved blob so it renders correctly in modern browsers."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/components/NotFound.tsx",
+          "path": "frontend/src/pages/PropagandaPage.tsx",
+          "operation": "modify",
+          "description": "Fetch posters via the new posters query hook; if authenticated and posters exist, select the newest item (last element) and render it using a browser-valid URL (prefer blob-storage ExternalBlob.getDirectURL(), with safe fallback). If no posters (or not authenticated), keep rendering the existing static asset at frontend/public/assets/generated/carry-3.png. Use blob-storage ExternalBlob URL capability; verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add/restore React Query hooks (list + upload) for posters wired to backend actor methods getPosters() and uploadPoster(blob), and use them from Propaganda.",
+      "acceptanceCriteria": [
+        "There are dedicated React Query hooks (query for listing posters, mutation for uploading) used by the Propaganda upload/display UI.",
+        "Successful upload invalidates/refetches the posters query so the UI updates without a manual refresh.",
+        "No changes are made to any files under frontend/src/components/ui or other immutablePaths listed in SYSTEM_CONTEXT."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/hooks/usePosterQueries.ts",
           "operation": "create",
-          "description": "Add a simple Not Found screen component to render for unknown routes, preventing runtime failures when users navigate to removed paths (including the former `/posters` path)."
+          "description": "Implement usePostersQuery (calling actor.getPosters()) and useUploadPosterMutation (calling actor.uploadPoster(ExternalBlob)) using TanStack React Query, and ensure mutation success invalidates/refetches the posters query. Ensure hooks depend on useActor() and are disabled until actor is available; additionally gate listing/upload behavior based on authentication state from Internet Identity. Use blob-storage ExternalBlob for uploads and poster URL handling; verify the component's usage instructions before implementing."
         },
         {
-          "path": "frontend/src/App.tsx",
+          "path": "frontend/src/pages/PropagandaPage.tsx",
           "operation": "modify",
-          "description": "Wire the NotFound component into the router/root route configuration as the not-found handler so navigating to removed/unknown routes does not break the app and publishing/deploying remains stable."
+          "description": "Replace any ad-hoc poster fetch/upload logic with the dedicated poster React Query hooks; ensure the mutation invalidation drives automatic UI refresh (no manual reload). Keep all changes outside immutable paths (do not modify anything under frontend/src/components/ui, and do not modify the immutable hooks listed)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Add frontend-side robust poster rendering that can construct a correct browser image URL even if stored blob data lacks sufficient rendering metadata.",
+      "acceptanceCriteria": [
+        "Frontend can always render the uploaded poster image using an appropriate MIME type (e.g., image/png, image/jpeg) and correct byte payload.",
+        "The Propaganda page no longer displays a black/blank space for newly uploaded posters.",
+        "Backend continues to enforce existing permission checks (only users can upload/access posters)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/utils/posterImage.ts",
+          "operation": "create",
+          "description": "Add a small utility to reliably produce a renderable image URL from a blob-storage ExternalBlob: prefer ExternalBlob.getDirectURL(); if that fails or is unavailable for immediate rendering, fetch bytes via ExternalBlob.getBytes() and create an object URL using a best-effort MIME type (use the File.type for the immediate post-upload preview; otherwise default to a safe image MIME like image/png). Include safe cleanup guidance (revoking object URLs) for consumers. Use blob-storage ExternalBlob byte/URL capabilities; verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/pages/PropagandaPage.tsx",
+          "operation": "modify",
+          "description": "Use the new posterImage utility to avoid broken/black rendering for both (a) immediate post-selection preview and (b) rendering newly fetched posters. Add img onError handling to swap from direct URL to bytes-backed object URL if needed, ensuring the UI never shows a black/blank rectangle after upload. Use blob-storage ExternalBlob conversion capabilities; verify the component's usage instructions before implementing."
         }
       ]
     }
