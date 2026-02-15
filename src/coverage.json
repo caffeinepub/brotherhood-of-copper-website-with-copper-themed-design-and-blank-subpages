@@ -1,18 +1,18 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T00:16:25.240Z",
+  "generatedAt": "2026-02-15T00:26:29.875Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
+    "total": 1,
     "implemented": 1,
     "items": [
       {
-        "id": "REQ-1",
-        "summary": "Add the uploaded image file `brotherhood of copper banner.png` as a visible banner on the Home Page (`frontend/src/pages/HomePage.tsx`), placed within the existing hero section so it appears above the hero title and scales responsively across mobile and desktop.",
+        "id": "REQ-2",
+        "summary": "Remove the 'Brotherhood of Copper' banner image from the Home Page hero section by deleting the banner <img> block that references `/assets/generated/brotherhood of copper banner.png` in `frontend/src/pages/HomePage.tsx`, ensuring the hero layout still has balanced spacing above the icon/title on mobile and desktop.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/pages/HomePage.tsx"
@@ -20,15 +20,6 @@
         "matchedFiles": [
           "frontend/src/pages/HomePage.tsx"
         ]
-      },
-      {
-        "id": "REQ-2",
-        "summary": "Add the uploaded banner image to the frontend as a static asset (do not serve it via the backend) and reference it from the Home Page using a stable path under `frontend/public/assets/generated/`.",
-        "status": "missing",
-        "plannedFiles": [
-          "frontend/public/assets/generated/brotherhood of copper banner.png"
-        ],
-        "matchedFiles": []
       }
     ]
   },

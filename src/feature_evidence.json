@@ -2,8 +2,8 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-the-uploaded-image-file-brotherhood-of-copper-banner-png-as-a-visible-banner-on-the-home-page-frontend-src-pages-homepage-tsx-placed-within-the-existing-hero-section-so-it-appears-above-the-hero-title-and-scales-responsively-across-mobile-and-desktop",
-      "featureTitle": "Add the uploaded image file `brotherhood of copper banner.png` as a visible banner on the Home Page (`frontend/src/pages/HomePage.tsx`), placed within the existing hero section so it appears above the hero title and scales responsively across mobile and desktop.",
+      "featureId": "feature-remove-the-brotherhood-of-copper-banner-image-from-the-home-page-hero-section-by-deleting-the-banner-img-block-that-references-assets-generated-brotherhood-of-copper-banner-png-in-frontend-src-pages-homepage-tsx-ensuring-the-hero-layout-still-has-balanced-spacing-above-the-icon-title-on-mobile-and-desktop",
+      "featureTitle": "Remove the 'Brotherhood of Copper' banner image from the Home Page hero section by deleting the banner <img> block that references `/assets/generated/brotherhood of copper banner.png` in `frontend/src/pages/HomePage.tsx`, ensuring the hero layout still has balanced spacing above the icon/title on mobile and desktop.",
       "files": [
         "frontend/src/pages/HomePage.tsx"
       ],
@@ -15,7 +15,7 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-2"
       ],
       "confidence": "high"
     }

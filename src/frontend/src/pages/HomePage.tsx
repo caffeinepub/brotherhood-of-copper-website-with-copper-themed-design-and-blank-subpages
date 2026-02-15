@@ -10,16 +10,6 @@ export default function HomePage() {
       <section className="relative py-20 md:py-32 bg-gradient-to-b from-primary/5 via-background to-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center animate-fade-in">
-            {/* Banner Image */}
-            <div className="mb-8 w-full max-w-3xl mx-auto">
-              <img 
-                src="/assets/generated/brotherhood of copper banner.png" 
-                alt="The Brotherhood of Copper - Official emblem featuring gear and lightning bolt symbols"
-                className="w-full h-auto rounded-lg shadow-copper"
-                loading="eager"
-              />
-            </div>
-            
             <div className="inline-flex items-center justify-center p-4 mb-6 rounded-full bg-primary/10 shadow-copper">
               <Shield className="h-16 w-16 text-primary" />
             </div>

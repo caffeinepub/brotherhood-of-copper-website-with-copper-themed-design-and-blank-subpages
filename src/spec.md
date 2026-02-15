@@ -1,11 +1,10 @@
 # Specification
 
 ## Summary
-**Goal:** Display the uploaded “brotherhood of copper banner.png” image as a responsive banner within the Home Page hero section.
+**Goal:** Remove the “Brotherhood of Copper” banner image from the Home Page hero while keeping the hero layout well-spaced and centered on mobile and desktop.
 
 **Planned changes:**
-- Add `brotherhood of copper banner.png` to the frontend static assets under `frontend/public/assets/generated/`.
-- Update `frontend/src/pages/HomePage.tsx` to render the banner image inside the existing hero section, positioned above the “Brotherhood of Copper” heading.
-- Ensure the banner is responsive (maintains aspect ratio, no horizontal overflow), includes meaningful alt text, and reserves space to avoid layout shift (e.g., via CSS/aspect styling).
+- Delete the banner `<img>` block in `frontend/src/pages/HomePage.tsx` that references `/assets/generated/brotherhood of copper banner.png`.
+- Adjust hero spacing/alignment (within `HomePage.tsx`) so the remaining hero content (icon, title, description, CTAs) stays visually balanced and centered across screen sizes.
 
-**User-visible outcome:** The Home Page hero shows the “Brotherhood of Copper” banner above the main heading on both mobile and desktop, scaling cleanly without layout jumps.
+**User-visible outcome:** The Home Page hero no longer shows the “Brotherhood of Copper” banner, and the hero content remains neatly centered with balanced spacing on both mobile and desktop.

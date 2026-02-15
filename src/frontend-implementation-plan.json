@@ -1,36 +1,21 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Add static hero banner image to Home Page",
+  "title": "Remove 'Brotherhood of Copper' banner image from Home Page hero",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Render the uploaded banner image within the existing Home Page hero section above the hero heading, with responsive sizing and no layout shift.",
+      "id": "REQ-2",
+      "summary": "Remove the Home Page hero banner image that references the generated 'brotherhood of copper banner.png' while keeping the hero layout balanced on mobile and desktop.",
       "acceptanceCriteria": [
-        "The Home Page hero section renders the uploaded banner image above the \"Brotherhood of Copper\" heading.",
-        "The banner is responsive (maintains aspect ratio, does not overflow horizontally, and looks acceptable on mobile and desktop).",
-        "The image includes appropriate accessibility attributes (e.g., meaningful alt text) and does not cause layout shift (reserve height via CSS/aspect styling)."
+        "Home Page no longer renders an <img> whose src is `/assets/generated/brotherhood of copper banner.png`.",
+        "The hero section content (icon, title, description, CTAs) remains centered and visually well-spaced on both mobile and desktop after removal.",
+        "No other pages/components are modified as part of this change."
       ],
       "file_operations": [
         {
           "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Insert an <img> (or picture) element for the banner within the existing hero section container, positioned above the hero icon/title. Reference the static asset at frontend/public/assets/generated/brotherhood of copper banner.png, add meaningful alt text, and apply responsive Tailwind classes (e.g., width constraints + aspect-ratio wrapper/utility + object-fit) to preserve aspect ratio, prevent horizontal overflow, and reserve height to avoid layout shift."
-        }
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "summary": "Add the uploaded banner image as a public static frontend asset under frontend/public/assets/generated/ and reference it via a stable path from the Home Page.",
-      "acceptanceCriteria": [
-        "`brotherhood of copper banner.png` is available at runtime as a static file under `frontend/public/assets/generated/` (or an equivalent public static asset path) and is referenced directly by the Home Page.",
-        "No backend (Motoko) changes are required to display the banner."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/public/assets/generated/brotherhood of copper banner.png",
-          "operation": "create",
-          "description": "Add/copy the uploaded file into the public static assets directory so it is served as a static asset at runtime from frontend/public/assets/generated/brotherhood of copper banner.png."
+          "description": "Delete the banner <img> block that references `/assets/generated/brotherhood of copper banner.png` from the hero section, and adjust surrounding spacing classes (e.g., margins/padding around the icon/title group) so the hero remains centered and visually balanced on mobile and desktop without introducing changes to any other files."
         }
       ]
     }
