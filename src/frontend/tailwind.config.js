@@ -68,7 +68,7 @@ export default {
             },
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
-                copper: '0 4px 20px -2px oklch(0.55 0.15 35 / 0.3)',
+                copper: '0 4px 20px -2px oklch(0.45 0.18 32 / 0.35)',
             },
             keyframes: {
                 'accordion-down': {

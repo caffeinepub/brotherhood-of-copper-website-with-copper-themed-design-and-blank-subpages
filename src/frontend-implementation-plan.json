@@ -1,37 +1,36 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Update History page with Texhoma (2105) Copper Age narrative",
+  "title": "Update global theme tokens to a darker copper palette",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Replace the eight History sections (I–VIII) with the user-provided Texhoma/Colt Mercer (2105) narrative while preserving existing hero/TOC/section-card structure and hash/scroll behavior.",
+      "summary": "Darken the global copper palette by updating CSS variable theme tokens in frontend/src/index.css for both light (:root) and dark (.dark) themes so all Tailwind color utilities shift consistently across the app.",
       "acceptanceCriteria": [
-        "The History page displays exactly eight sections labeled I–VIII with titles matching the user-provided headings: (I) \"Texhoma: The City Split by a Line (2105)\", (II) \"Colt Mercer — The One the Grid Recognizes\", (III) \"The Revelation Beneath Texhoma\", (IV) \"The First Followers — The Texhoma Seekers\", (V) \"The First Armor: T‑1 Copper Frame\", (VI) \"The First Enemy — The Iron Reclaimers\", (VII) \"The Founding of the Brotherhood of Copper (Late 2105)\", (VIII) \"The Final Moment of 2105 — The Copper Sky\".",
-        "Each section’s body text matches the user-provided narrative content, including the quoted line: “The Order will rise again when the world is ready to be rebuilt.” and the list of tenets under section VII.",
-        "The Table of Contents renders all eight updated section titles and clicking each entry smoothly scrolls to the correct section card on both desktop and mobile.",
-        "Direct navigation via URL hash (e.g., loading the page with `#section-v`) scrolls to the correct section as it does currently.",
-        "No changes are made to any read-only paths listed in `frontend.immutablePaths`."
+        "Across all pages (Home, Ranks, Divisions, Uniform & Armor Variants, History, Photo), copper accents (primary/accent/secondary) appear noticeably darker than before and remain consistent between pages.",
+        "Light theme and dark theme both preserve readable contrast for primary buttons/links and primary-foreground text (no low-contrast copper-on-copper).",
+        "No page-specific color overrides are required to achieve the darker copper update; the change is driven by the global theme variables in `frontend/src/index.css`."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/HistoryPage.tsx",
+          "path": "frontend/src/index.css",
           "operation": "modify",
-          "description": "Update the `historySections` data to use the user-provided Texhoma/Colt Mercer (2105) narrative: set section titles to exactly match the provided I–VIII headings; replace each section body with the provided English narrative text (including the exact quoted line “The Order will rise again when the world is ready to be rebuilt.” and the section VII tenets list); keep the existing section ids (`section-i` ... `section-viii`) and preserve the current TOC mapping and hash/scroll behavior (TOC click smooth-scroll + URL hash update, plus initial-load/hashchange scrolling)."
+          "description": "Adjust the copper-related OKLCH CSS variables for :root and .dark (e.g., --primary/--primary-foreground, --secondary/--secondary-foreground, --accent/--accent-foreground, --border, --input, --ring, plus any muted/accent background tokens that create copper tint) to a darker copper palette while preserving contrast. This ensures shadcn-ui and Tailwind utilities (bg-primary, text-primary, border/ring, gradients, muted/accent backgrounds) update globally without per-page edits. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Update the History page hero heading/subheading to align with the Texhoma-focused 2105 narrative while keeping the existing hero styling and layout.",
+      "summary": "Align Tailwind theme extensions that hardcode copper values (e.g., shadow-copper) with the new darker copper palette to avoid mismatched copper tones.",
       "acceptanceCriteria": [
-        "The hero title/subtitle are updated to reflect the Texhoma (2105) storyline (English text) and the hero section remains visually consistent with the existing design (icon, spacing, gradient background)."
+        "Elements using `shadow-copper` (e.g., hero icons and featured cards) render with the updated darker copper tint, consistent with the new primary copper color.",
+        "No remaining hardcoded old copper values cause mismatched copper tones versus the updated CSS variable-based palette."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/pages/HistoryPage.tsx",
+          "path": "frontend/tailwind.config.js",
           "operation": "modify",
-          "description": "Revise the hero section title and subtitle text to introduce the Texhoma (2105) storyline in English while keeping the current hero structure and styling intact (Zap icon, spacing, and gradient background unchanged)."
+          "description": "Update any hardcoded copper-related theme extensions (including the current boxShadow.copper OKLCH value) to match the new darker copper palette, and audit the Tailwind config for other literal copper values that should be derived from CSS variables or updated to the new palette. Verify the component's usage instructions before implementing."
         }
       ]
     }

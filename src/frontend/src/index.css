@@ -5,26 +5,26 @@
 @layer base {
     :root {
         --radius: 0.5rem;
-        /* Copper/Bronze Light Theme */
+        /* Darker Copper/Bronze Light Theme */
         --background: 0.96 0.015 35;
-        --foreground: 0.25 0.04 35;
+        --foreground: 0.20 0.05 35;
         --card: 0.98 0.012 35;
-        --card-foreground: 0.25 0.04 35;
+        --card-foreground: 0.20 0.05 35;
         --popover: 0.98 0.012 35;
-        --popover-foreground: 0.25 0.04 35;
-        --primary: 0.55 0.15 35;
+        --popover-foreground: 0.20 0.05 35;
+        --primary: 0.45 0.18 32;
         --primary-foreground: 0.98 0.012 35;
-        --secondary: 0.85 0.08 35;
-        --secondary-foreground: 0.25 0.04 35;
-        --muted: 0.90 0.06 35;
-        --muted-foreground: 0.50 0.08 35;
-        --accent: 0.65 0.12 25;
+        --secondary: 0.75 0.10 32;
+        --secondary-foreground: 0.20 0.05 35;
+        --muted: 0.88 0.07 35;
+        --muted-foreground: 0.42 0.10 32;
+        --accent: 0.52 0.15 28;
         --accent-foreground: 0.98 0.012 35;
         --destructive: 0.577 0.245 27.325;
         --destructive-foreground: 0.985 0 0;
-        --border: 0.82 0.06 35;
-        --input: 0.82 0.06 35;
-        --ring: 0.55 0.15 35;
+        --border: 0.78 0.08 32;
+        --input: 0.78 0.08 32;
+        --ring: 0.45 0.18 32;
         --chart-1: 0.646 0.222 41.116;
         --chart-2: 0.6 0.118 184.704;
         --chart-3: 0.398 0.07 227.392;
@@ -33,26 +33,26 @@
     }
 
     .dark {
-        /* Copper/Bronze Dark Theme */
-        --background: 0.18 0.04 30;
+        /* Darker Copper/Bronze Dark Theme */
+        --background: 0.15 0.05 30;
         --foreground: 0.92 0.02 35;
-        --card: 0.22 0.05 32;
+        --card: 0.19 0.06 32;
         --card-foreground: 0.92 0.02 35;
-        --popover: 0.20 0.045 31;
+        --popover: 0.17 0.055 31;
         --popover-foreground: 0.92 0.02 35;
-        --primary: 0.68 0.18 35;
-        --primary-foreground: 0.18 0.04 30;
-        --secondary: 0.32 0.06 32;
+        --primary: 0.58 0.20 32;
+        --primary-foreground: 0.15 0.05 30;
+        --secondary: 0.28 0.08 32;
         --secondary-foreground: 0.92 0.02 35;
-        --muted: 0.28 0.055 31;
-        --muted-foreground: 0.65 0.10 35;
-        --accent: 0.48 0.12 28;
+        --muted: 0.24 0.065 31;
+        --muted-foreground: 0.58 0.12 32;
+        --accent: 0.42 0.14 28;
         --accent-foreground: 0.95 0.015 35;
         --destructive: 0.704 0.191 22.216;
-        --destructive-foreground: 0.18 0.04 30;
-        --border: 0.32 0.06 32;
-        --input: 0.32 0.06 32;
-        --ring: 0.68 0.18 35;
+        --destructive-foreground: 0.15 0.05 30;
+        --border: 0.28 0.08 32;
+        --input: 0.28 0.08 32;
+        --ring: 0.58 0.20 32;
         --chart-1: 0.488 0.243 264.376;
         --chart-2: 0.696 0.17 162.48;
         --chart-3: 0.769 0.188 70.08;

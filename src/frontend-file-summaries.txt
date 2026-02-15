@@ -1,6 +1,6 @@
 {
-  "frontend/src/index.css": "Global styles with copper/bronze OKLCH color system for both light and dark modes, featuring warm copper tones (hue ~30-35) throughout the design tokens.",
-  "frontend/tailwind.config.js": "Tailwind configuration extended with Cinzel display font, copper-themed colors, custom copper shadow, and fade-in animation for enhanced visual appeal.",
+  "frontend/src/index.css": "Global styles with darker copper/bronze OKLCH color system for both light and dark modes, featuring deeper, richer copper tones (hue ~28-35, reduced lightness values) throughout the design tokens while maintaining proper contrast ratios.",
+  "frontend/tailwind.config.js": "Tailwind configuration extended with Cinzel display font, darker copper-themed colors, updated copper shadow matching the new darker palette (0.45 0.18 32), and fade-in animation for enhanced visual appeal.",
   "frontend/src/App.tsx": "Main application component with TanStack Router setup, defining routes for home, ranks, divisions, lore, history, and photo pages within a shared layout.",
   "frontend/src/components/SiteLayout.tsx": "Shared layout wrapper component providing consistent site structure with navigation header, main content outlet, and footer with attribution.",
   "frontend/src/components/SiteNav.tsx": "Responsive navigation component with logo, desktop menu, mobile hamburger menu, and active route highlighting in copper theme, now including Photo link in the navigation.",

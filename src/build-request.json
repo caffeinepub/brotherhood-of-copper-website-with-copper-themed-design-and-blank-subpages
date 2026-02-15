@@ -1,56 +1,65 @@
 {
   "kind": "build_request",
-  "title": "Update History page with Texhoma (2105) Copper Age narrative",
+  "title": "Update site-wide theme to a darker copper palette",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update `frontend/src/pages/HistoryPage.tsx` to replace the existing eight History sections (I–VIII) with the user-provided Texhoma/Colt Mercer (2105) narrative, keeping the same overall page structure (hero, table of contents, and section cards) and using English for all user-facing text.",
+      "text": "Update the global Tailwind/CSS theme tokens to use a darker copper palette across the entire app (all routes/pages), by adjusting the copper-related CSS variables in `frontend/src/index.css` for both `:root` (light theme) and `.dark` (dark theme). Ensure the darker copper is reflected in primary/accent/secondary, borders/rings, and any other copper-tinted tokens so that components using `bg-primary`, `text-primary`, `border-primary/*`, gradients, and muted/accent backgrounds all shift consistently without per-page edits.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "recent-messages"
         ],
         "quotes": [
-          "update history page with following information   I. Texhoma: The City Split by a Line (2105) ... VIII. The Final Moment of 2105 — The Copper Sky ..."
+          "update all pages with darker copper color"
         ]
       },
       "acceptanceCriteria": [
-        "The History page displays exactly eight sections labeled I–VIII with titles matching the user-provided headings: (I) \"Texhoma: The City Split by a Line (2105)\", (II) \"Colt Mercer — The One the Grid Recognizes\", (III) \"The Revelation Beneath Texhoma\", (IV) \"The First Followers — The Texhoma Seekers\", (V) \"The First Armor: T‑1 Copper Frame\", (VI) \"The First Enemy — The Iron Reclaimers\", (VII) \"The Founding of the Brotherhood of Copper (Late 2105)\", (VIII) \"The Final Moment of 2105 — The Copper Sky\".",
-        "Each section’s body text matches the user-provided narrative content, including the quoted line: “The Order will rise again when the world is ready to be rebuilt.” and the list of tenets under section VII.",
-        "The Table of Contents renders all eight updated section titles and clicking each entry smoothly scrolls to the correct section card on both desktop and mobile.",
-        "Direct navigation via URL hash (e.g., loading the page with `#section-v`) scrolls to the correct section as it does currently.",
-        "No changes are made to any read-only paths listed in `frontend.immutablePaths`."
+        "Across all pages (Home, Ranks, Divisions, Uniform & Armor Variants, History, Photo), copper accents (primary/accent/secondary) appear noticeably darker than before and remain consistent between pages.",
+        "Light theme and dark theme both preserve readable contrast for primary buttons/links and primary-foreground text (no low-contrast copper-on-copper).",
+        "No page-specific color overrides are required to achieve the darker copper update; the change is driven by the global theme variables in `frontend/src/index.css`."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Update the History page hero heading/subheading in `frontend/src/pages/HistoryPage.tsx` so the top-of-page introduction aligns with the new Texhoma-focused 2105 narrative (while remaining consistent with the current layout and styling).",
+      "text": "Update any Tailwind theme extensions that hardcode the old copper color so they match the new darker copper palette (e.g., the `shadow-copper` definition in `frontend/tailwind.config.js`) to keep shadows/embellishments aligned with the updated theme.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-4"
+          "recent-messages"
         ],
         "quotes": [
-          "I. Texhoma: The City Split by a Line (2105)"
+          "update all pages with darker copper color"
         ]
       },
       "acceptanceCriteria": [
-        "The hero title/subtitle are updated to reflect the Texhoma (2105) storyline (English text) and the hero section remains visually consistent with the existing design (icon, spacing, gradient background)."
+        "Elements using `shadow-copper` (e.g., hero icons and featured cards) render with the updated darker copper tint, consistent with the new primary copper color.",
+        "No remaining hardcoded old copper values cause mismatched copper tones versus the updated CSS variable-based palette."
       ]
     }
   ],
   "constraints": [
-    "Frontend immutable paths must not be edited: `frontend/src/hooks/useInternetIdentity.ts`, `frontend/src/hooks/useInternetIdentity.tsx`, `frontend/src/hooks/useActor.ts`, `frontend/src/main.tsx`, `frontend/src/components/ui/*`.",
-    "Keep the existing in-page navigation behavior (TOC anchor click + hashchange scrolling) intact while updating content."
+    "Do not edit files under `frontend/src/components/ui` (compose these components instead, if needed).",
+    "Do not modify immutable hook/bootstrap files listed in `frontend.immutablePaths` in SYSTEM_CONTEXT."
   ],
   "nonGoals": [
-    "No backend/canister changes (Motoko) are required for this content update.",
-    "No new routes or pages are required.",
-    "No authentication or data persistence changes."
+    "Adding new pages, routes, or features unrelated to theming.",
+    "Changing copy/content on existing pages (only color/theme adjustments).",
+    "Backend changes (Motoko) or state migrations."
   ],
   "imageRequirements": {
     "required": [],
     "edits": []
+  },
+  "userProfileUpdate": {
+    "goalsToAdd": [],
+    "goalsToRemove": [],
+    "preferencesToAdd": [],
+    "preferencesToRemove": [],
+    "miscToAdd": [],
+    "miscToRemove": [],
+    "fieldsToSet": {},
+    "fieldsToDelete": []
   }
 }

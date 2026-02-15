@@ -1,7 +1,7 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T23:59:29.080Z",
+  "generatedAt": "2026-02-15T00:04:10.327Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
@@ -12,24 +12,24 @@
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Update `frontend/src/pages/HistoryPage.tsx` to replace the existing eight History sections (I–VIII) with the user-provided Texhoma/Colt Mercer (2105) narrative, keeping the same overall page structure (hero, table of contents, and section cards) and using English for all user-facing text.",
+        "summary": "Update the global Tailwind/CSS theme tokens to use a darker copper palette across the entire app (all routes/pages), by adjusting the copper-related CSS variables in `frontend/src/index.css` for both `:root` (light theme) and `.dark` (dark theme). Ensure the darker copper is reflected in primary/accent/secondary, borders/rings, and any other copper-tinted tokens so that components using `bg-primary`, `text-primary`, `border-primary/*`, gradients, and muted/accent backgrounds all shift consistently without per-page edits.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/HistoryPage.tsx"
+          "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/pages/HistoryPage.tsx"
+          "frontend/src/index.css"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Update the History page hero heading/subheading in `frontend/src/pages/HistoryPage.tsx` so the top-of-page introduction aligns with the new Texhoma-focused 2105 narrative (while remaining consistent with the current layout and styling).",
+        "summary": "Update any Tailwind theme extensions that hardcode the old copper color so they match the new darker copper palette (e.g., the `shadow-copper` definition in `frontend/tailwind.config.js`) to keep shadows/embellishments aligned with the updated theme.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/pages/HistoryPage.tsx"
+          "frontend/tailwind.config.js"
         ],
         "matchedFiles": [
-          "frontend/src/pages/HistoryPage.tsx"
+          "frontend/tailwind.config.js"
         ]
       }
     ]
@@ -39,7 +39,8 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/src/pages/HistoryPage.tsx",
+    "frontend/src/index.css",
+    "frontend/tailwind.config.js",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",
