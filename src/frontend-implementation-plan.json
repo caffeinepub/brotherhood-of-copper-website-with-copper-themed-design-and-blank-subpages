@@ -1,26 +1,54 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Render uploaded poster image on Posters page",
+  "title": "PosterPage user poster upload UI with persisted display and static fallbacks",
   "requirements": [
     {
-      "id": "REQ-1",
-      "summary": "Add carry-2.png as a frontend static asset and render it responsively on the existing /posters (PosterPage) route with a non-empty English alt attribute.",
+      "id": "REQ-2",
+      "summary": "Add a signed-in user poster image upload UI on PosterPage that previews, uploads to backend, and persists across refresh by fetching from backend.",
       "acceptanceCriteria": [
-        "Visiting `/posters` renders a page (not `null`) that displays the `carry-2.png` image.",
-        "The image is served as a frontend static asset (not fetched from the backend) and loads on refresh without errors.",
-        "The image is displayed responsively (fits within viewport width, maintains aspect ratio) and has a non-empty English `alt` attribute."
+        "Posters page includes a clearly labeled file picker and an \"Upload\" action with user-facing text in English.",
+        "When an image is selected, the user can preview it before uploading.",
+        "On successful upload, the page displays the uploaded image (using a browser-safe rendering approach such as a Blob URL or data URL).",
+        "The uploaded image persists after a full page refresh (fetched from the backend).",
+        "UI shows loading and error states during upload/fetch (e.g., disabled button while uploading, readable error message on failure)."
       ],
       "file_operations": [
         {
-          "path": "frontend/public/assets/carry-2.png",
-          "operation": "create",
-          "description": "Add the uploaded poster image as a static frontend asset so it can be referenced by the Posters page and load reliably on refresh."
+          "path": "frontend/src/hooks/useQueries.ts",
+          "operation": "modify",
+          "description": "Replace the placeholder export with poster-related React Query hooks (fetch current user's poster + upload mutation) that use useActor. Use the blob-storage ExternalBlob capability for upload and display (e.g., direct URL / bytes access). Verify the component's usage instructions before implementing."
         },
         {
           "path": "frontend/src/pages/PosterPage.tsx",
           "operation": "modify",
-          "description": "Replace the null placeholder with a Posters page UI that renders the static image at /assets/carry-2.png using responsive image styling (max width/auto height, maintain aspect ratio) and a non-empty English alt attribute. Optionally use shadcn-ui (e.g., Card) for consistent page framing—verify the component's usage instructions before implementing."
+          "description": "Implement signed-in-only upload UI: file picker restricted to PNG/JPG, pre-upload preview via browser URL, Upload action calling the backend upload capability, and post-upload refetch to display persisted image. Use authorization (Internet Identity) via useInternetIdentity/useActor to require login before enabling upload, and show clear English loading/error states. Use blob-storage ExternalBlob display capability (prefer direct URL when available) and ensure rendering is browser-safe. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/backend.d.ts",
+          "operation": "modify",
+          "description": "Align frontend backend type definitions with the poster upload/fetch capabilities used by PosterPage (e.g., reflect any updated upload signature and poster return shape needed for content type/rendering)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Preserve the existing static poster image as the fallback when no user-uploaded image exists, and add craft-1.png as an optional additional static fallback/sample.",
+      "acceptanceCriteria": [
+        "If no user-uploaded image exists, PosterPage still renders the existing static poster image (/assets/carry-2.png).",
+        "If craft-1.png is added as a static asset, it is placed under frontend/public/assets and can be rendered without backend involvement.",
+        "Alt text for any displayed image remains in English and describes the image content."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/craft-1.png",
+          "operation": "create",
+          "description": "Add the optional sample fallback asset craft-1.png under frontend/public/assets so it can be rendered directly as a static file (no backend involvement)."
+        },
+        {
+          "path": "frontend/src/pages/PosterPage.tsx",
+          "operation": "modify",
+          "description": "Keep /assets/carry-2.png as the default fallback when the user has no uploaded poster. Optionally render /assets/craft-1.png as an additional sample/fallback choice. Ensure all image alt text remains in English and describes the image content."
         }
       ]
     }

@@ -1,39 +1,86 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T01:57:25.364Z",
-  "summary": "PosterPage was updated to render an <img> pointing to /assets/carry-2.png with responsive styling and a non-empty English alt attribute, but the diff does not show the required static asset file (carry-2.png) being added to the frontend.",
+  "generatedAt": "2026-02-15T02:07:16.259Z",
+  "summary": "Diff adds backend poster upload/fetch methods and a Posters-page upload UI with preview/progress, but misses several backend persistence/validation requirements and may not implement the required fallback image behavior. It also introduces unrelated admin-token URL utilities and user-profile setup features not requested.",
   "missing_requirements": [
     {
       "id": "REQ-1",
-      "requirement": "Add the user-uploaded image file `carry-2.png` to the frontend static assets and render it on the `/posters` route (PosterPage).",
-      "reason": "PosterPage references `/assets/carry-2.png`, but no new static asset file is shown as added in the diff (ADDED FILES: none). Without the actual PNG in the static assets, the image may 404 on refresh and would not satisfy the static-asset requirement.",
+      "requirement": "Persist uploaded poster image across canister upgrades using stable storage.",
+      "reason": "backend/main.mo stores posters in an in-memory Map (let posters = Map.empty...) with no shown stable variables or preupgrade/postupgrade handling in the diff summary.",
       "evidence": [
-        "File diff summary: ADDED FILES: none",
-        "frontend/src/pages/PosterPage.tsx (uses src=\"/assets/carry-2.png\")"
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-1",
+      "requirement": "Reject uploads above a reasonable size limit and return a clear error message from the backend.",
+      "reason": "uploadPoster in backend/main.mo unconditionally stores the provided blob and does not check blob size or trap with a size-limit error. (Only frontend enforces a 10MB check.)",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/pages/PosterPage.tsx"
+      ]
+    },
+    {
+      "id": "REQ-1",
+      "requirement": "Backend upload should accept both image bytes and a content type.",
+      "reason": "backend/main.mo uploadPoster takes a single Storage.ExternalBlob parameter; the diff summary does not show separate content-type handling or validation. If ExternalBlob contains content type, it is not evidenced here.",
+      "evidence": [
+        "backend/main.mo"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "requirement": "UI shows loading and error states during upload/fetch (e.g., disabled button while uploading, readable error message on failure).",
+      "reason": "PosterPage.tsx shows state variables for uploadError/uploadProgress and uses a Progress component, but the diff is truncated before confirming clear rendering of error messages, disabled states, and handling of fetch/upload loading in the UI.",
+      "evidence": [
+        "frontend/src/pages/PosterPage.tsx"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "requirement": "If no user-uploaded image exists, PosterPage still renders the existing static poster image (/assets/carry-2.png) as fallback, with English alt text describing the image.",
+      "reason": "PosterPage.tsx sets posterImageUrl to null when no posterBlob exists, but the truncated diff does not show rendering logic that falls back to /assets/carry-2.png or the required alt text.",
+      "evidence": [
+        "frontend/src/pages/PosterPage.tsx"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Updated/added project tracking entries in project_state.json (new_feature_requests AR-1/AR-2 marked pending).",
-      "reason": "Not requested by the BuildRequest; requirement focuses only on adding a static image asset and rendering it on /posters.",
+      "description": "Admin-token URL/session parameter utilities (getPersistedUrlParameter, sessionStorage helpers, hash query parsing).",
+      "reason": "BuildRequest is about poster image upload/persistence; no requirements mention URL parameter persistence or admin-token handling.",
       "evidence": [
-        "project_state.json"
+        "frontend/src/utils/urlParams.ts",
+        "frontend/src/hooks/useActor.ts"
       ]
     },
     {
-      "description": "Updated frontend-file-summaries.txt contents (project-wide summaries of many files).",
-      "reason": "Not requested by the BuildRequest; seems unrelated to implementing REQ-1.",
+      "description": "Actor initialization with a secret admin token parameter (caffeineAdminToken) and access-control initialization call.",
+      "reason": "Not requested by REQ-1/2/3; BuildRequest non-goals mention auth constraints but do not request adding admin-token bootstrapping.",
       "evidence": [
-        "frontend-file-summaries.txt"
+        "frontend/src/hooks/useActor.ts"
+      ]
+    },
+    {
+      "description": "User profile storage and profile-setup modal/flows on the Posters page.",
+      "reason": "BuildRequest does not request user profile features or requiring profile setup to upload posters.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/PosterPage.tsx"
       ]
     }
   ],
-  "confidence": 0.74,
+  "confidence": 0.72,
   "changed_files": [
+    "backend/main.mo",
     "frontend-file-summaries.txt",
+    "frontend/src/App.tsx",
+    "frontend/src/hooks/useActor.ts",
+    "frontend/src/hooks/useQueries.ts",
     "frontend/src/pages/PosterPage.tsx",
+    "frontend/src/utils/urlParams.ts",
     "project_state.json"
   ]
 }

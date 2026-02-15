@@ -1,11 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Populate the `/posters` page by displaying the uploaded poster image as a static frontend asset.
+**Goal:** Let signed-in users upload a poster image on the Posters page and have it persist across refreshes and canister upgrades.
 
 **Planned changes:**
-- Add `carry-2.png` to the frontend’s static assets.
-- Update the `/posters` route (PosterPage) to render a non-null page that displays the `carry-2.png` image.
-- Ensure the image is responsive (fits within viewport width, maintains aspect ratio) and includes a non-empty English `alt` attribute.
+- Add backend storage keyed by the authenticated user Principal to upload/replace and fetch a single poster image (bytes + content type), persisted in stable storage with a reasonable file size limit and clear errors on rejection.
+- Update `frontend/src/pages/PosterPage.tsx` to include a labeled PNG/JPG file picker with preview, an explicit Upload action, and loading/error states.
+- On page load/refresh, fetch and display the user’s uploaded poster image; when none exists, fall back to the existing static `/assets/carry-2.png` (and optionally include `/assets/craft-1.png` as an additional static sample/fallback).
+- Keep all user-facing text and alt text in English.
 
-**User-visible outcome:** Visiting `/posters` shows the uploaded “carry-2.png” poster image on the page and it loads correctly on refresh.
+**User-visible outcome:** A signed-in user can choose a PNG/JPG, preview it, upload it to the Posters page, and see it displayed persistently across page refreshes; if they haven’t uploaded anything, the page shows the existing static poster image instead.

@@ -1,4 +1,6 @@
 import { RouterProvider, createRouter, createRoute, createRootRoute } from '@tanstack/react-router';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { InternetIdentityProvider } from './hooks/useInternetIdentity';
 import SiteLayout from './components/SiteLayout';
 import IntroPage from './pages/IntroPage';
 import HomePage from './pages/HomePage';
@@ -8,6 +10,15 @@ import UniformArmorVariantsByRankPage from './pages/UniformArmorVariantsByRankPa
 import HistoryPage from './pages/HistoryPage';
 import PhotoPage from './pages/PhotoPage';
 import PosterPage from './pages/PosterPage';
+
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      staleTime: 1000 * 60 * 5, // 5 minutes
+      refetchOnWindowFocus: false,
+    },
+  },
+});
 
 const rootRoute = createRootRoute({
   component: SiteLayout,
@@ -81,5 +92,11 @@ declare module '@tanstack/react-router' {
 }
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <QueryClientProvider client={queryClient}>
+      <InternetIdentityProvider>
+        <RouterProvider router={router} />
+      </InternetIdentityProvider>
+    </QueryClientProvider>
+  );
 }

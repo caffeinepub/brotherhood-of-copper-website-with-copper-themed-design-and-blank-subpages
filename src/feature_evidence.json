@@ -2,8 +2,29 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-the-user-uploaded-image-file-carry-2-png-to-the-frontend-static-assets-and-render-it-on-the-posters-route-posterpage-so-the-posters-page-is-no-longer-empty-and-displays-the-uploaded-poster-image",
-      "featureTitle": "Add the user-uploaded image file `carry-2.png` to the frontend static assets and render it on the `/posters` route (PosterPage) so the Posters page is no longer empty and displays the uploaded poster image.",
+      "featureId": "feature-update-the-posters-page-frontend-src-pages-posterpage-tsx-to-include-an-image-upload-ui-that-lets-a-signed-in-user-select-an-image-file-png-jpg-upload-it-to-the-backend-and-display-the-uploaded-image-on-the-page",
+      "featureTitle": "Update the Posters page (frontend/src/pages/PosterPage.tsx) to include an image upload UI that lets a signed-in user select an image file (PNG/JPG), upload it to the backend, and display the uploaded image on the page.",
+      "files": [
+        "frontend/src/hooks/useQueries.ts",
+        "frontend/src/pages/PosterPage.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "blob-storage@4.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-keep-the-existing-static-poster-image-assets-carry-2-png-as-a-fallback-display-when-the-user-has-not-uploaded-a-poster-image-yet-and-optionally-add-the-newly-uploaded-asset-craft-1-png-to-the-frontend-static-assets-as-an-additional-fallback-sample-poster",
+      "featureTitle": "Keep the existing static poster image (/assets/carry-2.png) as a fallback display when the user has not uploaded a poster image yet, and optionally add the newly uploaded asset craft-1.png to the frontend static assets as an additional fallback/sample poster.",
       "files": [
         "frontend/src/pages/PosterPage.tsx"
       ],
@@ -12,10 +33,12 @@
         "shadcn-ui@1.0.0",
         "build-template-react@1.0.0",
         "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
+        "github-export-icp-cli@1.0.0",
+        "authorization@4.0.0",
+        "blob-storage@4.0.0"
       ],
       "testIds": [
-        "REQ-1"
+        "REQ-3"
       ],
       "confidence": "high"
     }

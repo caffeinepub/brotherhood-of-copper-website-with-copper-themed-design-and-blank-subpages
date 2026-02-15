@@ -1,16 +1,24 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
+  "summary": "Add photo upload functionality to the poster page.",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-add-the-user-uploaded-image-file-carry-2-png-to-the-frontend-static-assets-and-render-it-on-the-posters-route-posterpage-so-the-posters-page-is-no-longer-empty-and-displays-the-uploaded-poster-image",
-      "title": "Add the user-uploaded image file `carry-2.png` to the frontend static assets and render it on the `/posters` route (PosterPage) so the Posters page is no longer empty and displays the uploaded poster image.",
+      "id": "feature-update-the-posters-page-frontend-src-pages-posterpage-tsx-to-include-an-image-upload-ui-that-lets-a-signed-in-user-select-an-image-file-png-jpg-upload-it-to-the-backend-and-display-the-uploaded-image-on-the-page",
+      "title": "Update the Posters page (frontend/src/pages/PosterPage.tsx) to include an image upload UI that lets a signed-in user select an image file (PNG/JPG), upload it to the backend, and display the uploaded image on the page.",
       "reqIds": [
-        "REQ-1"
+        "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-keep-the-existing-static-poster-image-assets-carry-2-png-as-a-fallback-display-when-the-user-has-not-uploaded-a-poster-image-yet-and-optionally-add-the-newly-uploaded-asset-craft-1-png-to-the-frontend-static-assets-as-an-additional-fallback-sample-poster",
+      "title": "Keep the existing static poster image (/assets/carry-2.png) as a fallback display when the user has not uploaded a poster image yet, and optionally add the newly uploaded asset craft-1.png to the frontend static assets as an additional fallback/sample poster.",
+      "reqIds": [
+        "REQ-3"
       ],
       "version": 1
     }
@@ -18,13 +26,20 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Add ability to upload a photo to the poster page",
+      "summary": "Enable users to upload a photo that appears on the poster page",
       "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Implement backend storage for a single uploaded poster image (bytes + content type) keyed by the authenticated user Principal, and expose methods to set and fetch the current user's poster image.",
+      "reqIds": [
+        "REQ-1"
+      ],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "Show uploaded image on Posters page",
+  "projectName": "Add photo upload to Posters page and persist uploaded poster image",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

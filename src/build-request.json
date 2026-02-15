@@ -1,34 +1,75 @@
 {
   "kind": "build_request",
-  "title": "Show uploaded image on Posters page",
+  "title": "Add photo upload to Posters page and persist uploaded poster image",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Add the user-uploaded image file `carry-2.png` to the frontend static assets and render it on the `/posters` route (PosterPage) so the Posters page is no longer empty and displays the uploaded poster image.",
-      "target": "frontend",
+      "text": "Implement backend storage for a single uploaded poster image (bytes + content type) keyed by the authenticated user Principal, and expose methods to set and fetch the current user's poster image.",
+      "target": "backend",
       "source": {
         "messageIds": [
-          "msg-3"
+          "msg-5"
         ],
         "quotes": [
           "upload photo to poster page"
         ]
       },
       "acceptanceCriteria": [
-        "Visiting `/posters` renders a page (not `null`) that displays the `carry-2.png` image.",
-        "The image is served as a frontend static asset (not fetched from the backend) and loads on refresh without errors.",
-        "The image is displayed responsively (fits within viewport width, maintains aspect ratio) and has a non-empty English `alt` attribute."
+        "Backend provides a method to upload/replace the current user's poster image (accepting image bytes and a content type).",
+        "Backend provides a method to fetch the current user's poster image (returns empty/null when none exists).",
+        "Data is persisted across canister upgrades using stable storage (add migration.mo only if required by existing state).",
+        "Reject uploads above a reasonable size limit and return a clear error message."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Update the Posters page (frontend/src/pages/PosterPage.tsx) to include an image upload UI that lets a signed-in user select an image file (PNG/JPG), upload it to the backend, and display the uploaded image on the page.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "upload photo to poster page"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Posters page includes a clearly labeled file picker and an \"Upload\" action with user-facing text in English.",
+        "When an image is selected, the user can preview it before uploading.",
+        "On successful upload, the page displays the uploaded image (using a browser-safe rendering approach such as a Blob URL or data URL).",
+        "The uploaded image persists after a full page refresh (fetched from the backend).",
+        "UI shows loading and error states during upload/fetch (e.g., disabled button while uploading, readable error message on failure)."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Keep the existing static poster image (/assets/carry-2.png) as a fallback display when the user has not uploaded a poster image yet, and optionally add the newly uploaded asset craft-1.png to the frontend static assets as an additional fallback/sample poster.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "upload photo to poster page"
+        ]
+      },
+      "acceptanceCriteria": [
+        "If no user-uploaded image exists, PosterPage still renders the existing static poster image (/assets/carry-2.png).",
+        "If craft-1.png is added as a static asset, it is placed under frontend/public/assets and can be rendered without backend involvement.",
+        "Alt text for any displayed image remains in English and describes the image content."
       ]
     }
   ],
   "constraints": [
-    "Keep the existing `/posters` route in place (do not change routing).",
-    "Do not modify files under `frontend/src/components/ui` or other immutable paths listed in SYSTEM_CONTEXT."
+    "Backend must remain a single Motoko actor in backend/main.mo; do not introduce additional backend services.",
+    "Do not edit files under frontend/src/components/ui or any paths listed as immutable (compose them instead).",
+    "Use English for any user-facing text."
   ],
   "nonGoals": [
-    "Implementing a persistent image upload system (file picker + backend storage) for end users.",
-    "Adding multi-image poster galleries, tagging, or admin management UI."
+    "Adding third-party authentication (only Internet Identity is allowed).",
+    "Multi-user galleries, comments, likes, or sharing features.",
+    "Real-time collaboration or WebSocket-based updates."
   ],
   "imageRequirements": {
     "required": [],
