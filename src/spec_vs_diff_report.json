@@ -1,29 +1,44 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-15T00:26:29.873Z",
-  "summary": "HomePage hero section shown in the diff no longer includes the banner <img> block, but two additional non-UI files were modified even though the request called for limiting changes to HomePage only (no other pages/components).",
-  "missing_requirements": [],
-  "hallucinated_features": [
+  "generatedAt": "2026-02-15T01:10:17.637Z",
+  "summary": "Diff adds a new Intro page at \"/\" with a CTA navigating to \"/home\", updates TanStack Router routes accordingly, and updates the main nav to link Home to \"/home\" while hiding nav/footer on the Intro route. However, evidence is insufficient that the banner image is actually bundled as a static asset and that all other internal links to \"/\" were updated to the new Home route. The diff also includes unrequested global styling/theme changes (per file summaries).",
+  "missing_requirements": [
     {
-      "description": "Modified project metadata/state tracking file.",
-      "reason": "BuildRequest only asked to remove a specific banner <img> from `frontend/src/pages/HomePage.tsx` and avoid modifying other parts; updating project tracking/state was not requested.",
+      "id": "REQ-1",
+      "requirement": "The uploaded image \"brotherhood of copper banner-1.png\" renders correctly in production as a static frontend asset (not fetched from the backend).",
+      "reason": "IntroPage references the image via an absolute URL (\"/assets/brotherhood of copper banner-1.png\"), but the diff summary shows no added/modified asset file or public/static asset placement, so production availability cannot be confirmed from the provided changes.",
       "evidence": [
-        "project_state.json"
+        "frontend/src/pages/IntroPage.tsx"
       ]
     },
     {
-      "description": "Modified repository documentation/summary file describing multiple frontend files.",
-      "reason": "BuildRequest did not request updating file summary documentation; it also implies changes beyond the HomePage edit.",
+      "id": "REQ-2",
+      "requirement": "All internal links that previously pointed to \"/\" for Home are updated to point to the new Home route where appropriate.",
+      "reason": "The nav logo/Home link is updated to \"/home\", but the diff does not show other components/pages being updated (e.g., CTAs or links elsewhere) and no evidence is provided that all prior \"/\" Home links were changed.",
       "evidence": [
-        "frontend-file-summaries.txt"
+        "frontend/src/components/SiteNav.tsx",
+        "frontend/src/App.tsx"
       ]
     }
   ],
-  "confidence": 0.68,
+  "hallucinated_features": [
+    {
+      "description": "Global copper/bronze theme and Tailwind configuration changes (new color system, fonts, shadows, animations).",
+      "reason": "BuildRequest is limited to adding an Intro page and updating routing/navigation; it does not request a palette/theme overhaul or Tailwind/font changes.",
+      "evidence": [
+        "frontend-file-summaries.txt (frontend/src/index.css)",
+        "frontend-file-summaries.txt (frontend/tailwind.config.js)"
+      ]
+    }
+  ],
+  "confidence": 0.62,
   "changed_files": [
     "frontend-file-summaries.txt",
-    "frontend/src/pages/HomePage.tsx",
+    "frontend/src/App.tsx",
+    "frontend/src/components/SiteLayout.tsx",
+    "frontend/src/components/SiteNav.tsx",
+    "frontend/src/pages/IntroPage.tsx",
     "project_state.json"
   ]
 }

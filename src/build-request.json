@@ -1,34 +1,72 @@
 {
   "kind": "build_request",
-  "title": "Remove 'Brotherhood of Copper' banner from Home Page hero",
+  "title": "Add Intro landing page (Intro → Home) using provided banner image",
   "priority": "normal",
   "requirements": [
     {
-      "id": "REQ-2",
-      "text": "Remove the 'Brotherhood of Copper' banner image from the Home Page hero section by deleting the banner <img> block that references `/assets/generated/brotherhood of copper banner.png` in `frontend/src/pages/HomePage.tsx`, ensuring the hero layout still has balanced spacing above the icon/title on mobile and desktop.",
+      "id": "REQ-1",
+      "text": "Create a new Intro page that uses the uploaded image \"brotherhood of copper banner-1.png\" as the primary intro visual and provides a clear call-to-action that navigates the user from Intro to the Home page.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-1"
+          "msg-5"
         ],
         "quotes": [
-          "remove the brotherhood of copper banner"
+          "create a intro page and link the the pages by the following  Intro to Home and use this photo as the intro"
         ]
       },
       "acceptanceCriteria": [
-        "Home Page no longer renders an <img> whose src is `/assets/generated/brotherhood of copper banner.png`.",
-        "The hero section content (icon, title, description, CTAs) remains centered and visually well-spaced on both mobile and desktop after removal.",
-        "No other pages/components are modified as part of this change."
+        "A new React page component exists for the Intro page (e.g., IntroPage) and renders the uploaded image prominently (e.g., as a full-bleed background/hero image or centered banner).",
+        "Intro page includes at least one obvious control (button/link) labeled in English (e.g., \"Enter\", \"Continue\", or \"Go to Home\") that navigates to the Home page route.",
+        "The image renders correctly in production as a static frontend asset (not fetched from the backend)."
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Update routing so the application opens on the Intro page and the Home page is accessible via a dedicated route, ensuring navigation flows Intro → Home without breaking existing routes (/ranks, /divisions, /lore, /history, /photo, /posters).",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "Intro to Home"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Visiting \"/\" displays the Intro page.",
+        "The Home page is reachable via a stable route (e.g., \"/home\") and renders the existing HomePage content.",
+        "All previously existing routes continue to work as before (/ranks, /divisions, /lore, /history, /photo, /posters).",
+        "All internal links that previously pointed to \"/\" for Home are updated to point to the new Home route where appropriate."
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Adjust the site navigation behavior to account for the new Intro page so users can still reach Home easily and the Intro page is not mistakenly labeled as Home.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-5"
+        ],
+        "quotes": [
+          "create a intro page and link the the pages"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Top navigation includes a \"Home\" link that routes to the Home page route (not the Intro route).",
+        "The Intro route is either not shown in the primary nav, or is clearly labeled as \"Intro\" if included.",
+        "The active-link highlighting works correctly for the Home route and other routes after the routing change."
       ]
     }
   ],
   "constraints": [
-    "Do not modify any files under `frontend/src/components/ui` (read-only).",
-    "Do not modify any paths listed as immutable in SYSTEM_CONTEXT."
+    "Do not edit files under frontend/src/components/ui (read-only components).",
+    "Do not edit immutable hook/bootstrapping files: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx."
   ],
   "nonGoals": [
-    "Deleting the static image file from `frontend/public/assets/generated/` (only removing it from the UI).",
-    "Changing any other 'Brotherhood of Copper' branding text, navigation, or page content."
+    "Adding new backend canister methods or persistence.",
+    "Adding authentication changes or Internet Identity flow changes.",
+    "Adding poster detail views or other new poster features beyond Intro → Home navigation."
   ],
   "imageRequirements": {
     "required": [],

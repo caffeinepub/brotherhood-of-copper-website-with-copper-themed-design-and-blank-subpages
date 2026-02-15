@@ -9,12 +9,13 @@ export default function SiteNav() {
   const currentPath = routerState.location.pathname;
 
   const navLinks = [
-    { path: '/', label: 'Home' },
+    { path: '/home', label: 'Home' },
     { path: '/ranks', label: 'Ranks' },
     { path: '/divisions', label: 'Divisions' },
     { path: '/lore', label: 'Uniform & Armor Variants' },
     { path: '/history', label: 'History' },
     { path: '/photo', label: 'Photo' },
+    { path: '/posters', label: 'Posters' },
   ];
 
   const isActive = (path: string) => currentPath === path;
@@ -24,7 +25,7 @@ export default function SiteNav() {
       <nav className="container mx-auto px-4">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
+          <Link to="/home" className="flex items-center gap-2 group">
             <div className="p-2 rounded-md bg-primary/10 group-hover:bg-primary/20 transition-colors">
               <Shield className="h-6 w-6 text-primary" />
             </div>

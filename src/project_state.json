@@ -1,16 +1,32 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "New project",
+  "summary": "Project now includes an intro/landing page that links into the Home page, using a provided photo as the intro visual.",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
   "existing_features": [
     {
-      "id": "feature-remove-the-brotherhood-of-copper-banner-image-from-the-home-page-hero-section-by-deleting-the-banner-img-block-that-references-assets-generated-brotherhood-of-copper-banner-png-in-frontend-src-pages-homepage-tsx-ensuring-the-hero-layout-still-has-balanced-spacing-above-the-icon-title-on-mobile-and-desktop",
-      "title": "Remove the 'Brotherhood of Copper' banner image from the Home Page hero section by deleting the banner <img> block that references `/assets/generated/brotherhood of copper banner.png` in `frontend/src/pages/HomePage.tsx`, ensuring the hero layout still has balanced spacing above the icon/title on mobile and desktop.",
+      "id": "feature-create-a-new-intro-page-that-uses-the-uploaded-image-brotherhood-of-copper-banner-1-png-as-the-primary-intro-visual-and-provides-a-clear-call-to-action-that-navigates-the-user-from-intro-to-the-home-page",
+      "title": "Create a new Intro page that uses the uploaded image \"brotherhood of copper banner-1.png\" as the primary intro visual and provides a clear call-to-action that navigates the user from Intro to the Home page.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-routing-so-the-application-opens-on-the-intro-page-and-the-home-page-is-accessible-via-a-dedicated-route-ensuring-navigation-flows-intro-home-without-breaking-existing-routes-ranks-divisions-lore-history-photo-posters",
+      "title": "Update routing so the application opens on the Intro page and the Home page is accessible via a dedicated route, ensuring navigation flows Intro → Home without breaking existing routes (/ranks, /divisions, /lore, /history, /photo, /posters).",
       "reqIds": [
         "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-adjust-the-site-navigation-behavior-to-account-for-the-new-intro-page-so-users-can-still-reach-home-easily-and-the-intro-page-is-not-mistakenly-labeled-as-home",
+      "title": "Adjust the site navigation behavior to account for the new Intro page so users can still reach Home easily and the Intro page is not mistakenly labeled as Home.",
+      "reqIds": [
+        "REQ-3"
       ],
       "version": 1
     }
@@ -18,12 +34,13 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Remove the 'Brotherhood of Copper' banner from the site/app",
+      "summary": "Create an Intro page that links to the Home page (Intro → Home) and use the provided photo as the intro visual.",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "projectName": "Remove 'Brotherhood of Copper' banner from Home Page hero",
+  "gameProjectType": "none",
+  "projectName": "Add Intro landing page (Intro → Home) using provided banner image",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
